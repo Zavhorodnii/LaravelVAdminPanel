@@ -1905,7 +1905,7 @@ $(document).ready(function () {
   $('.field_section_header').click(function (event) {
     $(this).closest('.field_section').toggleClass('hid_block');
   });
-  $('.main_menu').click(function (event) {
+  $('.js-open-close-menu').click(function (event) {
     if ($(this).closest('.control_menu').hasClass('active')) {
       $(this).closest('.control_menu').toggleClass('active');
     } else {

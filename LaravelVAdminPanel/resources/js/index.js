@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
 
 
-    $('.main_menu').click(function (event) {
+    $('.js-open-close-menu').click(function (event) {
         if ($(this).closest('.control_menu').hasClass('active')) {
             $(this).closest('.control_menu').toggleClass('active');
         } else {
@@ -28,6 +28,7 @@ $(document).ready(function () {
             $(this).closest('.control_menu').addClass('active');
         }
     });
+
     $('.header_admin_notification').click(function (e) {
         $(this).closest('.header_admin').find('.show').find('.notification_message').toggleClass('active_show');
 

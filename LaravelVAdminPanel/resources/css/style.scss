@@ -155,6 +155,7 @@ option {
 }
 
 .grid_container {
+    overflow: hidden;
   display: grid;
   min-height: 100vh;
   grid-template: minmax(50px, auto) 1fr 60px / minmax(auto, auto) 1fr 370px;
@@ -734,6 +735,7 @@ option {
 
 .content {
   z-index: 10;
+    min-width: 700px;
   grid-area: content;
   background-color: $background_colour;
 }
@@ -1507,4 +1509,49 @@ option {
     grid-area: file_info;
     //background-color: #EDF6E5;
   }
+}
+
+// admin/pages
+
+.edit-page{
+    color: $header_background_colour;
+}
+.remove-page{
+    color: $delete_colour;
+}
+
+.single-page{
+    display: flex;
+    justify-content: space-between;
+    .main_info{
+        .control{
+            visibility: hidden;
+        }
+    }
+
+    .addition_info{
+        display: flex;
+        align-items: center;
+        min-width: 155px;
+        margin-left: 10px;
+        .draft-info{
+            margin-right: 20px;
+        }
+    }
+    .addition_title{
+        margin-right: 20px;
+    }
+
+
+    &:hover {
+        & .control {
+            visibility: visible;
+        }
+    }
+}
+
+
+.add-new-page{
+    width: fit-content ;
+    padding: 0 5px;
 }

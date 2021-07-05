@@ -77,6 +77,7 @@ option:hover {
 }
 
 .grid_container {
+  overflow: hidden;
   display: grid;
   min-height: 100vh;
   grid-template: minmax(50px, auto) 1fr 60px/minmax(auto, auto) 1fr 370px;
@@ -624,6 +625,7 @@ option:hover {
 
 .content {
   z-index: 10;
+  min-width: 700px;
   grid-area: content;
   background-color: #d3d3d3;
 }
@@ -1315,4 +1317,42 @@ option:hover {
 }
 .file-manager .file-info {
   grid-area: file_info;
+}
+
+.edit-page {
+  color: #0d7377;
+}
+
+.remove-page {
+  color: #ec4646;
+}
+
+.single-page {
+  display: flex;
+  justify-content: space-between;
+}
+.single-page .main_info .control {
+  visibility: hidden;
+}
+.single-page .addition_info {
+  display: flex;
+  align-items: center;
+  min-width: 155px;
+  margin-left: 10px;
+}
+.single-page .addition_info .draft-info {
+  margin-right: 20px;
+}
+.single-page .addition_title {
+  margin-right: 20px;
+}
+.single-page:hover .control {
+  visibility: visible;
+}
+
+.add-new-page {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 5px;
 }
