@@ -181,10 +181,33 @@
             </div>
             <div class="field_section_container">
                 <div class="field_section_container_button border_top padding_10">
-                    <button class="save style_button add-new-page" type="button">Добавить блок</button>
+                    <a href="{{ route('create-return-block') }}" class="create style_button add-new-page">
+                        Добавить запись
+                    </a>
                 </div>
             </div>
         </div>
 
     </aside>
 @endsection
+
+
+{{--@section('right-aside-2')--}}
+{{--    <aside class="sidebar_right">--}}
+
+{{--        <div class="field_section">--}}
+{{--            <div class="field_section_header padding_10">--}}
+{{--                <div class="header_text">Управление</div>--}}
+{{--                <div class="header_icon"><i class="fas fa-chevron-up"></i></div>--}}
+{{--            </div>--}}
+{{--            <div class="field_section_container">--}}
+{{--                <div class="field_section_container_button border_top padding_10">--}}
+{{--                    <a href="{{ route('create-return-block') }}" class="create style_button add-new-page">--}}
+{{--                        Добавить запись--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+{{--    </aside>--}}
+{{--@endsection--}}

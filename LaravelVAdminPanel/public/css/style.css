@@ -57,6 +57,19 @@ option:hover {
   background: #1de8b5;
 }
 
+.create {
+  color: #000000;
+  background-color: #d3d3d3;
+  transition: background-color 0.3s ease-out;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+.create:hover {
+  color: #000000;
+  background-color: #1de8b5;
+}
+
 .custom-file-input::before {
   width: 123px;
   text-align: center;
@@ -77,7 +90,7 @@ option:hover {
 }
 
 .grid_container {
-  overflow: hidden;
+  overflow-y: hidden;
   display: grid;
   min-height: 100vh;
   grid-template: minmax(50px, auto) 1fr 60px/minmax(auto, auto) 1fr 370px;
@@ -1263,14 +1276,12 @@ option:hover {
   width: 300px;
   height: 20px;
   border: 2px solid #d3d3d3;
+  margin-right: 10px;
 }
 .select_file .upload-field .upload-status .upload-progress {
   height: 100%;
   width: 20%;
   background-color: #0d7377;
-}
-.select_file .upload-field .stop-upload-file {
-  margin-left: 10px;
 }
 .select_file .upload-field .stop-upload-file:hover {
   color: #ec4646;

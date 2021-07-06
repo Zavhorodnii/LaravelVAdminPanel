@@ -133,6 +133,19 @@ option {
   }
 }
 
+.create{
+    color: $default_text_color;
+    background-color: $background_colour;
+    transition: background-color .3s ease-out;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    &:hover{
+        color: $default_text_color;
+        background-color: $hover_colour;
+    }
+}
+
 
 .custom-file-input::before {
   width: 123px;
@@ -155,7 +168,7 @@ option {
 }
 
 .grid_container {
-    overflow: hidden;
+    overflow-y: hidden;
   display: grid;
   min-height: 100vh;
   grid-template: minmax(50px, auto) 1fr 60px / minmax(auto, auto) 1fr 370px;
@@ -1438,6 +1451,7 @@ option {
       width: 300px;
       height: 20px;
       border: 2px solid $background_colour;
+        margin-right: 10px;
 
       .upload-progress {
         height: 100%;
@@ -1447,7 +1461,6 @@ option {
     }
 
     .stop-upload-file {
-      margin-left: 10px;
 
       &:hover {
         color: $colour_hover_delete_icon_awesome;

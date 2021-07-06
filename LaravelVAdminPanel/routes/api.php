@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::prefix('upload')->group(function(){
+
+    Route::post('/file',
+        [\App\Http\Controllers\FileController::class, 'upload_file']
+    )->name('upload-file');
+
+});

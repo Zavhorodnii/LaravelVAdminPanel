@@ -9,10 +9,11 @@ class AdminLoginController extends Controller
 {
     public function admin_check(Request $request){
         $data = $request->only('email', 'password');
+        dd($data);
 
         if(!Auth::attempt($data)){
             return redirect(route('admin'));
         }
-        return redirect(route('admin-panel'));
+        return redirect(route('ttt'));
     }
 }

@@ -17,7 +17,7 @@
 
 <div class="container">
 
-    <form action="{{ route('admin-check') }}" method="post">
+    <form action="{{ route('admin-auth') }}" method="post">
         @csrf
         <div class="field_section_header padding_10">
             <div class="header_text">Авторизация</div>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="field_section_container_button border_top padding_10">
-            <button class="save style_button" type="submit">Сохранить</button>
+            <button class="save style_button" type="submit">Войти</button>
         </div>
     </form>
 </div>
