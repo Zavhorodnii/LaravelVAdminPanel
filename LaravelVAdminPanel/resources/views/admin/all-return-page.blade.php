@@ -176,7 +176,7 @@
 
         <div class="field_section">
             <div class="field_section_header padding_10">
-                <div class="header_text">Управление</div>
+                <div class="header_text">Управление3</div>
                 <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
             </div>
             <div class="field_section_container">
@@ -192,22 +192,18 @@
 @endsection
 
 
-{{--@section('right-aside-2')--}}
-{{--    <aside class="sidebar_right">--}}
-
-{{--        <div class="field_section">--}}
-{{--            <div class="field_section_header padding_10">--}}
-{{--                <div class="header_text">Управление</div>--}}
-{{--                <div class="header_icon"><i class="fas fa-chevron-up"></i></div>--}}
-{{--            </div>--}}
-{{--            <div class="field_section_container">--}}
-{{--                <div class="field_section_container_button border_top padding_10">--}}
-{{--                    <a href="{{ route('create-return-block') }}" class="create style_button add-new-page">--}}
-{{--                        Добавить запись--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--    </aside>--}}
-{{--@endsection--}}
+@section('test')
+    <div class="field_section">
+        <div class="field_section_header padding_10">
+            <div class="header_text">Управление2</div>
+            <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
+        </div>
+        <div class="field_section_container">
+            <div class="field_section_container_button border_top padding_10">
+                <a href="{{ route('create-return-block') }}" class="create style_button add-new-page">
+                    Добавить запись
+                </a>
+            </div>
+        </div>
+    </div>
+@show

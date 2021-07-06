@@ -19,10 +19,12 @@
     @include('admin.include.left_aside')
     @yield('main-content')
     @yield('right-aside')
-{{--    @yield('right-aside-2')--}}
+
+    @yield('test')
 
     @include('admin.include.footer')
 </div>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
