@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div class="field_section_container_button border_top padding_10">
-                        <button class="delete style_button" type="button">Удалить</button>
+                        <button class="delete style_button js-delete-file" type="button">Удалить</button>
                     </div>
                     <div class="field_section_container_button border_top padding_10">
                         <button class="save style_button js-save-popup-file" type="button">Сохранить</button>

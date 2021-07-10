@@ -33,4 +33,7 @@ Route::prefix('upload')->group(function(){
         [\App\Http\Controllers\FileController::class, 'update_file_info']
     )->name('update-file-info');
 
+    Route::post('/delete-selected-file',
+        [\App\Http\Controllers\FileController::class, 'delete_selected_file']
+    )->name('delete-selected-file');
 });

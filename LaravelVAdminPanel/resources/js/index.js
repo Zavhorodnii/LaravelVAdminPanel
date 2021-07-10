@@ -518,4 +518,48 @@ $(document).ready(function () {
         })
     }
 
+    function get_id_selected_file(){
+        let $items = $('.uploaded_files').children('.selected-file')
+        return $($items).find('.single-upload-file').attr('data-id');;
+    }
+
+    $('.js-delete-file').click(function (event){
+        console.log('delete_file')
+        let selected_file = get_id_selected_file();
+        console.log('single file = ' + selected_file)
+
+        if(!selected_file){
+            console.log('not selected file')
+            return;
+        }
+        let data = new FormData();
+        data.append('id', selected_file);
+        data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+        // for (let value of data.values()) {
+        //     console.log(value);
+        // }
+
+        $.ajax({
+            url: window.ajaxDeleteSelectedFile,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function(data){
+                console.log('success');
+                console.log('status = ' + data.status);
+                if(data.status){
+                    $('.uploaded_files').children('.selected-file').remove();
+                    clear_selected_file();
+                }
+
+            },
+            error: function(jqXHR, status, errorThrown){
+                console.log('Ошибка ajax запроса: ' + status, jqXHR);
+            }
+        })
+    })
+
 })

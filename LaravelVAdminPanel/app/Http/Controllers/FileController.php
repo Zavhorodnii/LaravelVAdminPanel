@@ -67,4 +67,14 @@ class FileController extends Controller
             ]);
     }
 
+    public function delete_selected_file(Request $request){
+        $file = Files::find($request->input('id'));
+        unlink(public_path($file->file_path));
+        $status_delete = $file->delete();
+        return response()
+            ->json([
+                'status' => $status_delete
+            ]);
+    }
+
 }

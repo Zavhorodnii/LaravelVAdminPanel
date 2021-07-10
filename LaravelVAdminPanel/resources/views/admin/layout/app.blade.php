@@ -32,6 +32,7 @@
     window.ajaxUploadUrl = '{{ route('upload-file') }}';
     window.ajaxGetSelectedInfo = '{{ route('get-selected-info') }}';
     window.ajaxUpdateFileInfo = '{{ route('update-file-info') }}';
+    window.ajaxDeleteSelectedFile = '{{ route('delete-selected-file') }}';
 </script>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
