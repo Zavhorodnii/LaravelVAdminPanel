@@ -37,22 +37,22 @@
                                     <button class="choice js-open-file-popup style_button"
                                             type="file" data-popup="show-popup">Выбрать
                                     </button>
-{{--                                    <div class="image_section">--}}
-{{--                                        <img class="selected_image js_paste_name"--}}
-{{--                                             type="text" name="name6"--}}
-{{--                                             src="assets/img/1.jpg"--}}
-{{--                                             alt="">--}}
-{{--                                        <div class="control_buttons">--}}
-{{--                                            <button class="change style_button js-open-file-popup" data-popup="show-popup"--}}
-{{--                                                    type="button">--}}
-{{--                                                Изменить--}}
-{{--                                            </button>--}}
-{{--                                            <button class="delete style_button"--}}
-{{--                                                    type="button">--}}
-{{--                                                Удалить--}}
-{{--                                            </button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="image_section none">
+                                        <img class="selected_image js_paste_name js-paste-selected-file"
+                                             type="text" name="name6"
+                                             src="assets/img/1.jpg"
+                                             alt="">
+                                        <div class="control_buttons">
+                                            <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
+                                                    type="button">
+                                                Изменить
+                                            </button>
+                                            <button class="delete style_button"
+                                                    type="button">
+                                                Удалить
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="section_input border_top padding_10 js_find_elem">
                                     <div class="title_section">
@@ -132,4 +132,8 @@
         </div>
 
     </aside>
+@endsection
+
+@section('popup-upload')
+    @include('admin.include.popup-files')
 @endsection

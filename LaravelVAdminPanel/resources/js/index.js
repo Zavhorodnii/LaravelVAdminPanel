@@ -19,7 +19,6 @@ $(document).ready(function () {
         $(this).closest('.field_section').toggleClass('hid_block');
     });
 
-
     $('.js-open-close-menu').click(function (event) {
         if ($(this).closest('.control_menu').hasClass('active')) {
             $(this).closest('.control_menu').toggleClass('active');
@@ -257,18 +256,310 @@ $(document).ready(function () {
         let elem = $(this).closest('.popup');
         elem.removeClass('animate-bg-popup');
         elem.addClass('animate-bg-popup-close')
+        clear_selected_file();
     }
 
     $('.js-popup-close').click(closePopup);
 
     $('.js-open-file-popup').click(js_open_file_popup)
 
+    let open_file = null;
+
     function js_open_file_popup(event) {
         event.preventDefault();
         let indexBtnPopup = $(this).attr('data-popup');
+
+        open_file = $(this).closest('.js_find_elem');
+
+        if($(this).hasClass('js-change-selected-image')){
+            $image_url = $(this).closest('.image_section').children('.js_paste_name').attr('src')
+            change_select_popup_file($image_url);
+        }
+
         openPopup(indexBtnPopup);
     }
 
-    $('.js-close-popup').click(closePopup
-    );
+    function change_select_popup_file($image_url){
+        console.log('$image_url = ' + $image_url)
+        let $items = $('.uploaded_files').children('.single_item');
+        $items.each
+        (
+            function (index) {
+                if($(this).find('.single-upload-file').attr('src') === $image_url){
+                    $(this).addClass('selected-file');
+                    ajax_get_file_info($(this).find('.single-upload-file').attr('data-id'));
+                }
+            }
+        );
+    }
+
+    $('.js-close-popup').click(closePopup);
+
+
+    $('.js-save-popup-file').click(function(){
+        let $upload_file = $('.uploaded_files').find('.selected-file');
+        // console.log($upload_file.length == 0)
+        if($upload_file.length === 0){
+            console.log('error')
+            return;
+        }
+        $this = $(this);
+        let data = new FormData();
+        data.append('id', $upload_file.find('.single-upload-file').attr('data-id'));
+        data.append('_token', $('meta[name="csrf-token"]').val());
+        data.append('name', $('.js-paste-file-name').val());
+        let $file_alt = $('.js-get-file-alt-name').val();
+        if($file_alt == null){
+            $file_alt = '';
+        }
+        data.append('alt_name', $file_alt);
+
+        for (let value of data.values()) {
+            console.log(value);
+        }
+
+        $.ajax({
+            url: window.ajaxUpdateFileInfo,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function(data){
+                console.log('success');
+                console.log('status = ' + data.status);
+                $(open_file).find('.js-paste-selected-file').attr(
+                    'src',
+                    $upload_file.find('.js_paste_name').attr('src')
+                )
+                $(open_file).children('.js-open-file-popup').addClass('none')
+                $(open_file).find('.image_section').removeClass('none')
+                let elem = $this.closest('.popup');
+                elem.removeClass('animate-bg-popup');
+                elem.addClass('animate-bg-popup-close')
+                clear_selected_file();
+                // disable_selected_file();
+            },
+            error: function(jqXHR, status, errorThrown){
+                console.log('Ошибка ajax запроса: ' + status, jqXHR);
+            }
+        })
+    })
+
+    function clear_selected_file(){
+
+        let $items = $('.uploaded_files').children('.single_item');
+        $items.each
+        (
+            function (index) {
+                $(this).removeClass('selected-file');
+            }
+        );
+        $('.js-paste-file-name').val('');
+        $('.js-get-file-alt-name').val('');
+        $('.js-size-file').html('')
+        $('.js-paste-file-link').attr('href', '').addClass('none')
+    }
+
+    let ajaxUpload;
+
+    $('.js-add-input-field').click(function (event){
+        let upload_elem = $('.upload-input');
+        upload_elem.html('<input type="file" class="js-select-upload-file">');
+        upload_elem.find('.js-select-upload-file').change(selectInputFile);
+        upload_elem.find('.js-select-upload-file').click();
+    })
+
+    $('.js-remove-upload').click(function (event){
+
+        ajaxUpload.abort();
+        let $items = $('.upload-input').children('.js-select-upload-file');
+
+        $items.each
+        (
+            function (index) {
+                $(this).remove();
+            }
+        );
+
+        $(this).closest('.load-file').addClass('none')
+        $('.js-add-input-field').removeClass('none');
+    })
+
+    function selectInputFile(event){
+        console.log('select file');
+
+        let upload_button = $('.js-add-input-field');
+        upload_button.addClass('none');
+        let selected_file = $(this).prop('files')[0]
+        let data = new FormData();
+        data.append('file', selected_file);
+        data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+        // for (let value of data.values()) {
+        //     console.log(value);
+        // }
+
+
+        console.log(' window.ajaxUploadUrl = ' +  window.ajaxUploadUrl)
+
+        let block_upload_file = $('.js-upload-file');
+        block_upload_file.find('.file_name').text(selected_file.name)
+        block_upload_file.removeClass('none');
+
+        ajaxUpload = $.ajax({
+            url: window.ajaxUploadUrl,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = (evt.loaded / evt.total) * 100;
+
+                        block_upload_file.find('.upload-progress').css('width', percentComplete + '%');
+                    }
+                }, false);
+                return xhr;
+            },
+            success: function(data){
+                console.log('success');
+                upload_button.removeClass('none');
+                block_upload_file.addClass('none');
+                console.log(data.status);
+                console.log(data.size);
+                console.log('id = ' + data.id);
+
+
+                if(data.status === 'ok'){
+                    let image = '\n' +
+                        '                    <div class="single_item js-select-upload-file">\n' +
+                        '                        <img class="single-upload-file js_paste_name"\n' +
+                        '                             type="text" name="name6"\n' +
+                        '                             src="' + data.path + '"\n' +
+                        '                             alt="" data-id="'+ data.id +'">\n' +
+                        '                    </div>';
+
+                    let tt = $(image)
+                    tt.click(js_select_upload_file)
+                    console.log(tt.find('.js-select-upload-file'))
+                    $('.uploaded_files').prepend(tt)
+                }
+
+            },
+            error: function(jqXHR, status, errorThrown){
+                console.log('Ошибка ajax запроса: ' + status, jqXHR);
+            }
+        })
+    }
+
+    $('.js-select-upload-file').click(js_select_upload_file);
+
+    function js_select_upload_file(event){
+        console.log('select_upload_file')
+        let $items = $('.uploaded_files').children('.single_item');
+
+        if($(this).hasClass('selected-file')){
+            $(this).removeClass('selected-file')
+
+            $('.js-paste-file-name').val('');
+            $('.js-get-file-alt-name').val('');
+            $('.js-size-file').html('')
+            $('.js-paste-file-link').attr('href', '').addClass('none')
+        } else {
+            $items.each
+            (
+                function (index) {
+                    $(this).removeClass('selected-file');
+                }
+            );
+
+            ajax_get_file_info($(this).find('.single-upload-file').attr('data-id'))
+
+
+            $(this).addClass('selected-file');
+        }
+    }
+
+    function ajax_get_file_info($id_file){
+        let data = new FormData();
+        data.append('id', $id_file);
+        data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+        for (let value of data.values()) {
+            console.log(value);
+        }
+
+        $.ajax({
+            url: window.ajaxGetSelectedInfo,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function(data){
+                console.log('success');
+
+                if(data.status === 'ok'){
+                    $('.js-paste-file-name').val( data.name)
+                    $('.js-get-file-alt-name').val( data.alt)
+                    $('.js-size-file').html(data.size + " мб")
+                    $('.js-paste-file-link').attr('href', data.path).removeClass('none')
+                }
+
+
+            },
+            error: function(jqXHR, status, errorThrown){
+                console.log('Ошибка ajax запроса: ' + status, jqXHR);
+            }
+        })
+    }
+
+    function get_id_selected_file(){
+        let $items = $('.uploaded_files').children('.selected-file')
+        return $($items).find('.single-upload-file').attr('data-id');;
+    }
+
+    $('.js-delete-file').click(function (event){
+        console.log('delete_file')
+        let selected_file = get_id_selected_file();
+        console.log('single file = ' + selected_file)
+
+        if(!selected_file){
+            console.log('not selected file')
+            return;
+        }
+        let data = new FormData();
+        data.append('id', selected_file);
+        data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+        // for (let value of data.values()) {
+        //     console.log(value);
+        // }
+
+        $.ajax({
+            url: window.ajaxDeleteSelectedFile,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function(data){
+                console.log('success');
+                console.log('status = ' + data.status);
+                if(data.status){
+                    $('.uploaded_files').children('.selected-file').remove();
+                    clear_selected_file();
+                }
+
+            },
+            error: function(jqXHR, status, errorThrown){
+                console.log('Ошибка ajax запроса: ' + status, jqXHR);
+            }
+        })
+    })
+
 })

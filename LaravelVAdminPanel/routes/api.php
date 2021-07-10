@@ -25,4 +25,15 @@ Route::prefix('upload')->group(function(){
         [\App\Http\Controllers\FileController::class, 'upload_file']
     )->name('upload-file');
 
+    Route::post('/get-selected-info',
+        [\App\Http\Controllers\FileController::class, 'get_selected_info']
+    )->name('get-selected-info');
+
+    Route::post('/update-file-info',
+        [\App\Http\Controllers\FileController::class, 'update_file_info']
+    )->name('update-file-info');
+
+    Route::post('/delete-selected-file',
+        [\App\Http\Controllers\FileController::class, 'delete_selected_file']
+    )->name('delete-selected-file');
 });

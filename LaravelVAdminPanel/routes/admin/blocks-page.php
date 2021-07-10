@@ -28,12 +28,19 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/how-we-work',
         [\App\Http\Controllers\BlockHowWeWorkController::class, 'get_all_how_we_work']
     )->name('all-how-we-work-page');
-    Route::get('/return',
-        [\App\Http\Controllers\BlockReturnController::class, 'get_all_return']
-    )->name('all-return-page');
-    Route::get('/return/create',
-        [\App\Http\Controllers\BlockReturnController::class, 'create_return_block']
-    )->name('create-return-block');
+
+
+    Route::prefix('return')->group(function(){
+        Route::get('/',
+            [\App\Http\Controllers\BlockReturnController::class, 'get_all_return']
+        )->name('all-return-page');
+        Route::get('/create',
+            [\App\Http\Controllers\BlockReturnController::class, 'create_return_block']
+        )->name('create-return-block');
+    });
+
+
+
     Route::get('/review',
         [\App\Http\Controllers\BlockReviewsController::class, 'get_all_review']
     )->name('all-review-page');
