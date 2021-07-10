@@ -1842,73 +1842,6 @@ module.exports = {
 
 $(document).ready(function () {
   console.log('ajax.js ready');
-  var ajaxUpload;
-  $('.js-add-input-field').click(function (event) {
-    var upload_elem = $('.upload-input');
-    upload_elem.html('<input type="file" class="js-select-upload-file">');
-    upload_elem.find('.js-select-upload-file').change(selectInputFile);
-    upload_elem.find('.js-select-upload-file').click();
-  });
-  $('.js-remove-upload').click(function (event) {
-    ajaxUpload.abort();
-    var $items = $('.upload-input').children('.js-select-upload-file');
-    $items.each(function (index) {
-      $(this).remove();
-    });
-    $(this).closest('.load-file').addClass('none');
-    $('.js-add-input-field').removeClass('none');
-  });
-
-  function selectInputFile(event) {
-    console.log('select file');
-    var upload_button = $('.js-add-input-field');
-    upload_button.addClass('none');
-    var selected_file = $(this).prop('files')[0];
-    var data = new FormData();
-    data.append('file', selected_file);
-    data.append('_token', $('meta[name="csrf-token"]').attr('content')); // for (let value of data.values()) {
-    //     console.log(value);
-    // }
-
-    console.log(' window.ajaxUploadUrl = ' + window.ajaxUploadUrl);
-    var block_upload_file = $('.js-upload-file');
-    block_upload_file.find('.file_name').text(selected_file.name);
-    block_upload_file.removeClass('none');
-    ajaxUpload = $.ajax({
-      url: window.ajaxUploadUrl,
-      type: 'POST',
-      dataType: 'json',
-      processData: false,
-      contentType: false,
-      data: data,
-      xhr: function xhr() {
-        var xhr = new window.XMLHttpRequest();
-        xhr.upload.addEventListener("progress", function (evt) {
-          if (evt.lengthComputable) {
-            var percentComplete = evt.loaded / evt.total * 100;
-            block_upload_file.find('.upload-progress').css('width', percentComplete + '%');
-          }
-        }, false);
-        return xhr;
-      },
-      success: function success(data) {
-        console.log('success');
-        upload_button.removeClass('none');
-        block_upload_file.addClass('none');
-        console.log(data.status);
-        console.log(data.size);
-        console.log('id = ' + data.id);
-
-        if (data.status === 'ok') {
-          var image = '\n' + '                    <div class="single_item">\n' + '                        <img class="single-upload-file js_paste_name"\n' + '                             type="text" name="name6"\n' + '                             src="' + data.path + '"\n' + '                             alt="" data-id="' + data.id + '">\n' + '                    </div>';
-          $('.uploaded_files').prepend(image);
-        }
-      },
-      error: function error(jqXHR, status, errorThrown) {
-        console.log('Ошибка ajax запроса: ' + status, jqXHR);
-      }
-    });
-  }
 });
 
 /***/ }),
@@ -1963,6 +1896,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   !*** ./resources/js/index.js ***!
   \*******************************/
 /***/ (() => {
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -2213,18 +2152,241 @@ $(document).ready(function () {
     var elem = $(this).closest('.popup');
     elem.removeClass('animate-bg-popup');
     elem.addClass('animate-bg-popup-close');
+    clear_selected_file();
   }
 
   $('.js-popup-close').click(closePopup);
   $('.js-open-file-popup').click(js_open_file_popup);
+  var open_file = null;
 
   function js_open_file_popup(event) {
     event.preventDefault();
     var indexBtnPopup = $(this).attr('data-popup');
+    open_file = $(this).closest('.js_find_elem');
+
+    if ($(this).hasClass('js-change-selected-image')) {
+      $image_url = $(this).closest('.image_section').children('.js_paste_name').attr('src');
+      change_select_popup_file($image_url);
+    }
+
     openPopup(indexBtnPopup);
   }
 
+  function change_select_popup_file($image_url) {
+    console.log('$image_url = ' + $image_url);
+    var $items = $('.uploaded_files').children('.single_item');
+    $items.each(function (index) {
+      if ($(this).find('.single-upload-file').attr('src') === $image_url) {
+        $(this).addClass('selected-file');
+        ajax_get_file_info($(this).find('.single-upload-file').attr('data-id'));
+      }
+    });
+  }
+
   $('.js-close-popup').click(closePopup);
+  $('.js-save-popup-file').click(function () {
+    var $upload_file = $('.uploaded_files').find('.selected-file'); // console.log($upload_file.length == 0)
+
+    if ($upload_file.length === 0) {
+      console.log('error');
+      return;
+    }
+
+    $this = $(this);
+    var data = new FormData();
+    data.append('id', $upload_file.find('.single-upload-file').attr('data-id'));
+    data.append('_token', $('meta[name="csrf-token"]').val());
+    data.append('name', $('.js-paste-file-name').val());
+    var $file_alt = $('.js-get-file-alt-name').val();
+
+    if ($file_alt == null) {
+      $file_alt = '';
+    }
+
+    data.append('alt_name', $file_alt);
+
+    var _iterator = _createForOfIteratorHelper(data.values()),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var value = _step.value;
+        console.log(value);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    $.ajax({
+      url: window.ajaxUpdateFileInfo,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function success(data) {
+        console.log('success');
+        console.log('status = ' + data.status);
+        $(open_file).find('.js-paste-selected-file').attr('src', $upload_file.find('.js_paste_name').attr('src'));
+        $(open_file).children('.js-open-file-popup').addClass('none');
+        $(open_file).find('.image_section').removeClass('none');
+        var elem = $this.closest('.popup');
+        elem.removeClass('animate-bg-popup');
+        elem.addClass('animate-bg-popup-close');
+        clear_selected_file(); // disable_selected_file();
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+      }
+    });
+  });
+
+  function clear_selected_file() {
+    var $items = $('.uploaded_files').children('.single_item');
+    $items.each(function (index) {
+      $(this).removeClass('selected-file');
+    });
+    $('.js-paste-file-name').val('');
+    $('.js-get-file-alt-name').val('');
+    $('.js-size-file').html('');
+    $('.js-paste-file-link').attr('href', '').addClass('none');
+  }
+
+  var ajaxUpload;
+  $('.js-add-input-field').click(function (event) {
+    var upload_elem = $('.upload-input');
+    upload_elem.html('<input type="file" class="js-select-upload-file">');
+    upload_elem.find('.js-select-upload-file').change(selectInputFile);
+    upload_elem.find('.js-select-upload-file').click();
+  });
+  $('.js-remove-upload').click(function (event) {
+    ajaxUpload.abort();
+    var $items = $('.upload-input').children('.js-select-upload-file');
+    $items.each(function (index) {
+      $(this).remove();
+    });
+    $(this).closest('.load-file').addClass('none');
+    $('.js-add-input-field').removeClass('none');
+  });
+
+  function selectInputFile(event) {
+    console.log('select file');
+    var upload_button = $('.js-add-input-field');
+    upload_button.addClass('none');
+    var selected_file = $(this).prop('files')[0];
+    var data = new FormData();
+    data.append('file', selected_file);
+    data.append('_token', $('meta[name="csrf-token"]').attr('content')); // for (let value of data.values()) {
+    //     console.log(value);
+    // }
+
+    console.log(' window.ajaxUploadUrl = ' + window.ajaxUploadUrl);
+    var block_upload_file = $('.js-upload-file');
+    block_upload_file.find('.file_name').text(selected_file.name);
+    block_upload_file.removeClass('none');
+    ajaxUpload = $.ajax({
+      url: window.ajaxUploadUrl,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      xhr: function xhr() {
+        var xhr = new window.XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function (evt) {
+          if (evt.lengthComputable) {
+            var percentComplete = evt.loaded / evt.total * 100;
+            block_upload_file.find('.upload-progress').css('width', percentComplete + '%');
+          }
+        }, false);
+        return xhr;
+      },
+      success: function success(data) {
+        console.log('success');
+        upload_button.removeClass('none');
+        block_upload_file.addClass('none');
+        console.log(data.status);
+        console.log(data.size);
+        console.log('id = ' + data.id);
+
+        if (data.status === 'ok') {
+          var image = '\n' + '                    <div class="single_item js-select-upload-file">\n' + '                        <img class="single-upload-file js_paste_name"\n' + '                             type="text" name="name6"\n' + '                             src="' + data.path + '"\n' + '                             alt="" data-id="' + data.id + '">\n' + '                    </div>';
+          var tt = $(image);
+          tt.click(js_select_upload_file);
+          console.log(tt.find('.js-select-upload-file'));
+          $('.uploaded_files').prepend(tt);
+        }
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+      }
+    });
+  }
+
+  $('.js-select-upload-file').click(js_select_upload_file);
+
+  function js_select_upload_file(event) {
+    console.log('select_upload_file');
+    var $items = $('.uploaded_files').children('.single_item');
+
+    if ($(this).hasClass('selected-file')) {
+      $(this).removeClass('selected-file');
+      $('.js-paste-file-name').val('');
+      $('.js-get-file-alt-name').val('');
+      $('.js-size-file').html('');
+      $('.js-paste-file-link').attr('href', '').addClass('none');
+    } else {
+      $items.each(function (index) {
+        $(this).removeClass('selected-file');
+      });
+      ajax_get_file_info($(this).find('.single-upload-file').attr('data-id'));
+      $(this).addClass('selected-file');
+    }
+  }
+
+  function ajax_get_file_info($id_file) {
+    var data = new FormData();
+    data.append('id', $id_file);
+    data.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+    var _iterator2 = _createForOfIteratorHelper(data.values()),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var value = _step2.value;
+        console.log(value);
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    $.ajax({
+      url: window.ajaxGetSelectedInfo,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function success(data) {
+        console.log('success');
+
+        if (data.status === 'ok') {
+          $('.js-paste-file-name').val(data.name);
+          $('.js-get-file-alt-name').val(data.alt);
+          $('.js-size-file').html(data.size + " мб");
+          $('.js-paste-file-link').attr('href', data.path).removeClass('none');
+        }
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+      }
+    });
+  }
 });
 
 /***/ }),

@@ -38,14 +38,15 @@
                 <div class="uploaded_files style_custom_scroll">
 
 
-{{--                    @foreach($files as $file)--}}
-{{--                        <div class="single_item selected-file">--}}
-{{--                            <img class="single-upload-file js_paste_name"--}}
-{{--                                 type="text" name="name6"--}}
-{{--                                 src="{{ $file->file_path }}"--}}
-{{--                                 alt="{{ $file->alt_name }}" data-id="{{ $file->id }}">--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
+                    @foreach($files as $file)
+{{--                        selected-file--}}
+                        <div class="single_item js-select-upload-file ">
+                            <img class="single-upload-file js_paste_name"
+                                 type="text" name="name6"
+                                 src="{{ $file->file_path }}"
+                                 alt="{{ $file->alt_name }}" data-id="{{ $file->id }}">
+                        </div>
+                    @endforeach
 
 
                     {{--                        <div class="single_item">--}}
@@ -68,28 +69,26 @@
 
                         <div class="section_input padding_10 js_find_elem">
                             <div class="title_section">
-                                Имя файла::
+                                Имя файла:
                             </div>
-                            <input class="style_input_field js_paste_name"
-                                   type="text" name="name3"
-                                   type="text">
+                            <input class="style_input_field js-paste-file-name js_paste_name"
+                                   type="text" name="name3">
                         </div>
                         <div class="section_input padding_10 js_find_elem">
                             <div class="title_section">
                                 Alt-имя:
                             </div>
-                            <input class="style_input_field js_paste_name"
-                                   type="text" name="name3"
-                                   type="text" data-id="">
+                            <input class="style_input_field js-get-file-alt-name js_paste_name"
+                                   type="text" name="name3" value="">
                         </div>
 
                         <div class="title_field padding_10">
-                            <div class="">Размер файла: <span>50.5 мб</span>
+                            <div class="">Размер файла: <span class="js-size-file"></span>
                             </div>
                         </div>
 
                         <div class="title_field padding_10">
-                            <div class="">Ссылка на файл: <span><a href="#">открыть</a></span>
+                            <div class="">Ссылка на файл: <span><a class="js-paste-file-link none" target="_blank" href="">открыть</a></span>
                             </div>
                         </div>
                     </div>
@@ -97,7 +96,7 @@
                         <button class="delete style_button" type="button">Удалить</button>
                     </div>
                     <div class="field_section_container_button border_top padding_10">
-                        <button class="save style_button" type="button">Сохранить</button>
+                        <button class="save style_button js-save-popup-file" type="button">Сохранить</button>
                     </div>
                 </div>
             </div>

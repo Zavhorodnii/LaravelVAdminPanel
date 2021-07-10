@@ -190,20 +190,3 @@
 
     </aside>
 @endsection
-
-
-@section('test')
-    <div class="field_section">
-        <div class="field_section_header padding_10">
-            <div class="header_text">Управление2</div>
-            <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
-        </div>
-        <div class="field_section_container">
-            <div class="field_section_container_button border_top padding_10">
-                <a href="{{ route('create-return-block') }}" class="create style_button add-new-page">
-                    Добавить запись
-                </a>
-            </div>
-        </div>
-    </div>
-@show

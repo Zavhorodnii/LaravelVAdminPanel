@@ -37,4 +37,34 @@ class FileController extends Controller
                 'file' => 'error',
             ]);
     }
+
+    public function get_selected_info(Request $request){
+        $id = $request->input('id');
+//        dd($request->id);
+        $file = Files::find($id);
+
+        $size = filesize(public_path($file->file_path));
+        $response = [
+            'status'    => 'ok',
+            'name'      => $file->name,
+            'alt'       => $file->alt_name,
+//            'size'      => Storage::size($file->file_path),
+            'size'      => number_format( $size / 1048576, 2 ),
+            'path'      => $file->file_path
+        ];
+        return response()->json($response);
+    }
+
+    public function update_file_info(Request $request){
+        $file = Files::find($request->input('id'));
+        $file->name = $request->input('name');
+        $file->alt_name = $request->input('alt_name');
+        $result = $file->save();
+
+        return response()
+            ->json([
+                'status' => $result
+            ]);
+    }
+
 }
