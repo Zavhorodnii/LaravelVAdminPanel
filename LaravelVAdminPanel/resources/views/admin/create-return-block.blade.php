@@ -41,13 +41,13 @@
                                         <img class="selected_image js_paste_name js-paste-selected-file"
                                              type="text" name="name6"
                                              src="assets/img/1.jpg"
-                                             alt="">
+                                             alt="" data-id="">
                                         <div class="control_buttons">
                                             <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
                                                     type="button">
                                                 Изменить
                                             </button>
-                                            <button class="delete style_button"
+                                            <button class="delete style_button js-remove-selected-image"
                                                     type="button">
                                                 Удалить
                                             </button>
