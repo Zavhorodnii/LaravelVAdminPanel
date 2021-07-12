@@ -19,7 +19,7 @@ class CreateReturnItemsTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onUpdate('cascade');
-            $table->string('filed_name');
+            $table->string('field_name');
             $table->text('field_data');
             $table->timestamps();
         });

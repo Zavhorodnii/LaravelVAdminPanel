@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::prefix('upload')->group(function(){
+Route::prefix('upload')->group(function (){
 
     Route::post('/file',
         [\App\Http\Controllers\FileController::class, 'upload_file']
@@ -36,4 +36,10 @@ Route::prefix('upload')->group(function(){
     Route::post('/delete-selected-file',
         [\App\Http\Controllers\FileController::class, 'delete_selected_file']
     )->name('delete-selected-file');
+});
+
+Route::prefix('create')->group(function (){
+    Route::post('/return-item',
+        [\App\Http\Controllers\BlockReturnController::class, 'create_return_item']
+    )->name('create-return-item');
 });

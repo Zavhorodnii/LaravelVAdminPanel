@@ -20,137 +20,141 @@
                 <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
             </div>
             <div class="field_section_container">
-
-                <div class="repeater border_top padding_10" name="repeater1">
+                <div class="section_input border_top padding_10 js_find_elem">
+                    <div class="title_section">
+                        Оглавление записи<span>*</span>
+                    </div>
+                    <input class="style_input_field js_paste_name"
+                           type="text" name="post_title"
+                           type="text" required>
+                </div>
+                <div class="repeater border_top padding_10" data-id="repeater-1" name="repeater1">
                     <div class="title_section">
                         Повторитель<span>*</span></div>
                     <div class="content_repeater"></div>
-                    <div class="repeater_field none">
-                        <div class="content_section repeater_style">
-                            <div class="count_item">
-                                1
-                            </div>
-                            <div class="content_item">
-                                <div class="image border_top padding_10 js_find_elem">
-                                    <div class="title_section">
-                                        Иконка<span>*</span></div>
-                                    <button class="choice js-open-file-popup style_button"
-                                            type="file" data-popup="show-popup">Выбрать
-                                    </button>
-                                    <div class="image_section none">
-                                        <img class="selected_image js_paste_name js-paste-selected-file"
-                                             type="text" name="imageField"
-                                             src=""
-                                             alt="" data-id="">
-                                        <div class="control_buttons">
-                                            <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
-                                                    type="button">
-                                                Изменить
-                                            </button>
-                                            <button class="delete style_button js-remove-selected-image"
-                                                    type="button">
-                                                Удалить
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="section_input border_top padding_10 js_find_elem">
-                                    <div class="title_section">
-                                        Оглавление<span>*</span>
-                                    </div>
-                                    <input class="style_input_field js_paste_name"
-                                           type="text" name="inputField"
-                                           type="text" required>
-                                </div>
-                                <div class="text-area section_input border_top padding_10 js_find_elem">
-                                    <div class="title_section">
-                                        Описание<span>*</span>
-                                    </div>
-                                    <textarea rows="5"
-                                              class="style_input_field style_custom_scroll js_paste_name"
-                                              type="text" name="textareaInput"
-                                              required></textarea>
-                                </div>
-                                <div class="repeater border_top padding_10" name="repeater2">
-                                    <div class="title_section">
-                                        Повторитель<span>*</span></div>
-                                    <div class="content_repeater"></div>
-                                    <div class="repeater_field none">
-                                        <div class="content_section repeater_style">
-                                            <div class="count_item">
-                                                1
-                                            </div>
-                                            <div class="content_item">
-                                                <div class="image border_top padding_10 js_find_elem">
-                                                    <div class="title_section">
-                                                        Иконка<span>*</span></div>
-                                                    <button class="choice js-open-file-popup style_button"
-                                                            type="file" data-popup="show-popup">Выбрать
-                                                    </button>
-                                                    <div class="image_section none">
-                                                        <img class="selected_image js_paste_name js-paste-selected-file"
-                                                             type="text" name="imageField"
-                                                             src=""
-                                                             alt="" data-id="">
-                                                        <div class="control_buttons">
-                                                            <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
-                                                                    type="button">
-                                                                Изменить
-                                                            </button>
-                                                            <button class="delete style_button js-remove-selected-image"
-                                                                    type="button">
-                                                                Удалить
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="section_input border_top padding_10 js_find_elem">
-                                                    <div class="title_section">
-                                                        Оглавление<span>*</span>
-                                                    </div>
-                                                    <input class="style_input_field js_paste_name"
-                                                           type="text" name="inputField"
-                                                           type="text" required>
-                                                </div>
-                                                <div class="text-area section_input border_top padding_10 js_find_elem">
-                                                    <div class="title_section">
-                                                        Описание<span>*</span>
-                                                    </div>
-                                                    <textarea rows="5"
-                                                              class="style_input_field style_custom_scroll js_paste_name"
-                                                              type="text" name="textareaInput"
-                                                              required></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="control_item border_solid">
-                                                <div class="add_item">
-                                                    <i class="fas fa-plus position"></i>
-                                                </div>
-                                                <div class="delete_item">
-                                                    <i class="fas fa-minus position"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="button_section">
-                                        <button class="add style_button repeater_button js_add_section" type="button">Добавить</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="control_item border_solid">
-                                <div class="add_item">
-                                    <i class="fas fa-plus position"></i>
-                                </div>
-                                <div class="delete_item">
-                                    <i class="fas fa-minus position"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="hide-content-repeater none">
                         <div class="repeater-fields">
-                            <div data-id="repeater-1">
-
+                            <div data-id="repeater-1-fields">
+                                <div class="content_section repeater_style">
+                                    <div class="count_item">
+                                        1
+                                    </div>
+                                    <div class="content_item">
+                                        <div class="image border_top padding_10 js_find_elem">
+                                            <div class="title_section">
+                                                Иконка<span>*</span></div>
+                                            <button class="choice js-open-file-popup style_button"
+                                                    type="file" data-popup="show-popup">Выбрать
+                                            </button>
+                                            <div class="image_section none">
+                                                <img class="selected_image js_paste_name js-paste-selected-file"
+                                                     type="text" name="imageField"
+                                                     src=""
+                                                     alt="" data-id="">
+                                                <div class="control_buttons">
+                                                    <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
+                                                            type="button">
+                                                        Изменить
+                                                    </button>
+                                                    <button class="delete style_button js-remove-selected-image"
+                                                            type="button">
+                                                        Удалить
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="section_input border_top padding_10 js_find_elem">
+                                            <div class="title_section">
+                                                Оглавление<span>*</span>
+                                            </div>
+                                            <input class="style_input_field js_paste_name"
+                                                   type="text" name="inputField"
+                                                   type="text" required>
+                                        </div>
+                                        <div class="text-area section_input border_top padding_10 js_find_elem">
+                                            <div class="title_section">
+                                                Описание<span>*</span>
+                                            </div>
+                                            <textarea rows="5"
+                                                      class="style_input_field style_custom_scroll js_paste_name"
+                                                      type="text" name="textareaInput"
+                                                      required></textarea>
+                                        </div>
+                                        <div class="repeater border_top padding_10" data-id="repeater-2" name="repeater2">
+                                            <div class="title_section">
+                                                Повторитель<span>*</span></div>
+                                            <div class="content_repeater"></div>
+                                            <div class="button_section">
+                                                <button class="add style_button repeater_button js_add_section" type="button">Добавить</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="control_item border_solid">
+                                        <div class="add_item">
+                                            <i class="fas fa-plus position"></i>
+                                        </div>
+                                        <div class="delete_item">
+                                            <i class="fas fa-minus position"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-id="repeater-2-fields">
+                                <div class="content_section repeater_style">
+                                    <div class="count_item">
+                                        1
+                                    </div>
+                                    <div class="content_item">
+                                        <div class="image border_top padding_10 js_find_elem">
+                                            <div class="title_section">
+                                                Иконка<span>*</span></div>
+                                            <button class="choice js-open-file-popup style_button"
+                                                    type="file" data-popup="show-popup">Выбрать
+                                            </button>
+                                            <div class="image_section none">
+                                                <img class="selected_image js_paste_name js-paste-selected-file"
+                                                     type="text" name="imageField"
+                                                     src=""
+                                                     alt="" data-id="">
+                                                <div class="control_buttons">
+                                                    <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
+                                                            type="button">
+                                                        Изменить
+                                                    </button>
+                                                    <button class="delete style_button js-remove-selected-image"
+                                                            type="button">
+                                                        Удалить
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="section_input border_top padding_10 js_find_elem">
+                                            <div class="title_section">
+                                                Оглавление<span>*</span>
+                                            </div>
+                                            <input class="style_input_field js_paste_name"
+                                                   type="text" name="inputField"
+                                                   type="text" required>
+                                        </div>
+                                        <div class="text-area section_input border_top padding_10 js_find_elem">
+                                            <div class="title_section">
+                                                Описание<span>*</span>
+                                            </div>
+                                            <textarea rows="5"
+                                                      class="style_input_field style_custom_scroll js_paste_name"
+                                                      type="text" name="textareaInput"
+                                                      required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="control_item border_solid">
+                                        <div class="add_item">
+                                            <i class="fas fa-plus position"></i>
+                                        </div>
+                                        <div class="delete_item">
+                                            <i class="fas fa-minus position"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -208,4 +212,15 @@
 
 @section('popup-upload')
     @include('admin.include.popup-files')
+@endsection
+
+
+@section('ajaxUrl')
+    <script>
+        window.ajaxUploadUrl = '{{ route('upload-file') }}';
+        window.ajaxGetSelectedInfo = '{{ route('get-selected-info') }}';
+        window.ajaxUpdateFileInfo = '{{ route('update-file-info') }}';
+        window.ajaxDeleteSelectedFile = '{{ route('delete-selected-file') }}';
+        window.ajaxCreateReturnItem = '{{ route('create-return-item') }}';
+    </script>
 @endsection
