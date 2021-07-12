@@ -2060,7 +2060,11 @@ $(document).ready(function () {
   $('.js_add_section').on('click', add_section);
 
   function add_section(event) {
-    var clone = $(this).closest('.repeater').children('.repeater_field').children('.content_section').clone();
+    // let clone = $(this).closest('.repeater').children('.repeater_field')
+    //     .children('.content_section').clone();
+    console.log('data-id = ' + $(this).closest('.repeater').attr('data-id') + '-fields');
+    var clone = $('[data-id=' + $(this).closest('.repeater').attr('data-id') + '-fields]').children().clone();
+    console.log(clone);
     clone.find('.repeater_button').click(add_section);
     clone.find('.add_item').click(add_section);
     clone.find('.switch_closed').click(switch_closed);
@@ -2453,6 +2457,7 @@ $(document).ready(function () {
     // }
 
     var data = new FormData();
+    data.append('post_title', $('[name=post_title]').val());
     $names.each(function (index) {
       var current_name = $(this).attr('name');
 
@@ -2478,6 +2483,22 @@ $(document).ready(function () {
     } finally {
       _iterator3.f();
     }
+
+    $.ajax({
+      url: window.ajaxCreateReturnItem,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function success(data) {
+        console.log('success');
+        console.log('status = ' + data.status);
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+      }
+    });
   });
 });
 

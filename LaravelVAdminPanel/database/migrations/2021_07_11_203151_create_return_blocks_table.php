@@ -15,7 +15,7 @@ class CreateReturnBlocksTable extends Migration
     {
         Schema::create('return_blocks', function (Blueprint $table) {
             $table->id();
-            $table->boolean('draft');
+            $table->boolean('draft')->default(false);
             $table->string('post_title');
             $table->timestamps();
         });

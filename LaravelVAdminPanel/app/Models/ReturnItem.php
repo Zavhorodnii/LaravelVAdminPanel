@@ -9,6 +9,7 @@ class ReturnItem extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'return_block_id',
         'field_name',
         'field_data',
     ];

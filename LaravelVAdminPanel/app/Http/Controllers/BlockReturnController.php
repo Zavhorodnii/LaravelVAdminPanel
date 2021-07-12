@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Files;
+use App\Models\ReturnBlocks;
+use App\Models\ReturnItem;
 use Illuminate\Http\Request;
 
 class BlockReturnController extends Controller
@@ -15,6 +17,26 @@ class BlockReturnController extends Controller
         return view('admin/create-return-block', [
             'files' => Files::orderBy('id', 'DESC')->get(),
         ]);
+    }
+
+    public function create_return_item(Request $request){
+        $all_fields = $request->input();
+        var_export($all_fields);
+        $return_block = new ReturnBlocks;
+        $return_block->post_title = $request->input('post_title');
+        $return_block->save();
+        foreach ($all_fields as $name_field => $value){
+            if($name_field == 'post_title')
+                continue;
+
+            $return_item = new ReturnItem;
+            $return_item->return_block_id = $return_block->id;
+            $return_item->field_name = $name_field;
+            $return_item->field_data = $value;
+
+            $return_item->save();
+        }
+
     }
 
 }
