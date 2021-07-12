@@ -2445,6 +2445,40 @@ $(document).ready(function () {
     console.log('remove selected file');
     $(this).closest('.image_section').addClass('none').children('.js_paste_name').attr('src', '').closest('.image').children('.js-open-file-popup').removeClass('none');
   });
+  $('.js-save-return-item').click(function (event) {
+    event.preventDefault();
+    console.log('save-return-button');
+    var $names = $('.content_repeater').find('[name]'); // for (let value of $names) {
+    //     console.log(value);
+    // }
+
+    var data = new FormData();
+    $names.each(function (index) {
+      var current_name = $(this).attr('name');
+
+      if (current_name.indexOf('imageField') !== -1) {
+        data.append(current_name, $(this).attr('data-id'));
+      } else if (current_name.indexOf('inputField') !== -1) {
+        data.append(current_name, $(this).val());
+      } else if (current_name.indexOf('textareaInput') !== -1) {
+        data.append(current_name, $(this).val());
+      }
+    });
+
+    var _iterator3 = _createForOfIteratorHelper(data.values()),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var value = _step3.value;
+        console.log(value);
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+  });
 });
 
 /***/ }),

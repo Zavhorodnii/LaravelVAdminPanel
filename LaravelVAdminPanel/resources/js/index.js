@@ -580,4 +580,36 @@ $(document).ready(function () {
             .closest('.image').children('.js-open-file-popup').removeClass('none');
     })
 
+    $('.js-save-return-item').click(function (event){
+        event.preventDefault();
+        console.log('save-return-button');
+        let $names = $('.content_repeater').find('[name]')
+
+        // for (let value of $names) {
+        //     console.log(value);
+        // }
+        let data = new FormData();
+
+        $names.each
+        (
+            function (index) {
+                let current_name = $(this).attr('name');
+                if(current_name.indexOf('imageField')!== -1){
+                    data.append(current_name, $(this).attr('data-id'));
+                }
+                else if(current_name.indexOf('inputField') !== -1){
+                    data.append(current_name, $(this).val())
+                }
+                else if(current_name.indexOf('textareaInput') !== -1){
+                    data.append(current_name, $(this).val())
+                }
+
+            }
+        );
+
+        for (let value of data.values()) {
+            console.log(value);
+        }
+    })
+
 })
