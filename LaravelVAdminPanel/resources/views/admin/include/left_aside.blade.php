@@ -1,5 +1,5 @@
-<aside class="sidebar style_custom_scroll">
-    <div class="sidebar_position block_open_sub_menu "> <!-- active -->
+<aside class="sidebar ">
+    <div class="sidebar_position block_open_sub_menu style_custom_scroll"> <!-- active -->
 
         <div class="sidebar_content">
 

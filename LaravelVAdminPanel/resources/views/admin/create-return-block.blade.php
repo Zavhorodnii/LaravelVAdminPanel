@@ -14,10 +14,39 @@
 
 @section('main-content')
     <section class="content">
+        <div class="field_section js-control-notification-section none">
+            <div class="field_section_container">
+                <div class="notification-save-message">
+                    <ul class=" js-paste-notifications">
+{{--                        <li class="style-notification padding_t_10 padding_lrb_10 error">--}}
+{{--                            <p>--}}
+{{--                                Не заполнено оглавление записи--}}
+{{--                            </p>--}}
+{{--                            <div class="notification_message_control js-remove-page-notif ">--}}
+{{--                                <i class="fas fa-times delete_notif"></i>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                        <li class="padding_t_10 padding_lrb_10 ok">--}}
+{{--                            <p>--}}
+{{--                                Очень длинное уведомление в виде обычного серого текста--}}
+{{--                                Скорее всего это обычное уведомление--}}
+{{--                            </p>--}}
+{{--                        </li>--}}
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="field_section "> <!--hid_block-->
             <div class="field_section_header padding_10">
-                <div class="header_text">Создание блока возврата</div>
-                <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
+                <div class="back-icon">
+                    <a href="{{ route('all-return-page') }}">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="control-tab">
+                    <div class="header_text">Создание блока возврата</div>
+                    <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
+                </div>
             </div>
             <div class="field_section_container">
                 <div class="section_input border_top padding_10 js_find_elem">
@@ -52,8 +81,10 @@
                                                      src=""
                                                      alt="" data-id="">
                                                 <div class="control_buttons">
-                                                    <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
-                                                            type="button">
+                                                    <button
+                                                        class="change style_button js-change-selected-image js-open-file-popup"
+                                                        data-popup="show-popup"
+                                                        type="button">
                                                         Изменить
                                                     </button>
                                                     <button class="delete style_button js-remove-selected-image"
@@ -80,12 +111,15 @@
                                                       type="text" name="textareaInput"
                                                       required></textarea>
                                         </div>
-                                        <div class="repeater border_top padding_10" data-id="repeater-2" name="repeater2">
+                                        <div class="repeater border_top padding_10" data-id="repeater-2"
+                                             name="repeater2">
                                             <div class="title_section">
                                                 Повторитель<span>*</span></div>
                                             <div class="content_repeater"></div>
                                             <div class="button_section">
-                                                <button class="add style_button repeater_button js_add_section" type="button">Добавить</button>
+                                                <button class="add style_button repeater_button js_add_section"
+                                                        type="button">Добавить
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -117,8 +151,10 @@
                                                      src=""
                                                      alt="" data-id="">
                                                 <div class="control_buttons">
-                                                    <button class="change style_button js-change-selected-image js-open-file-popup" data-popup="show-popup"
-                                                            type="button">
+                                                    <button
+                                                        class="change style_button js-change-selected-image js-open-file-popup"
+                                                        data-popup="show-popup"
+                                                        type="button">
                                                         Изменить
                                                     </button>
                                                     <button class="delete style_button js-remove-selected-image"
@@ -173,14 +209,14 @@
 
         <div class="field_section">
             <div class="field_section_header padding_10">
-                <div class="header_text">Управление</div>
-                <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
+                <div class="control-tab">
+                    <div class="header_text">Управление</div>
+                    <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
+                </div>
             </div>
+
             <div class="field_section_container">
                 <div class="checkbox_field section_input border_top padding_10 js_find_elem">
-{{--                    <div class="title_section">--}}
-{{--                        Название поля<span>*</span>--}}
-{{--                    </div>--}}
                     <input type="text"
                            class="none js_paste_name"
                            name="name7" value="">
@@ -200,9 +236,11 @@
                     </ul>
                 </div>
                 <div class="field_section_container_button border_top padding_10">
-                    <a href="{{ route('all-return-page') }}" class="create style_button add-new-page js-save-return-item">
+                    <button class="button style_button add-new-page js-save-return-item" type="button">
                         Создать запись
-                    </a>
+                    </button>
+                    {{--                    <a href="{{ route('all-return-page') }}" class="create style_button add-new-page js-save-return-item">--}}
+                    {{--                    </a>--}}
                 </div>
             </div>
         </div>
@@ -223,4 +261,8 @@
         window.ajaxDeleteSelectedFile = '{{ route('delete-selected-file') }}';
         window.ajaxCreateReturnItem = '{{ route('create-return-item') }}';
     </script>
+@endsection
+
+@section('js-files')
+    <script src="{{ mix('js/returnPage.js') }}"></script>
 @endsection

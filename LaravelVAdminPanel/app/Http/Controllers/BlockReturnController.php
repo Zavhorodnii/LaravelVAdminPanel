@@ -21,12 +21,13 @@ class BlockReturnController extends Controller
 
     public function create_return_item(Request $request){
         $all_fields = $request->input();
-        var_export($all_fields);
+//        var_export($all_fields);
         $return_block = new ReturnBlocks;
+        $return_block->draft = $request->input('draft');
         $return_block->post_title = $request->input('post_title');
         $return_block->save();
         foreach ($all_fields as $name_field => $value){
-            if($name_field == 'post_title')
+            if($name_field == 'post_title' || $name_field == 'draft')
                 continue;
 
             $return_item = new ReturnItem;
@@ -36,7 +37,11 @@ class BlockReturnController extends Controller
 
             $return_item->save();
         }
-
+        return response()
+            ->json([
+                'status'    => 'ok',
+                'url'       => $return_block->id,
+            ]);
     }
 
 }

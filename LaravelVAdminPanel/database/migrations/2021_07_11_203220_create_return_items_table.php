@@ -17,8 +17,8 @@ class CreateReturnItemsTable extends Migration
             $table->foreignId('return_block_id')
                 ->nullable()
                 ->constrained()
-                ->onUpdate('cascade')
-                ->onUpdate('cascade');
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->string('field_name');
             $table->text('field_data');
             $table->timestamps();

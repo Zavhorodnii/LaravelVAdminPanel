@@ -32,5 +32,6 @@
 @yield('ajaxUrl')
 
 <script src="{{ mix('js/app.js') }}"></script>
+@yield('js-files')
 </body>
 </html>

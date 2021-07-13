@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/returnPage.js": "/js/returnPage.js",
     "/css/style.css": "/css/style.css",
     "/css/login.css": "/css/login.css"
 }

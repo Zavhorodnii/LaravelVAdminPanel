@@ -1922,7 +1922,7 @@ $(document).ready(function () {
       $(this).closest('.sidebar_position').removeClass('block_open_sub_menu');
     }
   });
-  $('.field_section_header').click(function (event) {
+  $('.control-tab').click(function (event) {
     $(this).closest('.field_section').toggleClass('hid_block');
   });
   $('.js-open-close-menu').click(function (event) {
@@ -2448,57 +2448,6 @@ $(document).ready(function () {
   $(document).on("click", ".js-remove-selected-image", function () {
     console.log('remove selected file');
     $(this).closest('.image_section').addClass('none').children('.js_paste_name').attr('src', '').closest('.image').children('.js-open-file-popup').removeClass('none');
-  });
-  $('.js-save-return-item').click(function (event) {
-    event.preventDefault();
-    console.log('save-return-button');
-    var $names = $('.content_repeater').find('[name]'); // for (let value of $names) {
-    //     console.log(value);
-    // }
-
-    var data = new FormData();
-    data.append('post_title', $('[name=post_title]').val());
-    $names.each(function (index) {
-      var current_name = $(this).attr('name');
-
-      if (current_name.indexOf('imageField') !== -1) {
-        data.append(current_name, $(this).attr('data-id'));
-      } else if (current_name.indexOf('inputField') !== -1) {
-        data.append(current_name, $(this).val());
-      } else if (current_name.indexOf('textareaInput') !== -1) {
-        data.append(current_name, $(this).val());
-      }
-    });
-
-    var _iterator3 = _createForOfIteratorHelper(data.values()),
-        _step3;
-
-    try {
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-        var value = _step3.value;
-        console.log(value);
-      }
-    } catch (err) {
-      _iterator3.e(err);
-    } finally {
-      _iterator3.f();
-    }
-
-    $.ajax({
-      url: window.ajaxCreateReturnItem,
-      type: 'POST',
-      dataType: 'json',
-      processData: false,
-      contentType: false,
-      data: data,
-      success: function success(data) {
-        console.log('success');
-        console.log('status = ' + data.status);
-      },
-      error: function error(jqXHR, status, errorThrown) {
-        console.log('Ошибка ajax запроса: ' + status, jqXHR);
-      }
-    });
   });
 });
 
