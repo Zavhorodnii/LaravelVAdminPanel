@@ -32,6 +32,11 @@ $(document).ready(function () {
     check_notification_page_message();
   }
 
+  function remove_all_page_notif(event) {
+    $('.js-paste-notifications').html('');
+    check_notification_page_message();
+  }
+
   function add_notification_page(message, status) {
     var notification = '<li class="style-notification padding_t_10 padding_lrb_10 ' + status + '">\n' + '                            <p>' + message + '</p>\n' + '                            <div class="notification_message_control js-remove-page-notif ">\n' + '                                <i class="fas fa-times delete_notif"></i>\n' + '                            </div>\n' + '                        </li>';
     var notif = $(notification);
@@ -46,13 +51,17 @@ $(document).ready(function () {
     //     console.log(value);
     // }
 
+    remove_all_page_notif();
+    var errors = 0;
     var data = new FormData();
-    var post_title = $('[name=post_title]').val();
+    var $name = $('[name=post_title]');
+    var post_title = $name.val();
 
     if (post_title === '') {
       add_notification_page('Не заполнено оглавление записи', 'error');
-      return;
-    }
+      $name.closest('.field').addClass('error');
+      errors++;
+    } else if ($name.closest('.field').hasClass('error')) $name.closest('.field').removeClass('error');
 
     data.append('post_title', post_title);
     data.append('draft', $('.sidebar_right').find('.field_section_container').find('.custom_checkbox').children('.custom_input_text').val());
@@ -60,12 +69,49 @@ $(document).ready(function () {
       var current_name = $(this).attr('name');
 
       if (current_name.indexOf('imageField') !== -1) {
-        data.append(current_name, $(this).attr('data-id'));
-      } else if (current_name.indexOf('inputField') !== -1) {
+        var value = $(this).attr('data-id');
+        data.append(current_name, value);
+
+        if (value === '') {
+          var field = $(this).closest('.field');
+
+          if (field.hasClass('required')) {
+            add_notification_page('Не заполнено поле: ' + field.find('.title_section').text(), 'error');
+            field.addClass('error');
+            errors++;
+          }
+        } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
+      } else if (current_name.indexOf('inputField') !== -1 || current_name.indexOf('textareaInput') !== -1) {
+        var _value = $(this).val();
+
+        if (_value === '') {
+          var _field = $(this).closest('.field');
+
+          if (_field.hasClass('required')) {
+            add_notification_page('Не заполнено поле: ' + _field.find('.title_section').text(), 'error');
+
+            _field.addClass('error');
+
+            errors++;
+          }
+        } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
+
         data.append(current_name, $(this).val());
-      } else if (current_name.indexOf('textareaInput') !== -1) {
-        data.append(current_name, $(this).val());
-      }
+      } // else if(){
+      //     let value = $(this).val();
+      //     if(value  === ''){
+      //         let field = $(this).closest('.field')
+      //         if(field.hasClass('required')){
+      //             add_notification_page(
+      //                 'Не заполнено поле ' + field.find('.title_section').text(),
+      //                 'error'
+      //             )
+      //         }
+      //     }
+      //     data.append(current_name, $(this).val())
+      //     errors++;
+      // }
+
     });
 
     var _iterator = _createForOfIteratorHelper(data.values()),
@@ -80,6 +126,10 @@ $(document).ready(function () {
       _iterator.e(err);
     } finally {
       _iterator.f();
+    }
+
+    if (errors > 0) {
+      return;
     }
 
     $.ajax({

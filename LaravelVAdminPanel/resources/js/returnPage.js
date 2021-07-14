@@ -21,6 +21,11 @@ $(document).ready(function(){
         check_notification_page_message();
     }
 
+    function remove_all_page_notif(event){
+        $('.js-paste-notifications').html('');
+        check_notification_page_message();
+    }
+
     function add_notification_page(message, status){
         let notification = '<li class="style-notification padding_t_10 padding_lrb_10 ' + status + '">\n' +
             '                            <p>' + message +'</p>\n' +
@@ -41,15 +46,21 @@ $(document).ready(function(){
         // for (let value of $names) {
         //     console.log(value);
         // }
+        remove_all_page_notif();
+        let errors = 0;
         let data = new FormData();
-        let post_title = $('[name=post_title]').val();
+        let $name = $('[name=post_title]')
+        let post_title = $name.val();
         if(post_title === ''){
             add_notification_page(
                 'Не заполнено оглавление записи',
                 'error'
             )
-            return;
+            $name.closest('.field').addClass('error')
+            errors++;
         }
+        else if($name.closest('.field').hasClass('error'))
+            $name.closest('.field').removeClass('error')
         data.append('post_title', post_title)
         data.append('draft', $('.sidebar_right').find('.field_section_container')
             .find('.custom_checkbox').children('.custom_input_text').val())
@@ -58,20 +69,63 @@ $(document).ready(function(){
         (
             function (index) {
                 let current_name = $(this).attr('name');
-                if(current_name.indexOf('imageField')!== -1){
-                    data.append(current_name, $(this).attr('data-id'));
+                if(current_name.indexOf('imageField')!== -1 ){
+                    let value = $(this).attr('data-id')
+                    data.append(current_name, value);
+                    if(value  === ''){
+                        let field = $(this).closest('.field')
+                        if(field.hasClass('required')){
+                            add_notification_page(
+                                'Не заполнено поле: ' + field.find('.title_section').text(),
+                                'error'
+                            )
+                            field.addClass('error')
+                            errors++;
+                        }
+                    }
+                    else if($(this).closest('.field').hasClass('error'))
+                        $(this).closest('.field').removeClass('error')
                 }
-                else if(current_name.indexOf('inputField') !== -1){
+                else if((current_name.indexOf('inputField') !== -1) || (current_name.indexOf('textareaInput') !== -1)){
+                    let value = $(this).val();
+                    if(value  === ''){
+                        let field = $(this).closest('.field')
+                        if(field.hasClass('required')){
+                            add_notification_page(
+                                'Не заполнено поле: ' + field.find('.title_section').text(),
+                                'error'
+                            )
+                            field.addClass('error')
+                            errors++;
+                        }
+                    }
+                    else if($(this).closest('.field').hasClass('error'))
+                        $(this).closest('.field').removeClass('error')
                     data.append(current_name, $(this).val())
                 }
-                else if(current_name.indexOf('textareaInput') !== -1){
-                    data.append(current_name, $(this).val())
-                }
+                // else if(){
+                //     let value = $(this).val();
+                //     if(value  === ''){
+                //         let field = $(this).closest('.field')
+                //         if(field.hasClass('required')){
+                //             add_notification_page(
+                //                 'Не заполнено поле ' + field.find('.title_section').text(),
+                //                 'error'
+                //             )
+                //         }
+                //     }
+                //     data.append(current_name, $(this).val())
+                //     errors++;
+                // }
             }
         );
 
         for (let value of data.values()) {
             console.log(value);
+        }
+
+        if(errors > 0){
+            return;
         }
 
         $.ajax({
