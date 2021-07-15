@@ -15,7 +15,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.field_section_header').click(function (event) {
+    $('.control-tab').click(function (event) {
         $(this).closest('.field_section').toggleClass('hid_block');
     });
 
@@ -157,7 +157,11 @@ $(document).ready(function () {
     $('.js_add_section').on('click', add_section);
 
     function add_section(event) {
-        let clone = $(this).closest('.repeater').children('.repeater_field').children('.content_section').clone();
+        // let clone = $(this).closest('.repeater').children('.repeater_field')
+        //     .children('.content_section').clone();
+        console.log('data-id = ' +  $(this).closest('.repeater').attr('data-id') + '-fields')
+        let clone = $('[data-id=' + $(this).closest('.repeater').attr('data-id') + '-fields]').children().clone();
+        console.log(clone);
         clone.find('.repeater_button').click(add_section);
         clone.find('.add_item').click(add_section);
         clone.find('.switch_closed').click(switch_closed);
@@ -264,6 +268,7 @@ $(document).ready(function () {
     $('.js-open-file-popup').click(js_open_file_popup)
 
     let open_file = null;
+    let selected_change_file = null;
 
     function js_open_file_popup(event) {
         event.preventDefault();
@@ -272,7 +277,8 @@ $(document).ready(function () {
         open_file = $(this).closest('.js_find_elem');
 
         if($(this).hasClass('js-change-selected-image')){
-            $image_url = $(this).closest('.image_section').children('.js_paste_name').attr('src')
+            selected_change_file = $(this).closest('.image_section').children('.js_paste_name')
+            $image_url = $(selected_change_file).attr('src')
             change_select_popup_file($image_url);
         }
 
@@ -295,7 +301,6 @@ $(document).ready(function () {
 
     $('.js-close-popup').click(closePopup);
 
-
     $('.js-save-popup-file').click(function(){
         let $upload_file = $('.uploaded_files').find('.selected-file');
         // console.log($upload_file.length == 0)
@@ -305,7 +310,8 @@ $(document).ready(function () {
         }
         $this = $(this);
         let data = new FormData();
-        data.append('id', $upload_file.find('.single-upload-file').attr('data-id'));
+        let selected_id_file = $upload_file.find('.single-upload-file').attr('data-id')
+        data.append('id', selected_id_file);
         data.append('_token', $('meta[name="csrf-token"]').val());
         data.append('name', $('.js-paste-file-name').val());
         let $file_alt = $('.js-get-file-alt-name').val();
@@ -331,6 +337,9 @@ $(document).ready(function () {
                 $(open_file).find('.js-paste-selected-file').attr(
                     'src',
                     $upload_file.find('.js_paste_name').attr('src')
+                ).attr(
+                    'data-id',
+                    selected_id_file
                 )
                 $(open_file).children('.js-open-file-popup').addClass('none')
                 $(open_file).find('.image_section').removeClass('none')
@@ -553,6 +562,13 @@ $(document).ready(function () {
                 if(data.status){
                     $('.uploaded_files').children('.selected-file').remove();
                     clear_selected_file();
+                    console.log('selected_file = ' + data.path)
+                    console.log('selected_change_file = ' + selected_change_file.attr('src'))
+                    if(data.path === selected_change_file.attr('src')) {
+                        selected_change_file.attr('src', '');
+                        selected_change_file.closest('.image_section').addClass('none').closest('.image')
+                            .children('.js-open-file-popup').removeClass('none');
+                    }
                 }
 
             },
@@ -560,6 +576,12 @@ $(document).ready(function () {
                 console.log('Ошибка ajax запроса: ' + status, jqXHR);
             }
         })
+    })
+
+    $(document).on("click", ".js-remove-selected-image", function () {
+        console.log('remove selected file')
+        $(this).closest('.image_section').addClass('none').children('.js_paste_name').attr('src', '')
+            .closest('.image').children('.js-open-file-popup').removeClass('none');
     })
 
 })

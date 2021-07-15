@@ -2,8 +2,11 @@
     <div class="popup-container animate-show-popup">
 
         <div class="field_section_header padding_10">
-            <div class="header_text">Медиафайлы</div>
-            <div class="header_icon remove js-close-popup"><i class="fas fa-times"></i></div>
+
+            <div class="control-tab">
+                <div class="header_text">Медиафайлы</div>
+                <div class="header_icon remove js-close-popup"><i class="fas fa-times"></i></div>
+            </div>
         </div>
 
         <div class="select_file border_top padding_10 js_find_elem">

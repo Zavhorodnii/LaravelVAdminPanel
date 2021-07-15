@@ -1,0 +1,50 @@
+{
+    "image1": [
+        {
+            "data-id": "image_id",
+            "src": "file_path"
+        }
+    ],
+    "repeater1": [
+        {
+            "1": [
+                {
+                    "image1": [
+                        {
+                            "data-id": "image_id"
+                        }
+                    ],
+                    "inputField": [
+                        {
+                            "value": "some input value"
+                        }
+                    ],
+                    "areaField": [
+                        {
+                            "value": "some area field"
+                        }
+                    ]
+                }
+            ],
+            "2": [
+            {
+                "image1": [
+                    {
+                        "data-id": "image_id"
+                    }
+                ],
+                "inputField": [
+                    {
+                        "value": "some input value"
+                    }
+                ],
+                "areaField": [
+                    {
+                        "value": "some area field"
+                    }
+                ]
+            }
+        ]
+        }
+    ]
+}

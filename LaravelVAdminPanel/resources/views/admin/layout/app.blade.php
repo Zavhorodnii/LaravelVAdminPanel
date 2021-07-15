@@ -28,12 +28,10 @@
 @yield('popup-upload')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    window.ajaxUploadUrl = '{{ route('upload-file') }}';
-    window.ajaxGetSelectedInfo = '{{ route('get-selected-info') }}';
-    window.ajaxUpdateFileInfo = '{{ route('update-file-info') }}';
-    window.ajaxDeleteSelectedFile = '{{ route('delete-selected-file') }}';
-</script>
+
+@yield('ajaxUrl')
+
 <script src="{{ mix('js/app.js') }}"></script>
+@yield('js-files')
 </body>
 </html>

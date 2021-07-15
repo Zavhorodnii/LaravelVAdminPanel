@@ -90,7 +90,6 @@ option:hover {
 }
 
 .grid_container {
-  overflow-y: hidden;
   display: grid;
   min-height: 100vh;
   grid-template: minmax(50px, auto) 1fr 60px/minmax(auto, auto) 1fr 370px;
@@ -336,7 +335,35 @@ option:hover {
   }
 }
 
+.padding_lrb_10 {
+  padding: 0 10px 10px 10px;
+}
+
+.padding_t_10 {
+  padding-top: 10px;
+}
+
+.style-notification {
+  display: flex;
+  justify-content: space-between;
+}
+.style-notification .notification_message_control {
+  margin-left: 10px;
+}
+.style-notification .notification_message_control:hover {
+  color: #ec4646;
+}
+
+.error {
+  background-color: #ffe9e9;
+}
+
+.ok {
+  background-color: #e8f9fa;
+}
+
 .sidebar {
+  overflow-y: clip;
   grid-area: sidebar;
   background-color: #393e46;
 }
@@ -344,6 +371,9 @@ option:hover {
   display: none !important;
 }
 .sidebar .sidebar_position {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   position: sticky;
   top: 0;
   width: 50px;
@@ -364,7 +394,7 @@ option:hover {
 }
 .sidebar .sidebar_position .sidebar_content .sidebar_menu_item {
   display: grid;
-  grid-template: 50px/50px 175px 25px;
+  grid-template: 50px/50px 170px 30px;
   grid-template-areas: "menu_icon menu_text control_nmenu_item";
   transition: all 0.3s ease-out;
 }
@@ -652,6 +682,10 @@ option:hover {
   border-top: 1px solid #d3d3d3;
 }
 
+.aside-style-button {
+  min-width: 140px;
+}
+
 .style_button {
   width: 120px;
   height: 30px !important;
@@ -687,14 +721,26 @@ option:hover {
   grid-area: section_header;
   height: 40px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .field_section_header .header_text {
   color: #000000;
   font-size: 18px;
 }
-.field_section_header .header_icon:hover {
+.field_section_header .back-icon {
+  margin-right: 10px;
+}
+.field_section_header .back-icon:hover {
+  color: #1de8b5;
+}
+.field_section_header .control-tab {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.field_section_header .control-tab:hover .header_icon {
   color: #1de8b5;
 }
 .field_section_container {
@@ -712,6 +758,10 @@ option:hover {
   height: 50px;
   display: grid;
   place-items: center end;
+}
+
+.back-icon:hover {
+  color: #1de8b5;
 }
 
 .hid_block .field_section_container {
@@ -1336,6 +1386,8 @@ option:hover {
 
 .remove-page {
   color: #ec4646;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 
 .single-page {
@@ -1362,8 +1414,24 @@ option:hover {
 }
 
 .add-new-page {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   padding: 0 5px;
+  display: grid !important;
+  place-items: center;
+}
+
+.loader {
+  pointer-events: none;
+  position: relative;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  pointer-events: none;
+  background: #EFEFEF url(/images/loader.gif?a8494e9c445ea14c63a07273783b5937) center/80px no-repeat;
+  z-index: 100;
 }
