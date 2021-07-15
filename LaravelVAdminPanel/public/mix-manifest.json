@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/style.css": "/css/style.css",
-    "/css/login.css": "/css/login.css"
+    "/js/returnPage.js": "/js/returnPage.js",
+    "/js/main_all_block.js": "/js/main_all_block.js",
+    "/css/login.css": "/css/login.css",
+    "/css/style.css": "/css/style.css"
 }
