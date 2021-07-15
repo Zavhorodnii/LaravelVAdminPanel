@@ -792,6 +792,10 @@ option {
     border-top: 1px solid $background_colour;
 }
 
+.aside-style-button{
+    min-width: 140px;
+}
+
 .style_button {
     width: 120px;
     height: 30px !important;
@@ -1584,6 +1588,8 @@ option {
 
 .remove-page {
     color: $delete_colour;
+    background-color: #ffffff;
+    cursor: pointer;
 }
 
 .single-page {
@@ -1621,6 +1627,26 @@ option {
 
 
 .add-new-page {
-    width: fit-content;
     padding: 0 5px;
+    display: grid !important;
+    place-items: center;
 }
+
+
+.loader {
+    pointer-events: none;
+    position: relative;
+    &:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        pointer-events: none;
+        background: #EFEFEF url("../../storage/app/public/loader.gif") center/80px no-repeat;
+        z-index: 100;
+    }
+}
+

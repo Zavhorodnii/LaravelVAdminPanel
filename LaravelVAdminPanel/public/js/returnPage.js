@@ -45,12 +45,20 @@ $(document).ready(function () {
     check_notification_page_message();
   }
 
+  function addLoader() {
+    $('.content').addClass('loader');
+    $('.sidebar_right').addClass('loader');
+  }
+
+  function removeLoader() {
+    $('.content').removeClass('loader');
+    $('.sidebar_right').removeClass('loader');
+  }
+
   $('.js-save-return-item').click(function (event) {
     console.log('save-return-button');
-    var $names = $('.content_repeater').find('[name]'); // for (let value of $names) {
-    //     console.log(value);
-    // }
-
+    var $names = $('.content_repeater').find('[name]');
+    addLoader();
     remove_all_page_notif();
     var errors = 0;
     var data = new FormData();
@@ -97,21 +105,7 @@ $(document).ready(function () {
         } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
 
         data.append(current_name, $(this).val());
-      } // else if(){
-      //     let value = $(this).val();
-      //     if(value  === ''){
-      //         let field = $(this).closest('.field')
-      //         if(field.hasClass('required')){
-      //             add_notification_page(
-      //                 'Не заполнено поле ' + field.find('.title_section').text(),
-      //                 'error'
-      //             )
-      //         }
-      //     }
-      //     data.append(current_name, $(this).val())
-      //     errors++;
-      // }
-
+      }
     });
 
     var _iterator = _createForOfIteratorHelper(data.values()),
@@ -142,9 +136,140 @@ $(document).ready(function () {
       success: function success(data) {
         console.log('success');
         console.log('status = ' + data.status);
+        removeLoader();
+
+        if (data.status === 'ok') {
+          console.log('url = ' + data.url);
+          window.location.replace(data.url);
+        }
       },
       error: function error(jqXHR, status, errorThrown) {
         console.log('Ошибка ajax запроса: ' + status, jqXHR);
+        removeLoader();
+      }
+    });
+  });
+  $('.js-update-return-item').click(function () {
+    console.log('update-return-button');
+    var $names = $('.content_repeater').find('[name]');
+    addLoader();
+    remove_all_page_notif();
+    var errors = 0;
+    var data = new FormData();
+    var $name = $('[name=post_title]');
+    var post_title = $name.val();
+
+    if (post_title === '') {
+      add_notification_page('Не заполнено оглавление записи', 'error');
+      $name.closest('.field').addClass('error');
+      errors++;
+    } else if ($name.closest('.field').hasClass('error')) $name.closest('.field').removeClass('error');
+
+    $url = window.location.href;
+    $arr = $url.split('/');
+    data.append('post_id', $arr[$arr.length - 1]);
+    data.append('post_title', post_title);
+    console.log('draft = ' + $('.sidebar_right').find('.field_section_container').find('.custom_checkbox').children('.custom_input_text').val());
+    data.append('draft', $('.sidebar_right').find('.field_section_container').find('.custom_checkbox').children('.custom_input_text').val());
+    $names.each(function (index) {
+      var current_name = $(this).attr('name');
+
+      if (current_name.indexOf('imageField') !== -1) {
+        var value = $(this).attr('data-id');
+        data.append(current_name, value);
+
+        if (value === '') {
+          var field = $(this).closest('.field');
+
+          if (field.hasClass('required')) {
+            add_notification_page('Не заполнено поле: ' + field.find('.title_section').text(), 'error');
+            field.addClass('error');
+            errors++;
+          }
+        } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
+      } else if (current_name.indexOf('inputField') !== -1 || current_name.indexOf('textareaInput') !== -1) {
+        var _value2 = $(this).val();
+
+        if (_value2 === '') {
+          var _field2 = $(this).closest('.field');
+
+          if (_field2.hasClass('required')) {
+            add_notification_page('Не заполнено поле: ' + _field2.find('.title_section').text(), 'error');
+
+            _field2.addClass('error');
+
+            errors++;
+          }
+        } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
+
+        data.append(current_name, $(this).val());
+      }
+    });
+    console.log('before for');
+
+    var _iterator2 = _createForOfIteratorHelper(data.values()),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var value = _step2.value;
+        console.log(value);
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    if (errors > 0) {
+      return;
+    }
+
+    $.ajax({
+      url: window.ajaxUpdateReturnItem,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function success(data) {
+        console.log('success');
+        console.log('status = ' + data.status);
+        add_notification_page('Запись обновлена', 'ok');
+        removeLoader();
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+        removeLoader();
+      }
+    });
+  });
+  $('.js-delete-return-item').click(function (event) {
+    addLoader();
+    $url = window.location.href;
+    $arr = $url.split('/');
+    var data = new FormData();
+    data.append('post_id', $arr[$arr.length - 1]);
+    $.ajax({
+      url: window.ajaxDeleteReturnItem,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function success(data) {
+        console.log('success');
+        console.log('status = ' + data.status);
+        removeLoader();
+
+        if (data.status === 'ok') {
+          console.log('url = ' + data.url);
+          window.location.replace(data.url);
+        }
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+        removeLoader();
       }
     });
   });

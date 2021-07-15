@@ -4,7 +4,7 @@
         <div class="header_icon">
             <i class="fas fa-image"></i>
         </div>
-        <div class="header_text">Редактирование записи</div>
+        <div class="header_text">@yield('main-block-title')</div>
     </div>
     <div class="header_admin show_not"><!-- show_not -->
         <div class="header_admin_notification active">

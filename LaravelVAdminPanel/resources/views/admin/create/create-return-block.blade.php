@@ -4,6 +4,10 @@
     Возврат
 @endsection
 
+@section('main-block-title')
+    Создание записи
+@endsection
+
 @section('all-block-menu')
     active
 @endsection
@@ -12,11 +16,9 @@
     active
 @endsection
 
-
 @section('main-content')
-    @include('admin.edit.edit-return-item')
+    @include('admin.returnTemplate.return')
 @endsection
-
 
 @section('right-aside')
     <aside class="sidebar_right">
@@ -50,7 +52,7 @@
                     </ul>
                 </div>
                 <div class="field_section_container_button border_top padding_10">
-                    <button class="button style_button add-new-page js-save-return-item" type="button">
+                    <button class="button aside-style-button style_button add-new-page js-save-return-item" type="button">
                         Создать запись
                     </button>
                     {{--                    <a href="{{ route('all-return-page') }}" class="create style_button add-new-page js-save-return-item">--}}

@@ -40,11 +40,13 @@ class BlockReturnController extends Controller
 
             $return_item->save();
         }
+//        echo route('edit-return-block') . $return_block->id;
         return response()
             ->json([
                 'status'    => 'ok',
-                'url'       => $return_block->id,
+                'url'       => route('edit-return-block',$return_block->id),
             ]);
+//        return redirect()->route('edit-return-block',$return_block->id);
     }
 
     public function edit_return_item($id){
@@ -58,7 +60,6 @@ class BlockReturnController extends Controller
         foreach ($all_fields as $fields){
             $return_item_page = $this->create_fields_array(explode('_', $fields->field_name), $fields->field_data, $return_item_page);
         }
-//        var_export($return_item_page);
         return view('admin/edit/edit-return-item', [
             'files'     => Files::orderBy('id', 'DESC')->get(),
             'fields'    => $return_item_page,
@@ -74,7 +75,6 @@ class BlockReturnController extends Controller
                 $this->create_fields_array( array_slice($fields, 1), $value,$return_item_page[$fields[0]], $get_image_info);
            return $return_item_page;
         } else{
-//            var_export($get_image_info);
             if($get_image_info){
                 $img_path = Files::find($value);
                 if(isset($img_path)) {
@@ -89,9 +89,54 @@ class BlockReturnController extends Controller
                     ];
                 }
             }
-//            var_export($fields);
             return $value;
         }
+    }
+
+    public function update_return_item(Request $request){
+        $all_fields = $request->input();
+//        var_export($all_fields);
+//        echo 'post id = ' . $request->input('post_id');
+        $return_block = ReturnBlocks::find($request->input('post_id'));
+        $return_block->draft = $request->input('draft');
+        $return_block->post_title = $request->input('post_title');
+        $return_block->save();
+        ReturnItem::where('return_block_id', '=', $return_block->id)->delete();
+        foreach ($all_fields as $name_field => $value){
+            if($name_field == 'post_title' || $name_field == 'draft'|| $name_field == 'post_id')
+                continue;
+
+            $return_item = new ReturnItem;
+            $return_item->return_block_id = $return_block->id;
+            $return_item->field_name = $name_field;
+            $return_item->field_data = $value;
+
+            $return_item->save();
+        }
+        return response()
+            ->json([
+                'status'    => 'ok',
+                'url'       => $return_block->id,
+            ]);
+    }
+
+    public function delete_return_item(Request $request){
+        ReturnBlocks::find($request->input('post_id'))->delete();
+        return response()
+            ->json([
+                'status'    => 'ok',
+                'url'       => route('all-return-page'),
+            ]);
+    }
+
+    public function change_draft_return_item(Request $request){
+        $post = ReturnBlocks::find($request->input('post_id'));
+        $post->draft = $request->input('draft');
+        $post->save();
+        return response()
+            ->json([
+                'status'    => 'ok',
+            ]);
     }
 
 }

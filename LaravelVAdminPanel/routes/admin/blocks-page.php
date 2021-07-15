@@ -39,7 +39,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         )->name('create-return-block');
         Route::get('/edit/{id}',
             [\App\Http\Controllers\BlockReturnController::class, 'edit_return_item']
-        )->name('edit-return-clock');
+        )->name('edit-return-block');
     });
 
 

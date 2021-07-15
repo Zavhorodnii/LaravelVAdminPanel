@@ -43,3 +43,19 @@ Route::prefix('create')->group(function (){
         [\App\Http\Controllers\BlockReturnController::class, 'create_return_item']
     )->name('create-return-item');
 });
+
+Route::prefix('update')->group(function (){
+    Route::post('/return-item',
+        [\App\Http\Controllers\BlockReturnController::class, 'update_return_item']
+    )->name('update-return-item');
+});
+
+Route::prefix('delete')->group(function (){
+    Route::post('/return-item',
+        [\App\Http\Controllers\BlockReturnController::class, 'delete_return_item']
+    )->name('delete-return-item');
+});
+
+Route::post('change-draft',
+    [\App\Http\Controllers\BlockReturnController::class, 'change_draft_return_item']
+)->name('change-draft-status');
