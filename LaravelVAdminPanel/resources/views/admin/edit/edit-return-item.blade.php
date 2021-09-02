@@ -13,7 +13,7 @@
 @endsection
 
 @section('main-content')
-    @include('admin.returnTemplate.return')
+    @include('admin.TemplatePages.return')
 @endsection
 
 @section('right-aside')
@@ -73,6 +73,11 @@
 
 
 @section('ajaxUrl')
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
     <script>
         window.ajaxUploadUrl = '{{ route('upload-file') }}';
         window.ajaxGetSelectedInfo = '{{ route('get-selected-info') }}';

@@ -82,9 +82,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('all-return-page') }}" class="sidebar_menu_item @yield('all-return-submeny-all')">
+                                <a href="{{ route('guarantees-page') }}" class="sidebar_menu_item @yield('all-return-submeny-all')">
                                     <span class="sidebar_menu_text">
-                                        Возврат
+                                        Гарантии
                                     </span>
                                 </a>
                             </li>
@@ -143,13 +143,13 @@
                 <li>
                     <div class="control_menu"><!-- active -->
                         <div class="main_menu sidebar_menu_item ">
-                            <a href="#">
+                            <a href="{{ route('all-products') }}">
                                         <span class="sidebar_menu_icon">
                                             <i class="fas fa-file"></i>
                                         </span>
                             </a>
-                            <a href="#">
-                                <span class="sidebar_menu_text">Открытое меню</span>
+                            <a href="{{ route('all-products') }}">
+                                <span class="sidebar_menu_text">Товары</span>
                             </a>
                             <span class="sidebar_control_menu_item js-open-close-menu"><!-- none -->
                                         <i class="fas fa-chevron-down"></i>
@@ -157,8 +157,8 @@
                         </div>
                         <ul class="sidebar_menu_items">
                             <li>
-                                <a href="#" class="sidebar_menu_item active">
-                                    <span class="sidebar_menu_text">Открытое меню Открытое меню Открытое меню Открытое меню Открытое меню Открытое меню Открытое меню Открытое меню Открытое меню</span>
+                                <a href="{{ route('all-products') }}" class="sidebar_menu_item active">
+                                    <span class="sidebar_menu_text">Все товары</span>
                                 </a>
                             </li>
                             <li>

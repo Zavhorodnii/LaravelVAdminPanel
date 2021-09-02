@@ -112,13 +112,25 @@ $(document).ready(function () {
     function switch_closed(event) {
         $(this).closest('.custom_switch').toggleClass('switch_off');
         if ($(this).closest('.custom_switch').hasClass('switch_off')) {
-            console.log('0');
             $(this).closest('.switch_section').find('.switch_status').attr('value', '0');
         } else {
-            console.log('1');
             $(this).closest('.switch_section').find('.switch_status').attr('value', '1');
         }
     }
+
+    function prew_switch_control(){
+        let $items = $('.switch_section');
+        $items.each
+        (
+            function (index) {
+                if ($(this).find('.switch_status').attr('value') === '1'){
+                    $(this).find('.custom_switch').removeClass('switch_off')
+                }
+            }
+        );
+    }
+
+    prew_switch_control()
 
     $('.copy_item').click(control_multiple_item);
 
@@ -410,7 +422,7 @@ $(document).ready(function () {
         // }
 
 
-        console.log(' window.ajaxUploadUrl = ' +  window.ajaxUploadUrl)
+        // console.log(' window.ajaxUploadUrl = ' +  window.ajaxUploadUrl)
 
         let block_upload_file = $('.js-upload-file');
         block_upload_file.find('.file_name').text(selected_file.name)
@@ -438,9 +450,9 @@ $(document).ready(function () {
                 console.log('success');
                 upload_button.removeClass('none');
                 block_upload_file.addClass('none');
-                console.log(data.status);
-                console.log(data.size);
-                console.log('id = ' + data.id);
+                // console.log(data.status);
+                // console.log(data.size);
+                // console.log('id = ' + data.id);
 
 
                 if(data.status === 'ok'){
@@ -454,7 +466,7 @@ $(document).ready(function () {
 
                     let tt = $(image)
                     tt.click(js_select_upload_file)
-                    console.log(tt.find('.js-select-upload-file'))
+                    // console.log(tt.find('.js-select-upload-file'))
                     $('.uploaded_files').prepend(tt)
                 }
 
@@ -498,9 +510,9 @@ $(document).ready(function () {
         data.append('id', $id_file);
         data.append('_token', $('meta[name="csrf-token"]').attr('content'));
 
-        for (let value of data.values()) {
-            console.log(value);
-        }
+        // for (let value of data.values()) {
+        //     console.log(value);
+        // }
 
         $.ajax({
             url: window.ajaxGetSelectedInfo,
@@ -510,7 +522,7 @@ $(document).ready(function () {
             contentType: false,
             data: data,
             success: function(data){
-                console.log('success');
+                // console.log('success');
 
                 if(data.status === 'ok'){
                     $('.js-paste-file-name').val( data.name)
@@ -535,7 +547,7 @@ $(document).ready(function () {
     $('.js-delete-file').click(function (event){
         console.log('delete_file')
         let selected_file = get_id_selected_file();
-        console.log('single file = ' + selected_file)
+        // console.log('single file = ' + selected_file)
 
         if(!selected_file){
             console.log('not selected file')

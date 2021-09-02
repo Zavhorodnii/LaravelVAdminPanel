@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReturnBlocksTable extends Migration
+class CreateGuaranteesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateReturnBlocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('return_blocks', function (Blueprint $table) {
+        Schema::create('guarantees', function (Blueprint $table) {
             $table->id();
-            $table->boolean('draft')->default(false);
-            $table->string('post_title');
+            $table->string('title')->nullable();
+            $table->foreignId('file_id')
+                ->nullable()
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateReturnBlocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('return_blocks');
+        Schema::dropIfExists('guarantees');
     }
 }

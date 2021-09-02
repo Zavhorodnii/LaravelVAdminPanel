@@ -949,7 +949,10 @@ option {
 .selected_image {
     height: 150px;
     transition: all .3s ease-out;
+}
 
+.gallery .selected_image{
+    height: 120px;
 }
 
 .image_section {

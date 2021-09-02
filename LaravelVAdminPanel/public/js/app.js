@@ -1834,18 +1834,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/ajax.js":
-/*!******************************!*\
-  !*** ./resources/js/ajax.js ***!
-  \******************************/
-/***/ (() => {
-
-$(document).ready(function () {
-  console.log('ajax.js ready');
-});
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -1854,9 +1842,7 @@ $(document).ready(function () {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./index */ "./resources/js/index.js");
-
-__webpack_require__(/*! ./ajax */ "./resources/js/ajax.js");
+__webpack_require__(/*! ./index */ "./resources/js/index.js"); // require('./ajax');
 
 /***/ }),
 
@@ -2018,14 +2004,22 @@ $(document).ready(function () {
     $(this).closest('.custom_switch').toggleClass('switch_off');
 
     if ($(this).closest('.custom_switch').hasClass('switch_off')) {
-      console.log('0');
       $(this).closest('.switch_section').find('.switch_status').attr('value', '0');
     } else {
-      console.log('1');
       $(this).closest('.switch_section').find('.switch_status').attr('value', '1');
     }
   }
 
+  function prew_switch_control() {
+    var $items = $('.switch_section');
+    $items.each(function (index) {
+      if ($(this).find('.switch_status').attr('value') === '1') {
+        $(this).find('.custom_switch').removeClass('switch_off');
+      }
+    });
+  }
+
+  prew_switch_control();
   $('.copy_item').click(control_multiple_item);
 
   function control_multiple_item(event) {
@@ -2288,8 +2282,8 @@ $(document).ready(function () {
     data.append('_token', $('meta[name="csrf-token"]').attr('content')); // for (let value of data.values()) {
     //     console.log(value);
     // }
+    // console.log(' window.ajaxUploadUrl = ' +  window.ajaxUploadUrl)
 
-    console.log(' window.ajaxUploadUrl = ' + window.ajaxUploadUrl);
     var block_upload_file = $('.js-upload-file');
     block_upload_file.find('.file_name').text(selected_file.name);
     block_upload_file.removeClass('none');
@@ -2313,16 +2307,15 @@ $(document).ready(function () {
       success: function success(data) {
         console.log('success');
         upload_button.removeClass('none');
-        block_upload_file.addClass('none');
-        console.log(data.status);
-        console.log(data.size);
-        console.log('id = ' + data.id);
+        block_upload_file.addClass('none'); // console.log(data.status);
+        // console.log(data.size);
+        // console.log('id = ' + data.id);
 
         if (data.status === 'ok') {
           var image = '\n' + '                    <div class="single_item js-select-upload-file">\n' + '                        <img class="single-upload-file js_paste_name"\n' + '                             type="text" name="name6"\n' + '                             src="' + data.path + '"\n' + '                             alt="" data-id="' + data.id + '">\n' + '                    </div>';
           var tt = $(image);
-          tt.click(js_select_upload_file);
-          console.log(tt.find('.js-select-upload-file'));
+          tt.click(js_select_upload_file); // console.log(tt.find('.js-select-upload-file'))
+
           $('.uploaded_files').prepend(tt);
         }
       },
@@ -2356,21 +2349,9 @@ $(document).ready(function () {
   function ajax_get_file_info($id_file) {
     var data = new FormData();
     data.append('id', $id_file);
-    data.append('_token', $('meta[name="csrf-token"]').attr('content'));
-
-    var _iterator2 = _createForOfIteratorHelper(data.values()),
-        _step2;
-
-    try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        var value = _step2.value;
-        console.log(value);
-      }
-    } catch (err) {
-      _iterator2.e(err);
-    } finally {
-      _iterator2.f();
-    }
+    data.append('_token', $('meta[name="csrf-token"]').attr('content')); // for (let value of data.values()) {
+    //     console.log(value);
+    // }
 
     $.ajax({
       url: window.ajaxGetSelectedInfo,
@@ -2380,8 +2361,7 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        console.log('success');
-
+        // console.log('success');
         if (data.status === 'ok') {
           $('.js-paste-file-name').val(data.name);
           $('.js-get-file-alt-name').val(data.alt);
@@ -2403,8 +2383,7 @@ $(document).ready(function () {
 
   $('.js-delete-file').click(function (event) {
     console.log('delete_file');
-    var selected_file = get_id_selected_file();
-    console.log('single file = ' + selected_file);
+    var selected_file = get_id_selected_file(); // console.log('single file = ' + selected_file)
 
     if (!selected_file) {
       console.log('not selected file');

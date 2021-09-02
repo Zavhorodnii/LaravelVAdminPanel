@@ -804,6 +804,10 @@ option:hover {
   transition: all 0.3s ease-out;
 }
 
+.gallery .selected_image {
+  height: 120px;
+}
+
 .image_section {
   position: relative;
   width: -webkit-fit-content;

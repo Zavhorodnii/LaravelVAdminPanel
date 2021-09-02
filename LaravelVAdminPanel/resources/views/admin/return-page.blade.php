@@ -87,7 +87,7 @@
             <div class="field_section_header padding_10">
 
                 <div class="control-tab">
-                    <div class="header_text">Управление3</div>
+                    <div class="header_text">Управление</div>
                     <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
                 </div>
             </div>

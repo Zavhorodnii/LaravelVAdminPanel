@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ReturnBlocks extends Model
+class Catalog extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'title',
+        'description',
         'draft',
-        'post_title',
+        'show_top',
+        'important_title',
+        'important_link',
     ];
 }

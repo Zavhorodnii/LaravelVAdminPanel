@@ -38,16 +38,16 @@ Route::prefix('upload')->group(function (){
     )->name('delete-selected-file');
 });
 
-Route::prefix('create')->group(function (){
-    Route::post('/return-item',
-        [\App\Http\Controllers\BlockReturnController::class, 'create_return_item']
-    )->name('create-return-item');
-});
 
 Route::prefix('update')->group(function (){
-    Route::post('/return-item',
-        [\App\Http\Controllers\BlockReturnController::class, 'update_return_item']
-    )->name('update-return-item');
+    Route::post('/guarantees',
+        [\App\Http\Controllers\GuaranteesController::class, 'update_guarantees']
+    )->name('update_guarantees');
+
+    Route::post('catalog',
+        [\App\Http\Controllers\BlockCatalogController::class, 'update_catalog_item']
+    )->name('update-catalog-item');
+
 });
 
 Route::prefix('delete')->group(function (){

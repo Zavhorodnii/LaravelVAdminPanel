@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('page-title')
-    Возврат
+    Каталог
 @endsection
 
 @section('main-block-title')
@@ -12,12 +12,12 @@
     active
 @endsection
 
-@section('all-return-submeny-all')
+@section('all-catalog-submeny-all')
     active
 @endsection
 
 @section('main-content')
-    @include('admin.TemplatePages.return')
+    @include('admin.TemplatePages.catalog-item')
 @endsection
 
 @section('right-aside')
@@ -52,7 +52,11 @@
                     </ul>
                 </div>
                 <div class="field_section_container_button border_top padding_10">
-                    <button class="button aside-style-button style_button add-new-page js-save-return-item" type="button">
+{{--                    <button class="button aside-style-button style_button add-new-page js-save-return-item" type="button">--}}
+{{--                        Создать запись--}}
+{{--                    </button>--}}
+
+                    <button class="button aside-style-button style_button add-new-page js-update-post-item" type="button">
                         Создать запись
                     </button>
                     {{--                    <a href="{{ route('all-return-page') }}" class="create style_button add-new-page js-save-return-item">--}}
@@ -70,20 +74,16 @@
 
 
 @section('ajaxUrl')
+{{--    <script>--}}
+{{--        tinymce.init({--}}
+{{--            selector: 'textarea'--}}
+{{--        });--}}
+{{--    </script>--}}
     <script>
-        tinymce.init({
-            selector: 'textarea'
-        });
-    </script>
-    <script>
-        window.ajaxUploadUrl = '{{ route('upload-file') }}';
-        window.ajaxGetSelectedInfo = '{{ route('get-selected-info') }}';
-        window.ajaxUpdateFileInfo = '{{ route('update-file-info') }}';
-        window.ajaxDeleteSelectedFile = '{{ route('delete-selected-file') }}';
-        window.ajaxCreateReturnItem = '{{ route('create-return-item') }}';
+        window.ajax_update_post = '{{ route('update-catalog-item') }}';
     </script>
 @endsection
 
 @section('js-files')
-    <script src="{{ mix('js/returnPage.js') }}"></script>
+    <script src="{{ mix('js/control_posts.js') }}"></script>
 @endsection
