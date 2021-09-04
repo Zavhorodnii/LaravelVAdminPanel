@@ -54,7 +54,7 @@
 {{--        });--}}
 {{--    </script>--}}
     <script>
-        window.ajax_update_post = '{{ route('update_guarantees') }}';
+        window.ajax_update_post = '{{ route('edit-block-guarantees') }}';
     </script>
 @endsection
 

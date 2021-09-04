@@ -16,19 +16,24 @@ class GuaranteesController extends Controller
         ]);
     }
 
-    function update_guarantees(Request $request){
+    function edit_block_guarantees(Request $request){
+
+//        var_export($request->input());
         $array_fields = get_fields_val($request);
 
         Guarantees::query()->delete();
 
+//        var_export($array_fields);
+
         foreach( $array_fields as $fields ){
-            foreach ( $fields as $key=>$value) {
-            $guarantees = new Guarantees;
-            $guarantees->title = $value['inputField'];
-            $guarantees->file_id = $value['imageField'];
-            $guarantees->description = $value['textareaInput'];
-            $guarantees->save();
-            }
+            if( is_array($fields) )
+                foreach ( $fields as $key=>$value) {
+                    $guarantees = new Guarantees;
+                    $guarantees->title = $value['inputField'];
+                    $guarantees->file_id = $value['imageField'];
+                    $guarantees->description = $value['textareaInput'];
+                    $guarantees->save();
+                }
         }
 
         return response()

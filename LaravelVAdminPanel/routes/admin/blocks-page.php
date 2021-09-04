@@ -28,31 +28,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/how-we-work',
         [\App\Http\Controllers\BlockHowWeWorkController::class, 'get_all_how_we_work']
     )->name('all-how-we-work-page');
-
-
-    Route::prefix('guarantees')->group(function(){
-        Route::get('/',
+    Route::get('/guarantees',
             [\App\Http\Controllers\GuaranteesController::class, 'get_all_guarantees']
-        )->name('guarantees-page');
-//        Route::get('/create',
-//            [\App\Http\Controllers\BlockReturnController::class, 'create_return_block']
-//        )->name('create-return-block');
-//        Route::get('/edit/{id}',
-//            [\App\Http\Controllers\BlockReturnController::class, 'edit_return_item']
-//        )->name('edit-return-block');
-    });
-
-
-    Route::prefix('products')->group(function(){
-        Route::get('/',
-            [\App\Http\Controllers\ProductController::class, 'all_products']
-        )->name('all-products');
-        Route::get('/create',
-            [\App\Http\Controllers\ProductController::class, 'create_product']
-        )->name('create-product');
-    });
-
-
+    )->name('guarantees-page');
     Route::get('/review',
         [\App\Http\Controllers\BlockReviewsController::class, 'get_all_review']
     )->name('all-review-page');
@@ -60,16 +38,36 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         [\App\Http\Controllers\BlockStockKitsController::class, 'get_all_stock_kits']
     )->name('all-stock-kits-page');
 
+    Route::prefix('products')->group(function(){
+        Route::get('/',
+            [\App\Http\Controllers\ProductController::class, 'all_products']
+        )->name('all-products');
+//        Route::get('/create',
+//            [\App\Http\Controllers\ProductController::class, 'create_product']
+//        )->name('create-product');
+    });
+
+
+
 
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',
             [\App\Http\Controllers\BlockCatalogController::class, 'create_catalog_item']
         )->name('create-catalog-item');
-        Route::get('/product',
-            [\App\Http\Controllers\ProductController::class, 'create_product_item']
-        )->name('create-product-item');
+//        Route::get('/product',
+//            [\App\Http\Controllers\ProductController::class, 'create_product_item']
+//        )->name('create-product-item');
     });
+
+    Route::prefix('/update')->group(function(){
+        Route::get('/catalog-item/{id}',
+            [\App\Http\Controllers\BlockCatalogController::class, 'update_catalog_item']
+        )->name('update_catalog_item');
+    });
+
+
+//    Route::get('edit')
 });
 
 

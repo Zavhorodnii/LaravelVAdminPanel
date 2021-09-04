@@ -18,6 +18,28 @@
 
 @section('main-content')
     <section class="content ">
+        <div class="field_section js-control-notification-section none">
+            <div class="field_section_container">
+                <div class="notification-save-message">
+                    <ul class=" js-paste-notifications">
+                        {{--                        <li class="style-notification padding_t_10 padding_lrb_10 error">--}}
+                        {{--                            <p>--}}
+                        {{--                                Не заполнено оглавление записи--}}
+                        {{--                            </p>--}}
+                        {{--                            <div class="notification_message_control js-remove-page-notif ">--}}
+                        {{--                                <i class="fas fa-times delete_notif"></i>--}}
+                        {{--                            </div>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li class="padding_t_10 padding_lrb_10 ok">--}}
+                        {{--                            <p>--}}
+                        {{--                                Очень длинное уведомление в виде обычного серого текста--}}
+                        {{--                                Скорее всего это обычное уведомление--}}
+                        {{--                            </p>--}}
+                        {{--                        </li>--}}
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="field_section "> <!--hid_block-->
             <div class="field_section_header padding_10">
 
@@ -47,22 +69,22 @@
                         </li>
 
                         @foreach( $blocks as $block)
-                            <li class="single-page border_top padding_10">
+                            <li class="single-page js-delete-item border_top padding_10">
                                 <div class="main_info">
                                     <div class="title">
-                                        <a href="{{ route('edit-return-block', $block->id) }}" class="title_section">
-                                            {{ $block->post_title }}
+                                        <a href="{{ route('update_catalog_item', $block->id) }}" class="title_section">
+                                            {{ $block->title }}
                                         </a>
                                     </div>
                                     <div class="control">
-                                        <a href="{{ route('edit-return-block', $block->id) }}" class="edit-page">Редактировать</a>
-                                        <button type="button" data-block-id="{{ $block->id }}" class="remove-page js-delete-return-item ">удалить</button>
+                                        <a href="{{ route('update_catalog_item', $block->id) }}" class="edit-page">Редактировать</a>
+                                        <button type="button" data-block-id="{{ $block->id }}" class="remove-page js-delete-post-item ">удалить</button>
                                     </div>
                                 </div>
                                 <div class="addition_info">
                                     <div class="draft-info">
                                         <div class="custom_checkbox js-ajax-check-control @if($block->draft === 1) checked @endif "> <!--checked-->
-                                            <div class="custom_checkbox_square click"></div>
+                                            <div class="custom_checkbox_square click js-change-draft-post "></div>
                                             <input class="custom_input_text" data-block-id="{{ $block->id }}" value="{{ $block->draft }}">
                                         </div>
                                     </div>
@@ -106,11 +128,11 @@
 
 @section('ajaxUrl')
     <script>
-        window.ajaxDeleteReturnItem = '{{ route('delete-return-item') }}';
-        window.ajaxChangeDraftStatus = '{{ route('change-draft-status') }}';
+        window.ajax_delete_post = '{{ route('delete-catalog-item') }}';
+        window.ajax_change_draft_status = '{{ route('change_draft_catalog_item') }}';
     </script>
 @endsection
 
 @section('js-files')
-    <script src="{{ mix('js/main_all_block.js') }}"></script>
+    <script src="{{ mix('js/control_posts.js') }}"></script>
 @endsection

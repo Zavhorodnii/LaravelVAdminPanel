@@ -39,23 +39,28 @@ Route::prefix('upload')->group(function (){
 });
 
 
-Route::prefix('update')->group(function (){
+Route::prefix('edit-block')->group(function (){
     Route::post('/guarantees',
-        [\App\Http\Controllers\GuaranteesController::class, 'update_guarantees']
-    )->name('update_guarantees');
-
-    Route::post('catalog',
-        [\App\Http\Controllers\BlockCatalogController::class, 'update_catalog_item']
-    )->name('update-catalog-item');
-
+        [\App\Http\Controllers\GuaranteesController::class, 'edit_block_guarantees']
+    )->name('edit-block-guarantees');
 });
+
+Route::prefix('create-block')->group(function (){
+    Route::post('/catalog',
+        [\App\Http\Controllers\BlockCatalogController::class, 'create']
+    )->name('create_block_catalog');
+});
+
 
 Route::prefix('delete')->group(function (){
-    Route::post('/return-item',
-        [\App\Http\Controllers\BlockReturnController::class, 'delete_return_item']
-    )->name('delete-return-item');
+    Route::post('/catalog-item',
+        [\App\Http\Controllers\BlockCatalogController::class, 'delete_item']
+    )->name('delete-catalog-item');
 });
 
-Route::post('change-draft',
-    [\App\Http\Controllers\BlockReturnController::class, 'change_draft_return_item']
-)->name('change-draft-status');
+
+Route::prefix('change-draft')->group(function(){
+    Route::post('/catalog-item',
+        [\App\Http\Controllers\BlockCatalogController::class, 'change_draft_catalog_item']
+    )->name('change_draft_catalog_item');
+});

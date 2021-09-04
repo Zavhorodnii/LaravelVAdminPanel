@@ -1,5 +1,6 @@
 
 <section class="content">
+    <div class="js-get-post-id none" data-post-id="@if(isset($fields)){{ $fields['post_id'] }}@endif"></div>
     <div class="field_section js-control-notification-section none">
         <div class="field_section_container">
             <div class="notification-save-message">
@@ -41,18 +42,27 @@
                     Оглавление<span>*</span>
                 </div>
                 <input class="style_input_field js_paste_name"
-                       type="text" data-type-filed="inputField" name="title">
+                       type="text" data-type-filed="inputField"
+                       name="title"
+                       @if(isset($fields['title']))
+                           value="{{ $fields['title'] }}"
+                       @endif
+                >
             </div>
             <div class="section_input required field border_top padding_10 js_find_elem">
                 <div class="title_section">
                     Описание<span>*</span>
                 </div>
                 <input class="style_input_field js_paste_name"
-                       type="text" data-type-filed="inputField" name="description">
+                       type="text" data-type-filed="inputField" name="description"
+                       @if(isset($fields['description']))
+                           value="{{ $fields['description'] }}"
+                       @endif
+                >
             </div>
             <div class="switch_section border_top padding_10 js_find_elem">
                 <div class="title_section">Показать топ</div>
-                <input class="switch_status none js_paste_name" name="show_top" value="1">
+                <input class="switch_status none js_paste_name" data-type-filed="switchField" name="show-top" value="@if(isset($fields['show_top'])){{ $fields['show_top'] }}@endif">
                 <div class="custom_switch switch_off"><!-- switch_off --->
                     <div class="custom_switch_on switch_style">ВКЛ</div>
                     <div class="custom_switch_off switch_style">ВЫКЛ</div>
@@ -64,14 +74,22 @@
                     Важное оглавление
                 </div>
                 <input class="style_input_field js_paste_name"
-                       type="text" data-type-filed="inputField" name="important_title">
+                       type="text" data-type-filed="inputField" name="important_title"
+                       @if(isset($fields['important_title']))
+                           value="{{ $fields['important_title'] }}"
+                        @endif
+                >
             </div>
             <div class="section_input field border_top padding_10 js_find_elem">
                 <div class="title_section">
                     Ссылка важного оглавления
                 </div>
                 <input class="style_input_field js_paste_name"
-                       type="text" data-type-filed="inputField" name="important_link">
+                       type="text" data-type-filed="inputField" name="important_link"
+                       @if(isset($fields['important_link']))
+                           value="{{ $fields['important_link'] }}"
+                        @endif
+                >
             </div>
 
 
@@ -80,32 +98,34 @@
                     Повторитель<span>*</span></div>
                 <div class="content_repeater">
 
-                    @if(isset($fields))
-                        @foreach( $fields as $repeater1_key => $repeater1_value )
+                    @if(isset($fields['repeater']))
+                        @foreach( $fields['repeater'] as $repeater1_key => $repeater1_value )
                             <div class="content_section repeater_style">
                                 <div class="count_item">
                                     {{ $repeater1_key }}
                                 </div>
                                 <div class="content_item">
-                                    <div class="section_input field border_top padding_10 js_find_elem">
+                                    <div class="section_input required field border_top padding_10 js_find_elem">
                                         <div class="title_section">
                                             Оглавление<span>*</span>
                                         </div>
                                         <input class="style_input_field js_paste_name"
-                                               type="text" name="repeater1_{{ $repeater1_key }}_inputField" data-base_name="inputField"
-                                               value="{{ $repeater1_value['inputField'] }}">
+                                               type="text" data-type-filed="inputField" name="repeater1_{{ $repeater1_key }}_title"
+                                               data-base_name="title"
+                                               value="{{ $repeater1_value['title'] }}">
                                     </div>
                                     <div class="image field required border_top padding_10 js_find_elem">
                                         <div class="title_section">
-                                            Иконка<span>*</span></div>
-                                        <button class="choice js-open-file-popup style_button @if($repeater1_value['imageField']['status'] == 'ok') none @endif"
+                                            Изображение<span>*</span></div>
+                                        <button class="choice js-open-file-popup style_button @if($repeater1_value['file-id']['status'] == 'ok') none @endif"
                                                 type="file" data-popup="show-popup">Выбрать
                                         </button>
-                                        <div class="image_section @if($repeater1_value['imageField']['status'] == 'error') none @endif">
+                                        <div class="image_section @if($repeater1_value['file-id']['status'] == 'error') none @endif">
                                             <img class="selected_image js_paste_name js-paste-selected-file"
-                                                 name="repeater1_{{ $repeater1_key }}_imageField" data-base_name="imageField"
-                                                 src="@if($repeater1_value['imageField']['status'] == 'ok') {{ $repeater1_value['imageField']['url'] }} @endif"
-                                                 alt="" data-id="@if($repeater1_value['imageField']['status'] == 'ok') {{ $repeater1_value['imageField']['id'] }} @endif">
+                                                 name="repeater1_{{ $repeater1_key }}_file-id" data-type-filed="imageField"
+                                                 data-base_name="file-id"
+                                                 src="@if($repeater1_value['file-id']['status'] == 'ok') {{ $repeater1_value['file-id']['url'] }} @endif"
+                                                 alt="" data-id="@if($repeater1_value['file-id']['status'] == 'ok') {{ $repeater1_value['file-id']['id'] }} @endif">
                                             <div class="control_buttons">
                                                 <button
                                                     class="change style_button js-change-selected-image js-open-file-popup"
@@ -120,14 +140,32 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-area field required section_input border_top padding_10 js_find_elem">
+                                    <div class="section_input required field border_top padding_10 js_find_elem">
                                         <div class="title_section">
-                                            Описание<span>*</span>
+                                            Ссылка на страницу<span>*</span>
                                         </div>
-                                        <textarea rows="5"
-                                                  class="style_input_field style_custom_scroll js_paste_name"
-                                                  type="text" name="repeater1_{{ $repeater1_key }}_textareaInput" data-base_name="textareaInput"
-                                                  required>{{ $repeater1_value['textareaInput'] }}</textarea>
+                                        <input class="style_input_field js_paste_name"
+                                               type="text" data-type-filed="inputField" name="repeater1_{{ $repeater1_key }}_page-link"
+                                               data-base_name="page-link"
+                                               value="{{ $repeater1_value['page-link'] }}">
+                                    </div>
+                                    <div class="section_input field border_top padding_10 js_find_elem">
+                                        <div class="title_section">
+                                            Оглавление скрола
+                                        </div>
+                                        <input class="style_input_field js_paste_name"
+                                               type="text" data-type-filed="inputField" name="repeater1_{{ $repeater1_key }}_top_title"
+                                               data-base_name="top_title"
+                                               value="{{ $repeater1_value['top_title'] }}">
+                                    </div>
+                                    <div class="section_input field border_top padding_10 js_find_elem">
+                                        <div class="title_section">
+                                            Скрол к элементу
+                                        </div>
+                                        <input class="style_input_field js_paste_name"
+                                               type="text" data-type-filed="inputField" name="repeater1_{{ $repeater1_key }}_top_link"
+                                               data-base_name="top_link"
+                                               value="{{ $repeater1_value['top_link'] }}">
                                     </div>
                                 </div>
                                 <div class="control_item border_solid">
@@ -164,7 +202,7 @@
                                     Оглавление<span>*</span>
                                 </div>
                                 <input class="style_input_field js_paste_name"
-                                       type="text" name="title">
+                                       type="text" data-type-filed="inputField" name="title">
                             </div>
                             <div class="image field required border_top padding_10 js_find_elem">
                                 <div class="title_section">
@@ -174,7 +212,7 @@
                                 </button>
                                 <div class="image_section none">
                                     <img class="selected_image js_paste_name js-paste-selected-file"
-                                         name="file_id_imageField"
+                                         name="file-id" data-type-filed="imageField"
                                          src=""
                                          alt="" data-id="">
                                     <div class="control_buttons">
@@ -196,21 +234,21 @@
                                     Ссылка на страницу<span>*</span>
                                 </div>
                                 <input class="style_input_field js_paste_name"
-                                       type="url" name="page_link">
+                                       type="text" data-type-filed="inputField"  name="page-link">
                             </div>
                             <div class="section_input field border_top padding_10 js_find_elem">
                                 <div class="title_section">
                                     Оглавление скрола
                                 </div>
                                 <input class="style_input_field js_paste_name"
-                                       type="text" name="top_title">
+                                       type="text" data-type-filed="inputField" name="top_title">
                             </div>
                             <div class="section_input field border_top padding_10 js_find_elem">
                                 <div class="title_section">
                                     Скрол к элементу
                                 </div>
                                 <input class="style_input_field js_paste_name"
-                                       type="text" name="top_link">
+                                       type="text" data-type-filed="inputField" name="top_link">
                             </div>
                         </div>
                         <div class="control_item border_solid">

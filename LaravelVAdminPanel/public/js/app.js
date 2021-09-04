@@ -2052,6 +2052,7 @@ $(document).ready(function () {
   }); // $('.repeater_button .add_item').click(add_button);
 
   $('.js_add_section').on('click', add_section);
+  $('.add_item').on('click', add_section);
 
   function add_section(event) {
     // let clone = $(this).closest('.repeater').children('.repeater_field')

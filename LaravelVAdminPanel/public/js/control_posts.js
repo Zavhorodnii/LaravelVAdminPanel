@@ -60,7 +60,7 @@ $(document).ready(function () {
   $('.js-update-post-item').click(function () {
     console.log('update-return-button'); // let $names = $('.content_repeater').find('[name]')
 
-    var $names = $('.field_section_container').find('[name]');
+    var $names = $('.field_section_container').find('[data-type-filed]');
     addLoader();
     remove_all_page_notif();
     var errors = 0;
@@ -80,18 +80,24 @@ $(document).ready(function () {
     // $url = window.location.href;
     // $arr = $url.split('/')
     // data.append('post_id', $arr[$arr.length - 1])
-    // data.append('post_title', post_title)
-    // console.log('draft = ' + $('.sidebar_right').find('.field_section_container')
-    //     .find('.custom_checkbox').children('.custom_input_text').val())
-    // data.append('draft', $('.sidebar_right').find('.field_section_container')
-    //     .find('.custom_checkbox').children('.custom_input_text').val())
 
+    var post_id = $('.js-get-post-id').attr('data-post-id');
+
+    if (post_id) {
+      data.append('post_id', post_id);
+    }
+
+    data.append('draft', $('.sidebar_right').find('.field_section_container').find('.custom_checkbox').children('.custom_input_text').val());
+    console.log("len = " + $names.length);
     $names.each(function (index) {
-      var current_name = $(this).attr('name');
+      console.log($(this));
+      var current_name = $(this).attr('data-type-filed');
+      var name = $(this).attr('name');
+      console.log("name = " + name);
 
       if (current_name.indexOf('imageField') !== -1) {
         var value = $(this).attr('data-id');
-        data.append(current_name, value);
+        data.append(name, value);
 
         if (value === '') {
           var field = $(this).closest('.field');
@@ -102,7 +108,7 @@ $(document).ready(function () {
             errors++;
           }
         } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
-      } else if (current_name.indexOf('inputField') !== -1 || current_name.indexOf('textareaInput') !== -1) {
+      } else if (current_name.indexOf('inputField') !== -1 || current_name.indexOf('textareaInput') !== -1 || current_name.indexOf('switchField') !== -1) {
         var _value = $(this).val();
 
         if (_value === '') {
@@ -117,7 +123,7 @@ $(document).ready(function () {
           }
         } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
 
-        data.append(current_name, $(this).val());
+        data.append(name, $(this).val());
       }
     });
     console.log('before for');
@@ -140,10 +146,10 @@ $(document).ready(function () {
       console.log('error');
       removeLoader();
       return;
-    }
+    } // removeLoader();
+    // return;
 
-    removeLoader();
-    return;
+
     $.ajax({
       url: window.ajax_update_post,
       type: 'POST',
@@ -156,11 +162,94 @@ $(document).ready(function () {
         console.log('status = ' + data.status);
         add_notification_page('Запись обновлена', 'ok');
         removeLoader();
+
+        if (data.url && !post_id) {
+          // console.log('data url = ' + data.url)
+          window.location.replace(data.url);
+        }
       },
       error: function error(jqXHR, status, errorThrown) {
         console.log('Ошибка ajax запроса: ' + status, jqXHR);
         removeLoader();
         add_notification_page('Ошибка обновления', 'error');
+      }
+    });
+  });
+  $('.js-delete-post-item').click(function (event) {
+    console.log('delete item');
+    addLoader(); // $url = window.location.href;
+    // $arr = $url.split('/')
+
+    var data = new FormData(); // data.append('post_id', $arr[$arr.length - 1])
+
+    var delete_item = null;
+    var post_id = $(this).attr('data-block-id');
+
+    if (post_id) {
+      delete_item = $(this).closest('.js-delete-item');
+    } else {
+      post_id = $('.js-get-post-id').attr('data-post-id');
+    }
+
+    if (post_id) {
+      data.append('post_id', post_id);
+    }
+
+    $.ajax({
+      url: window.ajax_delete_post,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function success(data) {
+        console.log('success');
+        console.log('status = ' + data.status);
+        removeLoader();
+        if (delete_item) delete_item.remove();else {
+          if (data.status === 'ok') {
+            window.location.replace(data.url);
+          }
+        }
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+        add_notification_page('Ошибка удаления', 'error');
+        removeLoader();
+      }
+    });
+  });
+  $('.js-change-draft-post').click(function (event) {
+    console.log('js-change-draft-post');
+    addLoader();
+    var data = new FormData();
+    var draft_block = $(this).closest('.js-ajax-check-control').find('.custom_input_text'); // console.log('draft_block = ' + draft_block.val());
+    // console.log('draft = ' + draft_block.attr('data-block-id'));
+
+    data.append('id', draft_block.attr('data-block-id'));
+    data.append('status', draft_block.val()); // removeLoader();
+    // return;
+
+    $.ajax({
+      url: window.ajax_change_draft_status,
+      type: 'POST',
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      data: data,
+      success: function success(data) {
+        console.log('success');
+        console.log('status = ' + data.status);
+        removeLoader();
+
+        if (data.status === 'error') {
+          add_notification_page('Ошибка обновления', 'error');
+        }
+      },
+      error: function error(jqXHR, status, errorThrown) {
+        console.log('Ошибка ajax запроса: ' + status, jqXHR);
+        add_notification_page('Ошибка обновления', 'error');
+        removeLoader();
       }
     });
   });
