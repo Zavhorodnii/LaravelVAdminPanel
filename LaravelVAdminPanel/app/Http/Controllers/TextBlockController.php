@@ -66,7 +66,7 @@ class TextBlockController extends Controller
         return response()
             ->json([
                 'status' => 'ok',
-                'url'    => route('all-catalog-page'),
+                'url'    => route('all-text-block'),
             ]);
     }
 

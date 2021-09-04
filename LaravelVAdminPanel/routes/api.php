@@ -69,4 +69,7 @@ Route::prefix('change-draft')->group(function(){
     Route::post('/catalog-item',
         [\App\Http\Controllers\BlockCatalogController::class, 'change_draft_catalog_item']
     )->name('change_draft_catalog_item');
+    Route::post('/text-block',
+        [\App\Http\Controllers\TextBlockController::class, 'change_draft']
+    )->name('change_draft_text_block');
 });

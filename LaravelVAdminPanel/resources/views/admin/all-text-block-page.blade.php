@@ -128,8 +128,8 @@
 
 @section('ajaxUrl')
     <script>
-        {{--window.ajax_delete_post = '{{ route('delete-catalog-item') }}';--}}
-        {{--window.ajax_change_draft_status = '{{ route('change_draft_catalog_item') }}';--}}
+        window.ajax_delete_post = '{{ route('delete_text_block') }}';
+        window.ajax_change_draft_status = '{{ route('change_draft_text_block') }}';
     </script>
 @endsection
 
