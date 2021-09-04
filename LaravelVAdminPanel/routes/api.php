@@ -49,13 +49,19 @@ Route::prefix('create-block')->group(function (){
     Route::post('/catalog',
         [\App\Http\Controllers\BlockCatalogController::class, 'create']
     )->name('create_block_catalog');
+    Route::post('/text-block',
+        [\App\Http\Controllers\TextBlockController::class, 'create']
+    )->name('create_text_block');
 });
 
 
 Route::prefix('delete')->group(function (){
     Route::post('/catalog-item',
         [\App\Http\Controllers\BlockCatalogController::class, 'delete_item']
-    )->name('delete-catalog-item');
+    )->name('delete_catalog_item');
+    Route::post('/text-block',
+        [\App\Http\Controllers\TextBlockController::class, 'delete']
+    )->name('delete_text_block');
 });
 
 

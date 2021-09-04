@@ -34,6 +34,13 @@
                         </div>
                         <ul class="sidebar_menu_items">
                             <li>
+                                <a href="{{ route('all-text-block') }}" class="sidebar_menu_item @yield('all-text-block-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Текстовые блоки
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('all-catalog-page') }}" class="sidebar_menu_item @yield('all-catalog-submeny-all')">
                                     <span class="sidebar_menu_text">
                                         Каталог

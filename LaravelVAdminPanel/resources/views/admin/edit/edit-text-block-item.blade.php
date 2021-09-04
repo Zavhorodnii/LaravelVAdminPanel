@@ -1,19 +1,19 @@
 @extends('admin.layout.app')
 
 @section('page-title')
-    Каталог
+    Теестовые блоки
 @endsection
 
 @section('all-block-menu')
     active
 @endsection
 
-@section('all-catalog-submeny-all')
+@section('all-text-block-submeny-all')
     active
 @endsection
 
 @section('main-content')
-    @include('admin.TemplatePages.catalog-item')
+    @include('admin.TemplatePages.text-block')
 @endsection
 
 @section('right-aside')
@@ -73,14 +73,14 @@
 
 
 @section('ajaxUrl')
-{{--    <script>--}}
-{{--        tinymce.init({--}}
-{{--            selector: 'textarea'--}}
-{{--        });--}}
-{{--    </script>--}}
+    {{--    <script>--}}
+    {{--        tinymce.init({--}}
+    {{--            selector: 'textarea'--}}
+    {{--        });--}}
+    {{--    </script>--}}
     <script>
-        window.ajax_update_post = '{{ route('create_block_catalog') }}';
-        window.ajax_delete_post = '{{ route('delete_catalog_item') }}';
+        window.ajax_update_post = '{{ route('create_text_block') }}';
+        window.ajax_delete_post = '{{ route('delete_text_block') }}';
     </script>
 @endsection
 

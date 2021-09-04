@@ -13,9 +13,17 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 //    Route::get('/bestsellers',
 //        [\App\Http\Controllers\BlockBestsellersController::class, 'get_all_bestsellers']
 //    )->name('all-bestsellers-page');
+    Route::get('/text-block',
+        [\App\Http\Controllers\TextBlockController::class, 'get_all_text_block']
+    )->name('all-text-block');
+
     Route::get('/catalog',
         [\App\Http\Controllers\BlockCatalogController::class, 'get_all_catalog']
     )->name('all-catalog-page');
+
+    Route::get('/guarantees',
+        [\App\Http\Controllers\GuaranteesController::class, 'get_all_guarantees']
+    )->name('guarantees-page');
 //    Route::get('/delivery',
 //        [\App\Http\Controllers\BlockDeliveryController::class, 'get_all_delivery']
 //    )->name('all-delivery-page');
@@ -28,9 +36,6 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 //    Route::get('/how-we-work',
 //        [\App\Http\Controllers\BlockHowWeWorkController::class, 'get_all_how_we_work']
 //    )->name('all-how-we-work-page');
-    Route::get('/guarantees',
-            [\App\Http\Controllers\GuaranteesController::class, 'get_all_guarantees']
-    )->name('guarantees-page');
 //    Route::get('/review',
 //        [\App\Http\Controllers\BlockReviewsController::class, 'get_all_review']
 //    )->name('all-review-page');
@@ -55,15 +60,18 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/catalog-item',
             [\App\Http\Controllers\BlockCatalogController::class, 'create_catalog_item']
         )->name('create-catalog-item');
-//        Route::get('/product',
-//            [\App\Http\Controllers\ProductController::class, 'create_product_item']
-//        )->name('create-product-item');
+        Route::get('/text-block',
+            [\App\Http\Controllers\TextBlockController::class, 'create_text_block_item']
+        )->name('create-text-block-item');
     });
 
     Route::prefix('/update')->group(function(){
         Route::get('/catalog-item/{id}',
             [\App\Http\Controllers\BlockCatalogController::class, 'update_catalog_item']
         )->name('update_catalog_item');
+        Route::get('/text-block-item/{id}',
+            [\App\Http\Controllers\TextBlockController::class, 'update']
+        )->name('update_text_block_item');
     });
 
 

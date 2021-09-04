@@ -4,43 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Files;
 use App\Models\TextBlock;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+
+require_once 'Support_files/Get_fields_val.php';
 
 class TextBlockController extends Controller
 {
     public function get_all_text_block(){
         return view('admin/all-text-block-page',[
             'blocks' => TextBlock::all(),
-//            'blocks' => [],
         ]);
     }
 
     public function create_text_block_item(){
-        return view('admin/create/create-catalog-item', [
+        return view('admin/create/create-text-block-item', [
             'files' => Files::orderBy('id', 'DESC')->get(),
-//            'fields' => $this->get_db_fields(),
-        ]);
-    }
-
-    public function update($id){
-
-        $catalog = TextBlock::find($id);
-        $item_fields['post_id'] = $id;
-        $item_fields['title'] = $catalog->title;
-        $item_fields['description'] = $catalog->description;
-        $item_fields['draft'] = $catalog->draft;
-
-//        var_export($item_fields);
-
-        return view('admin/edit/edit-catalog-item', [
-            'files'     => Files::orderBy('id', 'DESC')->get(),
-            'fields'    => $item_fields,
         ]);
     }
 
     public function create(Request $request){
-//        var_export($request->input());
-
         $post_id = $request->input('post_id');
         if ($post_id) {
             $catalog = TextBlock::find($post_id);
@@ -58,8 +41,24 @@ class TextBlockController extends Controller
         return response()
             ->json([
                 'status'    => 'ok',
-                'url'       =>  route('update_catalog_item', $catalog->id),
+                'url'       =>  route('update_text_block_item', $catalog->id),
             ]);
+    }
+
+    public function update($id){
+
+        $catalog = TextBlock::find($id);
+        $item_fields['post_id'] = $id;
+        $item_fields['title'] = $catalog->title;
+        $item_fields['draft'] = $catalog->draft;
+        $item_fields['description'] = $catalog->description;
+
+//        var_export($item_fields);
+
+        return view('admin/edit/edit-text-block-item', [
+            'files'     => Files::orderBy('id', 'DESC')->get(),
+            'fields'    => $item_fields,
+        ]);
     }
 
     public function delete(Request $request){

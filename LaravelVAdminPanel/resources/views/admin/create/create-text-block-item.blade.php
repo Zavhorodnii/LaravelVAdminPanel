@@ -1,19 +1,23 @@
 @extends('admin.layout.app')
 
 @section('page-title')
-    Каталог
+    Теестовые блоки
+@endsection
+
+@section('main-block-title')
+    Создание записи
 @endsection
 
 @section('all-block-menu')
     active
 @endsection
 
-@section('all-catalog-submeny-all')
+@section('all-text-block-submeny-all')
     active
 @endsection
 
 @section('main-content')
-    @include('admin.TemplatePages.catalog-item')
+    @include('admin.TemplatePages.text-block')
 @endsection
 
 @section('right-aside')
@@ -34,11 +38,11 @@
                            name="name7" value="">
                     <ul>
                         <li>
-                            <div class="custom_checkbox @if(isset($fields['draft']))@if($fields['draft'] == 1) checked @endif @endif">
+                            <div class="custom_checkbox ">
                                 <!--checked-->
                                 <div class="custom_checkbox_square click"></div>
                                 <input class="custom_input_text"
-                                       value="@if(isset($fields['draft'])){{ $fields['draft'] }}@endif">
+                                       value="0">
                                 <label class="title_section click"
                                        for="">
                                     Черновик
@@ -49,12 +53,7 @@
                 </div>
                 <div class="field_section_container_button border_top padding_10">
                     <button class="button aside-style-button style_button add-new-page js-update-post-item" type="button">
-                        Обновить запись
-                    </button>
-                </div>
-                <div class="field_section_container_button border_top padding_10">
-                    <button class="delete aside-style-button style_button add-new-page js-delete-post-item" type="button">
-                        Удалить запись
+                        Создать запись
                     </button>
                 </div>
             </div>
@@ -67,20 +66,15 @@
     @include('admin.include.popup-files')
 @endsection
 
-@section('main-block-title')
-    Редактирование записи
-@endsection
-
 
 @section('ajaxUrl')
-{{--    <script>--}}
-{{--        tinymce.init({--}}
-{{--            selector: 'textarea'--}}
-{{--        });--}}
-{{--    </script>--}}
+    {{--    <script>--}}
+    {{--        tinymce.init({--}}
+    {{--            selector: 'textarea'--}}
+    {{--        });--}}
+    {{--    </script>--}}
     <script>
-        window.ajax_update_post = '{{ route('create_block_catalog') }}';
-        window.ajax_delete_post = '{{ route('delete_catalog_item') }}';
+        window.ajax_update_post = '{{ route('create_text_block') }}';
     </script>
 @endsection
 

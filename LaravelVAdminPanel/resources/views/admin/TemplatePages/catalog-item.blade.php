@@ -25,11 +25,11 @@
     </div>
     <div class="field_section "> <!--hid_block-->
         <div class="field_section_header padding_10">
-            {{--            <div class="back-icon">--}}
-            {{--                <a href="{{ route('all-return-page') }}">--}}
-            {{--                    <i class="fas fa-chevron-left"></i>--}}
-            {{--                </a>--}}
-            {{--            </div>--}}
+            <div class="back-icon">
+                <a href="{{ route('all-catalog-page') }}">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </div>
             <div class="control-tab">
                 <div class="header_text">Поля записи</div>
                 <div class="header_icon"><i class="fas fa-chevron-up"></i></div>
