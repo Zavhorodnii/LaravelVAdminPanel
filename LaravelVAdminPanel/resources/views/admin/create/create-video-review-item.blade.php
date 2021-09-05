@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('page-title')
-    Текстовые отзывы
+    Видео отзывы
 @endsection
 
 @section('main-block-title')
@@ -12,12 +12,12 @@
     active
 @endsection
 
-@section('all-text-review-submeny-all')
+@section('all-video-review-submeny-all')
     active
 @endsection
 
 @section('main-content')
-    @include('admin.TemplatePages.text-review')
+    @include('admin.TemplatePages.video-review')
 @endsection
 
 @section('right-aside')
@@ -74,7 +74,7 @@
     {{--        });--}}
     {{--    </script>--}}
     <script>
-        window.ajax_update_post = '{{ route('create-text-review') }}';
+        window.ajax_update_post = '{{ route('create-video-review') }}';
     </script>
 @endsection
 

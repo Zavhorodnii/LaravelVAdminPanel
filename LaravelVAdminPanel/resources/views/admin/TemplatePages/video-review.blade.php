@@ -26,7 +26,7 @@
     <div class="field_section "> <!--hid_block-->
         <div class="field_section_header padding_10">
             <div class="back-icon">
-                <a href="{{ route('all-text-review') }}">
+                <a href="{{ route('all-video-review') }}">
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </div>
@@ -49,43 +49,27 @@
                     @endif
                 >
             </div>
-            <div class="image field  border_top padding_10 js_find_elem">
+            <div class="section_input required field border_top padding_10 js_find_elem">
                 <div class="title_section">
-                    Изображение
+                    Ссылка на видео<span>*</span>
                 </div>
-                <button class="choice js-open-file-popup style_button @if(isset($fields) && $fields['file-id']['status'] == 'ok') none @endif"
-                        type="file" data-popup="show-popup">Выбрать
-                </button>
-                <div class="image_section @if( isset($fields) && $fields['file-id']['status'] == 'error') none @endif @if(!isset($fields)) none @endif ">
-                    <img class="selected_image js_paste_name js-paste-selected-file"
-                         name="file-id" data-type-filed="imageField"
-                         data-base_name="file-id"
-                         src="@if( isset($fields) && $fields['file-id']['status'] == 'ok') {{ $fields['file-id']['url'] }} @endif"
-                         alt="" data-id="@if( isset($fields) && $fields['file-id']['status'] == 'ok') {{ $fields['file-id']['id'] }} @endif">
-                    <div class="control_buttons">
-                        <button
-                            class="change style_button js-change-selected-image js-open-file-popup"
-                            data-popup="show-popup"
-                            type="button">
-                            Изменить
-                        </button>
-                        <button class="delete style_button js-remove-selected-image"
-                                type="button">
-                            Удалить
-                        </button>
-                    </div>
-                </div>
+                <input class="style_input_field js_paste_name"
+                       type="text" data-type-filed="inputField"
+                       name="video-url"
+                       @if(isset($fields['video-url']))
+                       value="{{ $fields['video-url'] }}"
+                    @endif
+                >
             </div>
-
             <div class="text-area field section_input border_top padding_10 js_find_elem">
                 <div class="title_section">
-                    Описание
+                    Отзыв
                 </div>
                 <textarea rows="5"
                           class="style_input_field style_custom_scroll js_paste_name"
                           data-type-filed="textareaInput"
-                          type="text" name="description" data-base_name="textareaInput"
-                          required>@if(isset($fields['description'])){{ $fields['description'] }}@endif</textarea>
+                          type="text" name="review" data-base_name="textareaInput"
+                          required>@if(isset($fields['review'])){{ $fields['review'] }}@endif</textarea>
             </div>
 
         </div>

@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('page-title')
-    Текстовые отзывы
+    Видео отзывы
 @endsection
 
 @section('all-block-review-menu')
@@ -9,10 +9,10 @@
 @endsection
 
 @section('main-block-title')
-    Текстовые отзывы
+    Видео отзывы
 @endsection
 
-@section('all-text-review-submeny-all')
+@section('all-video-review-submeny-all')
     active
 @endsection
 
@@ -72,12 +72,12 @@
                             <li class="single-page js-delete-item border_top padding_10">
                                 <div class="main_info">
                                     <div class="title">
-                                        <a href="{{ route('update_text_review_item', $block->id) }}" class="title_section">
+                                        <a href="{{ route('update_video_review_item', $block->id) }}" class="title_section">
                                             {{ $block->person_name }}
                                         </a>
                                     </div>
                                     <div class="control">
-                                        <a href="{{ route('update_text_review_item', $block->id) }}" class="edit-page">Редактировать</a>
+                                        <a href="{{ route('update_video_review_item', $block->id) }}" class="edit-page">Редактировать</a>
                                         <button type="button" data-block-id="{{ $block->id }}" class="remove-page js-delete-post-item ">удалить</button>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
             </div>
             <div class="field_section_container">
                 <div class="field_section_container_button border_top padding_10">
-                    <a href="{{ route('create-text-review-item') }}" class="create aside-style-button style_button add-new-page">
+                    <a href="{{ route('create-video-review-item') }}" class="create aside-style-button style_button add-new-page">
                         Добавить запись
                     </a>
                 </div>
@@ -128,8 +128,8 @@
 
 @section('ajaxUrl')
     <script>
-        window.ajax_delete_post = '{{ route('delete_text_review') }}';
-        window.ajax_change_draft_status = '{{ route('change_draft_text_review') }}';
+        window.ajax_delete_post = '{{ route('delete-video-review') }}';
+        window.ajax_change_draft_status = '{{ route('change_draft_video_review') }}';
     </script>
 @endsection
 

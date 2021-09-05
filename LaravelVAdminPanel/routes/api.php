@@ -61,6 +61,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/text-review',
         [\App\Http\Controllers\TextReviewController::class, 'create_update']
     )->name('create-text-review');
+    Route::post('/video-review',
+        [\App\Http\Controllers\VideoReviewController::class, 'create_update']
+    )->name('create-video-review');
 });
 
 
@@ -74,6 +77,9 @@ Route::prefix('delete')->group(function (){
     Route::post('/text-review',
         [\App\Http\Controllers\TextReviewController::class, 'delete']
     )->name('delete_text_review');
+    Route::post('/video-review',
+        [\App\Http\Controllers\VideoReviewController::class, 'delete']
+    )->name('delete-video-review');
 });
 
 
@@ -87,4 +93,7 @@ Route::prefix('change-draft')->group(function(){
     Route::post('/text-review',
         [\App\Http\Controllers\TextReviewController::class, 'change_draft']
     )->name('change_draft_text_review');
+    Route::post('/video-review',
+        [\App\Http\Controllers\VideoReviewController::class, 'change_draft']
+    )->name('change_draft_video_review');
 });

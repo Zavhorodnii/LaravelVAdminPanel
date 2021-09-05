@@ -88,9 +88,16 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('all-text-review') }}" class="sidebar_menu_item @yield('all-title-review-submeny-all')">
+                                <a href="{{ route('all-text-review') }}" class="sidebar_menu_item @yield('all-text-review-submeny-all')">
                                     <span class="sidebar_menu_text">
                                         Текствовые отзывы
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('all-video-review') }}" class="sidebar_menu_item @yield('all-video-review-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Видео отзывы
                                     </span>
                                 </a>
                             </li>

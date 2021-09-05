@@ -46,6 +46,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/text-review',
         [\App\Http\Controllers\TextReviewController::class, 'get_all_text_review']
     )->name('all-text-review');
+    Route::get('/video-review',
+        [\App\Http\Controllers\VideoReviewController::class, 'get_all_video_review']
+    )->name('all-video-review');
 //    Route::get('/stock-kits',
 //        [\App\Http\Controllers\BlockStockKitsController::class, 'get_all_stock_kits']
 //    )->name('all-stock-kits-page');
@@ -73,6 +76,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/text-review',
             [\App\Http\Controllers\TextReviewController::class, 'create_text_review_item']
         )->name('create-text-review-item');
+        Route::get('/video-review',
+            [\App\Http\Controllers\VideoReviewController::class, 'create_video_review_item']
+        )->name('create-video-review-item');
     });
 
     Route::prefix('/update')->group(function(){
@@ -85,6 +91,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/text-review/{id}',
             [\App\Http\Controllers\TextReviewController::class, 'open_update']
         )->name('update_text_review_item');
+        Route::get('/video-review/{id}',
+            [\App\Http\Controllers\VideoReviewController::class, 'open_update']
+        )->name('update_video_review_item');
     });
 
 

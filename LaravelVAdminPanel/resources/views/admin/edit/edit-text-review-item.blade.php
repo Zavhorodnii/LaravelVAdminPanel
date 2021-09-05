@@ -8,7 +8,7 @@
     active
 @endsection
 
-@section('all-title-review-submeny-all')
+@section('all-text-review-submeny-all')
     active
 @endsection
 

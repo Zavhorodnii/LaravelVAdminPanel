@@ -1,23 +1,19 @@
 @extends('admin.layout.app')
 
 @section('page-title')
-    Текстовые отзывы
-@endsection
-
-@section('main-block-title')
-    Создание записи
+    Видео отзывы
 @endsection
 
 @section('all-block-review-menu')
     active
 @endsection
 
-@section('all-text-review-submeny-all')
+@section('all-video-review-submeny-all')
     active
 @endsection
 
 @section('main-content')
-    @include('admin.TemplatePages.text-review')
+    @include('admin.TemplatePages.video-review')
 @endsection
 
 @section('right-aside')
@@ -38,11 +34,11 @@
                            name="name7" value="">
                     <ul>
                         <li>
-                            <div class="custom_checkbox ">
+                            <div class="custom_checkbox @if(isset($fields['draft']))@if($fields['draft'] == 1) checked @endif @endif">
                                 <!--checked-->
                                 <div class="custom_checkbox_square click"></div>
                                 <input class="custom_input_text"
-                                       value="0">
+                                       value="@if(isset($fields['draft'])){{ $fields['draft'] }}@endif">
                                 <label class="title_section click"
                                        for="">
                                     Черновик
@@ -53,7 +49,12 @@
                 </div>
                 <div class="field_section_container_button border_top padding_10">
                     <button class="button aside-style-button style_button add-new-page js-update-post-item" type="button">
-                        Создать запись
+                        Обновить запись
+                    </button>
+                </div>
+                <div class="field_section_container_button border_top padding_10">
+                    <button class="delete aside-style-button style_button add-new-page js-delete-post-item" type="button">
+                        Удалить запись
                     </button>
                 </div>
             </div>
@@ -66,6 +67,10 @@
     @include('admin.include.popup-files')
 @endsection
 
+@section('main-block-title')
+    Редактирование записи
+@endsection
+
 
 @section('ajaxUrl')
     {{--    <script>--}}
@@ -74,7 +79,8 @@
     {{--        });--}}
     {{--    </script>--}}
     <script>
-        window.ajax_update_post = '{{ route('create-text-review') }}';
+        window.ajax_update_post = '{{ route('create-video-review') }}';
+        window.ajax_delete_post = '{{ route('delete-video-review') }}';
     </script>
 @endsection
 

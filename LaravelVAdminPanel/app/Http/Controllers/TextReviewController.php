@@ -24,23 +24,23 @@ class TextReviewController extends Controller
     public function create_update(Request $request){
         $post_id = $request->input('post_id');
         if ($post_id) {
-            $catalog = TextReview::find($post_id);
+            $items = TextReview::find($post_id);
         } else
-            $catalog = new TextReview;
+            $items = new TextReview;
 
         $array_fields = get_fields_val($request);
 
-        $catalog->person_name = $array_fields['person-name'];
-        $catalog->draft = $array_fields['draft'];
-        $catalog->file_id = $array_fields['file-id'];
-        $catalog->description = $array_fields['description'];
-        $catalog->save();
+        $items->person_name = $array_fields['person-name'];
+        $items->draft = $array_fields['draft'];
+        $items->file_id = $array_fields['file-id'];
+        $items->description = $array_fields['description'];
+        $items->save();
 //        var_export($array_fields);
 
         return response()
             ->json([
                 'status'    => 'ok',
-                'url'       =>  route('update_text_review_item', $catalog->id),
+                'url'       =>  route('update_text_review_item', $items->id),
             ]);
     }
 
@@ -83,11 +83,11 @@ class TextReviewController extends Controller
     }
 
     public function change_draft(Request $request){
-        $catalog = TextReview::find($request->input('id'));
+        $items = TextReview::find($request->input('id'));
         $status = 'error';
-        if($catalog){
-            $catalog->draft = $request->input('status');
-            $catalog->save();
+        if($items){
+            $items->draft = $request->input('status');
+            $items->save();
             $status = 'ok';
         }
         return response()
