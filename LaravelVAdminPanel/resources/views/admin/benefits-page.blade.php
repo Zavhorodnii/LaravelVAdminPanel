@@ -54,7 +54,7 @@
         {{--        });--}}
     {{--    </script>--}}
 <script>
-    window.ajax_update_post = '{{ route('create_benefits') }}';
+    window.ajax_update_post = '{{ route('create-benefits') }}';
 </script>
 @endsection
 

@@ -43,6 +43,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/review-title',
         [\App\Http\Controllers\BlockReviewsController::class, 'get_all_review']
     )->name('all-review-title');
+    Route::get('/text-review',
+        [\App\Http\Controllers\TextReviewController::class, 'get_all_text_review']
+    )->name('all-text-review');
 //    Route::get('/stock-kits',
 //        [\App\Http\Controllers\BlockStockKitsController::class, 'get_all_stock_kits']
 //    )->name('all-stock-kits-page');
@@ -67,6 +70,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/text-block',
             [\App\Http\Controllers\TextBlockController::class, 'create_text_block_item']
         )->name('create-text-block-item');
+        Route::get('/text-review',
+            [\App\Http\Controllers\TextReviewController::class, 'create_text_review_item']
+        )->name('create-text-review-item');
     });
 
     Route::prefix('/update')->group(function(){
@@ -76,6 +82,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/text-block-item/{id}',
             [\App\Http\Controllers\TextBlockController::class, 'update']
         )->name('update_text_block_item');
+        Route::get('/text-review/{id}',
+            [\App\Http\Controllers\TextReviewController::class, 'open_update']
+        )->name('update_text_review_item');
     });
 
 

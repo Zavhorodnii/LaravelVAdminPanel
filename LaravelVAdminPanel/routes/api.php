@@ -54,10 +54,13 @@ Route::prefix('create-block')->group(function (){
     )->name('create_text_block');
     Route::post('/benefits',
         [\App\Http\Controllers\BenefitsController::class, 'update']
-    )->name('create_benefits');
-    Route::post('/benefits',
+    )->name('create-benefits');
+    Route::post('/review-title',
         [\App\Http\Controllers\BlockReviewsController::class, 'update']
     )->name('edit-review-title');
+    Route::post('/text-review',
+        [\App\Http\Controllers\TextReviewController::class, 'create_update']
+    )->name('create-text-review');
 });
 
 
@@ -68,6 +71,9 @@ Route::prefix('delete')->group(function (){
     Route::post('/text-block',
         [\App\Http\Controllers\TextBlockController::class, 'delete']
     )->name('delete_text_block');
+    Route::post('/text-review',
+        [\App\Http\Controllers\TextReviewController::class, 'delete']
+    )->name('delete_text_review');
 });
 
 
@@ -78,4 +84,7 @@ Route::prefix('change-draft')->group(function(){
     Route::post('/text-block',
         [\App\Http\Controllers\TextBlockController::class, 'change_draft']
     )->name('change_draft_text_block');
+    Route::post('/text-review',
+        [\App\Http\Controllers\TextReviewController::class, 'change_draft']
+    )->name('change_draft_text_review');
 });

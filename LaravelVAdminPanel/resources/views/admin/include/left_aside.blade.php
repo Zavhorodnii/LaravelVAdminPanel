@@ -88,7 +88,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('all-review-title') }}" class="sidebar_menu_item @yield('all-review-title-submeny-all')">
+                                <a href="{{ route('all-text-review') }}" class="sidebar_menu_item @yield('all-title-review-submeny-all')">
                                     <span class="sidebar_menu_text">
                                         Текствовые отзывы
                                     </span>
