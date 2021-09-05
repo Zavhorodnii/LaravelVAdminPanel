@@ -34,6 +34,13 @@
                         </div>
                         <ul class="sidebar_menu_items">
                             <li>
+                                <a href="{{ route('all-benefits') }}" class="sidebar_menu_item @yield('all-benefits-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Выгоды
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('all-text-block') }}" class="sidebar_menu_item @yield('all-text-block-submeny-all')">
                                     <span class="sidebar_menu_text">
                                         Текстовые блоки
@@ -48,9 +55,42 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('guarantees-page') }}" class="sidebar_menu_item @yield('all-return-submeny-all')">
+                                <a href="{{ route('guarantees-page') }}" class="sidebar_menu_item @yield('all-guarantees-submeny-all')">
                                     <span class="sidebar_menu_text">
                                         Гарантии
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="control_menu @yield('all-block-review-menu')"><!-- active -->
+                        <div class="main_menu sidebar_menu_item ">
+                            <a href="{{ route('all-review-title') }}">
+                                        <span class="sidebar_menu_icon">
+                                            <i class="fas fa-file"></i>
+                                        </span>
+                            </a>
+                            <a href="{{ route('all-review-title') }}">
+                                <span class="sidebar_menu_text">Отзывы</span>
+                            </a>
+                            <span class="sidebar_control_menu_item js-open-close-menu"><!-- none -->
+                                        <i class="fas fa-chevron-down"></i>
+                                    </span>
+                        </div>
+                        <ul class="sidebar_menu_items">
+                            <li>
+                                <a href="{{ route('all-review-title') }}" class="sidebar_menu_item @yield('all-review-title-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Оглавление блока
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('all-review-title') }}" class="sidebar_menu_item @yield('all-review-title-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Текствовые отзывы
                                     </span>
                                 </a>
                             </li>

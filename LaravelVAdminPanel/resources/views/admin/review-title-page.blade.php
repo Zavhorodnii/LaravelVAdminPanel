@@ -1,23 +1,23 @@
 @extends('admin.layout.app')
 
 @section('page-title')
-    Блок Гарантий
+    Оглавления отзывов
 @endsection
 
-@section('all-block-menu')
+@section('all-block-review-menu')
     active
 @endsection
 
 @section('main-block-title')
-    Блок Гарантий
+    Блок оглавлений отзывов
 @endsection
 
-@section('all-guarantees-submeny-all')
+@section('all-review-title-submeny-all')
     active
 @endsection
 
 @section('main-content')
-    @include('admin.TemplatePages.guarantees')
+    @include('admin.TemplatePages.review-title')
 @endsection
 
 @section('right-aside')
@@ -48,13 +48,13 @@
 @endsection
 
 @section('ajaxUrl')
-{{--    <script>--}}
-{{--        tinymce.init({--}}
-{{--            selector: 'textarea'--}}
-{{--        });--}}
-{{--    </script>--}}
+    {{--    <script>--}}
+    {{--        tinymce.init({--}}
+    {{--            selector: 'textarea'--}}
+    {{--        });--}}
+    {{--    </script>--}}
     <script>
-        window.ajax_update_post = '{{ route('edit-block-guarantees') }}';
+        window.ajax_update_post = '{{ route('edit-review-title') }}';
     </script>
 @endsection
 

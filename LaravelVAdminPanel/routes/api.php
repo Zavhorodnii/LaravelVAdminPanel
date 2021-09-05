@@ -39,19 +39,25 @@ Route::prefix('upload')->group(function (){
 });
 
 
-Route::prefix('edit-block')->group(function (){
+//Route::prefix('edit-block')->group(function (){
+//});
+
+Route::prefix('create-block')->group(function (){
     Route::post('/guarantees',
         [\App\Http\Controllers\GuaranteesController::class, 'edit_block_guarantees']
     )->name('edit-block-guarantees');
-});
-
-Route::prefix('create-block')->group(function (){
     Route::post('/catalog',
         [\App\Http\Controllers\BlockCatalogController::class, 'create']
     )->name('create_block_catalog');
     Route::post('/text-block',
         [\App\Http\Controllers\TextBlockController::class, 'create']
     )->name('create_text_block');
+    Route::post('/benefits',
+        [\App\Http\Controllers\BenefitsController::class, 'update']
+    )->name('create_benefits');
+    Route::post('/benefits',
+        [\App\Http\Controllers\BlockReviewsController::class, 'update']
+    )->name('edit-review-title');
 });
 
 

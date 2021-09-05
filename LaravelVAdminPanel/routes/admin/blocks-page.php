@@ -13,6 +13,10 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 //    Route::get('/bestsellers',
 //        [\App\Http\Controllers\BlockBestsellersController::class, 'get_all_bestsellers']
 //    )->name('all-bestsellers-page');
+    Route::get('/benefits',
+        [\App\Http\Controllers\BenefitsController::class, 'get_all_benefits']
+    )->name('all-benefits');
+
     Route::get('/text-block',
         [\App\Http\Controllers\TextBlockController::class, 'get_all_text_block']
     )->name('all-text-block');
@@ -36,9 +40,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 //    Route::get('/how-we-work',
 //        [\App\Http\Controllers\BlockHowWeWorkController::class, 'get_all_how_we_work']
 //    )->name('all-how-we-work-page');
-//    Route::get('/review',
-//        [\App\Http\Controllers\BlockReviewsController::class, 'get_all_review']
-//    )->name('all-review-page');
+    Route::get('/review-title',
+        [\App\Http\Controllers\BlockReviewsController::class, 'get_all_review']
+    )->name('all-review-title');
 //    Route::get('/stock-kits',
 //        [\App\Http\Controllers\BlockStockKitsController::class, 'get_all_stock_kits']
 //    )->name('all-stock-kits-page');
