@@ -49,6 +49,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/video-review',
         [\App\Http\Controllers\VideoReviewController::class, 'get_all_video_review']
     )->name('all-video-review');
+    Route::get('/audio-review',
+        [\App\Http\Controllers\AudioReviewController::class, 'get_all_audio_review']
+    )->name('all-audio-review');
 //    Route::get('/stock-kits',
 //        [\App\Http\Controllers\BlockStockKitsController::class, 'get_all_stock_kits']
 //    )->name('all-stock-kits-page');
@@ -79,6 +82,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/video-review',
             [\App\Http\Controllers\VideoReviewController::class, 'create_video_review_item']
         )->name('create-video-review-item');
+        Route::get('/audio-review',
+            [\App\Http\Controllers\AudioReviewController::class, 'create_audio_review_item']
+        )->name('create-audio-review-item');
     });
 
     Route::prefix('/update')->group(function(){
@@ -94,6 +100,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/video-review/{id}',
             [\App\Http\Controllers\VideoReviewController::class, 'open_update']
         )->name('update_video_review_item');
+        Route::get('/audio-review/{id}',
+            [\App\Http\Controllers\AudioReviewController::class, 'open_update']
+        )->name('update-audio-review-item');
     });
 
 

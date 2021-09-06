@@ -101,6 +101,13 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('all-audio-review') }}" class="sidebar_menu_item @yield('all-audio-review-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Аудио отзывы
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

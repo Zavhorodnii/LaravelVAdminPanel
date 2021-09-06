@@ -26,7 +26,7 @@
     <div class="field_section "> <!--hid_block-->
         <div class="field_section_header padding_10">
             <div class="back-icon">
-                <a href="{{ route('all-text-review') }}">
+                <a href="{{ route('all-audio-review') }}">
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </div>
@@ -37,6 +37,18 @@
         </div>
         <div class="field_section_container">
 
+            <div class="section_input field border_top padding_10 js_find_elem">
+                <div class="title_section">
+                    Город
+                </div>
+                <input class="style_input_field js_paste_name"
+                       type="text" data-type-filed="inputField"
+                       name="city"
+                       @if(isset($fields['city']))
+                       value="{{ $fields['city'] }}"
+                    @endif
+                >
+            </div>
             <div class="section_input required field border_top padding_10 js_find_elem">
                 <div class="title_section">
                     ФИО<span>*</span>
@@ -84,8 +96,8 @@
                 <textarea rows="5"
                           class="style_input_field style_custom_scroll js_paste_name"
                           data-type-filed="textareaInput"
-                          type="text" name="description" data-base_name="textareaInput"
-                          required>@if(isset($fields['description'])){{ $fields['description'] }}@endif</textarea>
+                          type="text" name="review" data-base_name="textareaInput"
+                          required>@if(isset($fields['review'])){{ $fields['review'] }}@endif</textarea>
             </div>
 
         </div>

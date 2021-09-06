@@ -64,6 +64,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/video-review',
         [\App\Http\Controllers\VideoReviewController::class, 'create_update']
     )->name('create-video-review');
+    Route::post('/audio-review',
+        [\App\Http\Controllers\AudioReviewController::class, 'create_update']
+    )->name('create-audio-review');
 });
 
 
@@ -80,6 +83,9 @@ Route::prefix('delete')->group(function (){
     Route::post('/video-review',
         [\App\Http\Controllers\VideoReviewController::class, 'delete']
     )->name('delete-video-review');
+    Route::post('/audio-review',
+        [\App\Http\Controllers\AudioReviewController::class, 'delete']
+    )->name('delete-audio-review');
 });
 
 
@@ -96,4 +102,7 @@ Route::prefix('change-draft')->group(function(){
     Route::post('/video-review',
         [\App\Http\Controllers\VideoReviewController::class, 'change_draft']
     )->name('change_draft_video_review');
+    Route::post('/audio-review',
+        [\App\Http\Controllers\AudioReviewController::class, 'change_draft']
+    )->name('change-draft-audio-review');
 });
