@@ -67,6 +67,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/audio-review',
         [\App\Http\Controllers\AudioReviewController::class, 'create_update']
     )->name('create-audio-review');
+    Route::post('/how-we-work',
+        [\App\Http\Controllers\BlockHowWeWorkController::class, 'edit_block_how_we_work']
+    )->name('edit-how-we-work');
 });
 
 

@@ -37,9 +37,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 //    Route::get('/gallery',
 //        [\App\Http\Controllers\BlockGalleryController::class, 'get_all_gallery']
 //    )->name('all-gallery-page');
-//    Route::get('/how-we-work',
-//        [\App\Http\Controllers\BlockHowWeWorkController::class, 'get_all_how_we_work']
-//    )->name('all-how-we-work-page');
+    Route::get('/how-we-work',
+        [\App\Http\Controllers\BlockHowWeWorkController::class, 'get_all_how_we_work']
+    )->name('all-how-we-work-page');
     Route::get('/review-title',
         [\App\Http\Controllers\BlockReviewsController::class, 'get_all_review']
     )->name('all-review-title');

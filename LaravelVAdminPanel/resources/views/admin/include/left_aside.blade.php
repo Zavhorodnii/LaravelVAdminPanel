@@ -61,6 +61,13 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('all-how-we-work-page') }}" class="sidebar_menu_item @yield('all-how-we-work-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Как мы работаем
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
