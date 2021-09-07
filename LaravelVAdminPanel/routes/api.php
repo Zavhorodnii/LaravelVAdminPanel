@@ -70,6 +70,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/how-we-work',
         [\App\Http\Controllers\BlockHowWeWorkController::class, 'edit_block_how_we_work']
     )->name('edit-how-we-work');
+    Route::post('/delivery-block',
+        [\App\Http\Controllers\BlockDeliveryController::class, 'edit_delivery_block']
+    )->name('edit-delivery-block');
 });
 
 

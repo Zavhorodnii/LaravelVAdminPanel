@@ -28,9 +28,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/guarantees',
         [\App\Http\Controllers\GuaranteesController::class, 'get_all_guarantees']
     )->name('guarantees-page');
-//    Route::get('/delivery',
-//        [\App\Http\Controllers\BlockDeliveryController::class, 'get_all_delivery']
-//    )->name('all-delivery-page');
+    Route::get('/delivery-block',
+        [\App\Http\Controllers\BlockDeliveryController::class, 'get_all_delivery_block']
+    )->name('all-delivery-clock-page');
 //    Route::get('/feedback',
 //        [\App\Http\Controllers\BlockFeedbackController::class, 'get_all_feedback']
 //    )->name('all-feedback-page');
