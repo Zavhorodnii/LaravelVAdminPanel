@@ -73,6 +73,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/delivery-block',
         [\App\Http\Controllers\BlockDeliveryController::class, 'edit_delivery_block']
     )->name('edit-delivery-block');
+    Route::post('/delivery-price',
+        [\App\Http\Controllers\DeliveryPriceController::class, 'create']
+    )->name('create-delivery-price');
 });
 
 
@@ -92,6 +95,9 @@ Route::prefix('delete')->group(function (){
     Route::post('/audio-review',
         [\App\Http\Controllers\AudioReviewController::class, 'delete']
     )->name('delete-audio-review');
+    Route::post('/delivery-price',
+        [\App\Http\Controllers\DeliveryPriceController::class, 'delete']
+    )->name('delete-delivery-price');
 });
 
 
@@ -111,4 +117,7 @@ Route::prefix('change-draft')->group(function(){
     Route::post('/audio-review',
         [\App\Http\Controllers\AudioReviewController::class, 'change_draft']
     )->name('change-draft-audio-review');
+    Route::post('/delivery-price',
+        [\App\Http\Controllers\DeliveryPriceController::class, 'change_draft']
+    )->name('change-draft-delivery-controller');
 });

@@ -121,12 +121,12 @@
                 <li>
                     <div class="control_menu @yield('all-block-delivery-menu')"><!-- active -->
                         <div class="main_menu sidebar_menu_item ">
-                            <a href="{{ route('all-delivery-clock-page') }}">
+                            <a href="{{ route('all-delivery-block-page') }}">
                                         <span class="sidebar_menu_icon">
                                             <i class="fas fa-file"></i>
                                         </span>
                             </a>
-                            <a href="{{ route('all-delivery-clock-page') }}">
+                            <a href="{{ route('all-delivery-block-page') }}">
                                 <span class="sidebar_menu_text">Доставка</span>
                             </a>
                             <span class="sidebar_control_menu_item js-open-close-menu"><!-- none -->
@@ -135,9 +135,16 @@
                         </div>
                         <ul class="sidebar_menu_items">
                             <li>
-                                <a href="{{ route('all-delivery-clock-page') }}" class="sidebar_menu_item @yield('all-delivery-block-submeny-all')">
+                                <a href="{{ route('all-delivery-block-page') }}" class="sidebar_menu_item @yield('all-delivery-block-submeny-all')">
                                     <span class="sidebar_menu_text">
                                         Оглавление блока
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('all-delivery-price-page') }}" class="sidebar_menu_item @yield('all-delivery-price-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Цена
                                     </span>
                                 </a>
                             </li>

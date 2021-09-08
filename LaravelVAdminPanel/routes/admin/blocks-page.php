@@ -30,7 +30,10 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     )->name('guarantees-page');
     Route::get('/delivery-block',
         [\App\Http\Controllers\BlockDeliveryController::class, 'get_all_delivery_block']
-    )->name('all-delivery-clock-page');
+    )->name('all-delivery-block-page');
+    Route::get('/delivery-price',
+        [\App\Http\Controllers\DeliveryPriceController::class, 'get_all_delivery_price']
+    )->name('all-delivery-price-page');
 //    Route::get('/feedback',
 //        [\App\Http\Controllers\BlockFeedbackController::class, 'get_all_feedback']
 //    )->name('all-feedback-page');
@@ -85,6 +88,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/audio-review',
             [\App\Http\Controllers\AudioReviewController::class, 'create_audio_review_item']
         )->name('create-audio-review-item');
+        Route::get('/delivery-price',
+            [\App\Http\Controllers\DeliveryPriceController::class, 'create_delivery_price_item']
+        )->name('create-delivery-price-item');
     });
 
     Route::prefix('/update')->group(function(){
@@ -103,6 +109,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/audio-review/{id}',
             [\App\Http\Controllers\AudioReviewController::class, 'open_update']
         )->name('update-audio-review-item');
+        Route::get('/delivery-price/{id}',
+            [\App\Http\Controllers\DeliveryPriceController::class, 'open_update']
+        )->name('update-delivery-price-item');
     });
 
 
