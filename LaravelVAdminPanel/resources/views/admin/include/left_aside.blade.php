@@ -155,6 +155,13 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('all-delivery-address') }}" class="sidebar_menu_item @yield('all-delivery-address-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Адреса доставки
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

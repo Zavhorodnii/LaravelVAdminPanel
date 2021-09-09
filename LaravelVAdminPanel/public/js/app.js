@@ -1883,12 +1883,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \*******************************/
 /***/ (() => {
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 $(document).ready(function () {
@@ -1930,15 +1924,15 @@ $(document).ready(function () {
       $('.show_triangle').removeClass('none');
 
       if (!$('.notification_not_found').hasClass('none')) {
-        console.log('not_none');
+        // console.log('not_none')
         $('.notification_not_found').removeClass("animate_not_open");
         setTimeout(function () {
           $('.notification_not_found').addClass('none animate_not_open');
           $('.show_triangle').addClass('none');
         }, 300);
       } else {
-        console.log('remove_none'); // $('.show_triangle').toggleClass('none');
-
+        // console.log('remove_none')
+        // $('.show_triangle').toggleClass('none');
         $('.notification_not_found').removeClass('none');
       }
     } else {
@@ -1959,7 +1953,7 @@ $(document).ready(function () {
       var header_admin = $('.header_admin');
 
       if (header_admin.find('.notification_message').length === 0) {
-        console.log('9999');
+        // console.log('9999');
         header_admin.find('.header_admin_notification').removeClass('active');
         header_admin.find('.show_triangle').addClass('none');
         header_admin.removeClass('show_not');
@@ -2031,9 +2025,9 @@ $(document).ready(function () {
     }
 
     if ($(this).hasClass('remove')) {
-      console.log("+++ ");
-      var data_item_id = $(this).attr("data-item_id");
-      console.log("data_item_id = " + data_item_id);
+      // console.log("+++ ");
+      var data_item_id = $(this).attr("data-item_id"); // console.log("data_item_id = " + data_item_id);
+
       $(this).closest('.multiple_control').find('.multiple_section_1').find("[data-item_id=" + data_item_id + "]").removeClass('checked').find('.custom_selection_item').attr('data-value', '0');
       $(this).remove();
     }
@@ -2057,9 +2051,9 @@ $(document).ready(function () {
   function add_section(event) {
     // let clone = $(this).closest('.repeater').children('.repeater_field')
     //     .children('.content_section').clone();
-    console.log('data-id = ' + $(this).closest('.repeater').attr('data-id') + '-fields');
-    var clone = $('[data-id=' + $(this).closest('.repeater').attr('data-id') + '-fields]').children().clone();
-    console.log(clone);
+    // console.log('data-id = ' +  $(this).closest('.repeater').attr('data-id') + '-fields')
+    var clone = $('[data-id=' + $(this).closest('.repeater').attr('data-id') + '-fields]').children().clone(); // console.log(clone);
+
     clone.find('.repeater_button').click(add_section);
     clone.find('.add_item').click(add_section);
     clone.find('.switch_closed').click(switch_closed);
@@ -2070,10 +2064,10 @@ $(document).ready(function () {
     clone.find('.click').click(check_box);
 
     if ($(this).children('.position').length > 0) {
-      console.log('1111');
+      // console.log('1111');
       $(this).closest('.content_section').before(clone);
     } else {
-      console.log('2222');
+      // console.log('2222');
       clone.appendTo($(this).closest('.repeater').children('.content_repeater'));
     }
 
@@ -2088,8 +2082,7 @@ $(document).ready(function () {
 
   function delete_item_repeat(event) {
     var repeater = $(this).closest('.repeater');
-    $(this).closest('.content_section').remove();
-    console.log('count: ' + repeater.children('.content_repeater').children('.content_section').length);
+    $(this).closest('.content_section').remove(); // console.log('count: ' + repeater.children('.content_repeater').children('.content_section').length);
 
     if (repeater.children('.content_repeater').children('.content_section').length === 0) {
       repeater.children('.button_section').removeClass('border_top');
@@ -2102,13 +2095,13 @@ $(document).ready(function () {
     var prefix;
     if (!this_.hasClass('.repeater')) this_ = this_.closest('.repeater');
     prefix = this_.attr('name');
-    var count_repeater = this_.children('.content_repeater').children('.content_section').children('.content_item').length;
-    console.log('count_repeater = ' + count_repeater);
-    console.log('prefix = ' + prefix);
+    var count_repeater = this_.children('.content_repeater').children('.content_section').children('.content_item').length; // console.log('count_repeater = ' + count_repeater);
+    // console.log('prefix = ' + prefix);
+
     var $items = this_.children('.content_repeater').children('.content_section').children('.content_item');
     $items.each(function (index) {
-      var $element = $(this).children('.js_find_elem');
-      console.log('index =' + index);
+      var $element = $(this).children('.js_find_elem'); // console.log('index =' + index);
+
       $(this).closest('.content_section').children('.count_item').text(++index);
       $element.each(function (index2) {
         $current_elem = $(this).find('.js_paste_name');
@@ -2126,11 +2119,11 @@ $(document).ready(function () {
 
         if ((typeof $repeater_base_name === "undefined" ? "undefined" : _typeof($repeater_base_name)) === ( true ? "undefined" : 0) || $repeater_base_name === false) {
           $(this).attr('data-base_name', $(this).attr('name'));
-        }
+        } // console.log('prefix = ' + prefix);
+        // console.log('index = ' + index);
+        // console.log('repeater_base_name = ' + $(this).attr('data-base_name'));
 
-        console.log('prefix = ' + prefix);
-        console.log('index = ' + index);
-        console.log('repeater_base_name = ' + $(this).attr('data-base_name'));
+
         $(this).attr('name', prefix + '_' + index + '_' + $(this).attr('data-base_name'));
         set_attr_repeat($(this));
       });
@@ -2140,14 +2133,14 @@ $(document).ready(function () {
 
   function openPopup(id) {
     // closePopup();
-    console.log('show popup');
+    // console.log('show popup')
     var elem = $(".js-media-popup[data-id='" + id + "']");
     elem.removeClass('animate-bg-popup-close');
     elem.addClass('animate-bg-popup');
   }
 
   function closePopup() {
-    console.log('hide popup');
+    // console.log('hide popup')
     var elem = $(this).closest('.popup');
     elem.removeClass('animate-bg-popup');
     elem.addClass('animate-bg-popup-close');
@@ -2174,7 +2167,7 @@ $(document).ready(function () {
   }
 
   function change_select_popup_file($image_url) {
-    console.log('$image_url = ' + $image_url);
+    // console.log('$image_url = ' + $image_url)
     var $items = $('.uploaded_files').children('.single_item');
     $items.each(function (index) {
       if ($(this).find('.single-upload-file').attr('src') === $image_url) {
@@ -2189,7 +2182,7 @@ $(document).ready(function () {
     var $upload_file = $('.uploaded_files').find('.selected-file'); // console.log($upload_file.length == 0)
 
     if ($upload_file.length === 0) {
-      console.log('error');
+      // console.log('error')
       return;
     }
 
@@ -2205,21 +2198,9 @@ $(document).ready(function () {
       $file_alt = '';
     }
 
-    data.append('alt_name', $file_alt);
-
-    var _iterator = _createForOfIteratorHelper(data.values()),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var value = _step.value;
-        console.log(value);
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
+    data.append('alt_name', $file_alt); // for (let value of data.values()) {
+    //     console.log(value);
+    // }
 
     $.ajax({
       url: window.ajaxUpdateFileInfo,
@@ -2229,8 +2210,8 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        console.log('success');
-        console.log('status = ' + data.status);
+        // console.log('success');
+        // console.log('status = ' + data.status);
         $(open_file).find('.js-paste-selected-file').attr('src', $upload_file.find('.js_paste_name').attr('src')).attr('data-id', selected_id_file);
         $(open_file).children('.js-open-file-popup').addClass('none');
         $(open_file).find('.image_section').removeClass('none');
@@ -2274,7 +2255,7 @@ $(document).ready(function () {
   });
 
   function selectInputFile(event) {
-    console.log('select file');
+    // console.log('select file');
     var upload_button = $('.js-add-input-field');
     upload_button.addClass('none');
     var selected_file = $(this).prop('files')[0];
@@ -2306,7 +2287,7 @@ $(document).ready(function () {
         return xhr;
       },
       success: function success(data) {
-        console.log('success');
+        // console.log('success');
         upload_button.removeClass('none');
         block_upload_file.addClass('none'); // console.log(data.status);
         // console.log(data.size);
@@ -2329,7 +2310,7 @@ $(document).ready(function () {
   $('.js-select-upload-file').click(js_select_upload_file);
 
   function js_select_upload_file(event) {
-    console.log('select_upload_file');
+    // console.log('select_upload_file')
     var $items = $('.uploaded_files').children('.single_item');
 
     if ($(this).hasClass('selected-file')) {
@@ -2383,11 +2364,11 @@ $(document).ready(function () {
   }
 
   $('.js-delete-file').click(function (event) {
-    console.log('delete_file');
+    // console.log('delete_file')
     var selected_file = get_id_selected_file(); // console.log('single file = ' + selected_file)
 
     if (!selected_file) {
-      console.log('not selected file');
+      // console.log('not selected file')
       return;
     }
 
@@ -2405,14 +2386,12 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        console.log('success');
-        console.log('status = ' + data.status);
-
+        // console.log('success');
+        // console.log('status = ' + data.status);
         if (data.status) {
           $('.uploaded_files').children('.selected-file').remove();
-          clear_selected_file();
-          console.log('selected_file = ' + data.path);
-          console.log('selected_change_file = ' + selected_change_file.attr('src'));
+          clear_selected_file(); // console.log('selected_file = ' + data.path)
+          // console.log('selected_change_file = ' + selected_change_file.attr('src'))
 
           if (data.path === selected_change_file.attr('src')) {
             selected_change_file.attr('src', '');
@@ -2426,7 +2405,7 @@ $(document).ready(function () {
     });
   });
   $(document).on("click", ".js-remove-selected-image", function () {
-    console.log('remove selected file');
+    // console.log('remove selected file')
     $(this).closest('.image_section').addClass('none').children('.js_paste_name').attr('src', '').closest('.image').children('.js-open-file-popup').removeClass('none');
   });
 });

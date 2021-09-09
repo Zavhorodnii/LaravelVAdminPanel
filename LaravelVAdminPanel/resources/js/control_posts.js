@@ -52,7 +52,7 @@ $(document).ready(function (){
 
 
     $('.js-update-post-item').click(function (){
-        console.log('update-return-button');
+        // console.log('update-return-button');
         // let $names = $('.content_repeater').find('[name]')
         let $names = $('.field_section_container').find('[data-type-filed]')
 
@@ -85,15 +85,15 @@ $(document).ready(function (){
         data.append('draft', $('.sidebar_right').find('.field_section_container')
             .find('.custom_checkbox').children('.custom_input_text').val())
 
-        console.log("len = "  + $names.length)
+        // console.log("len = "  + $names.length)
         $names.each
         (
             function (index) {
-                console.log($(this))
+                // console.log($(this))
                 let current_name = $(this).attr('data-type-filed');
                 let name = $(this).attr('name');
 
-                console.log("name = " + name);
+                // console.log("name = " + name);
                 if(current_name.indexOf('imageField')!== -1 ){
                     let value = $(this).attr('data-id')
                     data.append(name, value);
@@ -132,13 +132,13 @@ $(document).ready(function (){
                 }
             }
         );
-        console.log('before for')
-        for (let value of data.values()) {
-            console.log(value);
-        }
+        // console.log('before for')
+        // for (let value of data.values()) {
+        //     console.log(value);
+        // }
 
         if(errors > 0){
-            console.log('error')
+            // console.log('error')
             removeLoader();
             return;
         }
@@ -154,8 +154,8 @@ $(document).ready(function (){
             contentType: false,
             data: data,
             success: function(data){
-                console.log('success');
-                console.log('status = ' + data.status);
+                // console.log('success');
+                // console.log('status = ' + data.status);
                 add_notification_page(
                     'Запись обновлена',
                     'ok'
@@ -180,7 +180,7 @@ $(document).ready(function (){
     })
 
     $('.js-delete-post-item').click(function (event){
-        console.log('delete item')
+        // console.log('delete item')
         addLoader();
         // $url = window.location.href;
         // $arr = $url.split('/')
@@ -207,8 +207,8 @@ $(document).ready(function (){
             contentType: false,
             data: data,
             success: function(data){
-                console.log('success');
-                console.log('status = ' + data.status);
+                // console.log('success');
+                // console.log('status = ' + data.status);
                 removeLoader();
                 if(delete_item)
                     delete_item.remove()
@@ -231,7 +231,7 @@ $(document).ready(function (){
     })
 
     $('.js-change-draft-post').click(function (event){
-        console.log('js-change-draft-post')
+        // console.log('js-change-draft-post')
         addLoader();
         let data = new FormData();
         let draft_block = $(this).closest('.js-ajax-check-control').find('.custom_input_text')
@@ -252,8 +252,8 @@ $(document).ready(function (){
             contentType: false,
             data: data,
             success: function(data){
-                console.log('success');
-                console.log('status = ' + data.status);
+                // console.log('success');
+                // console.log('status = ' + data.status);
                 removeLoader();
                 if(data.status === 'error'){
                     add_notification_page(

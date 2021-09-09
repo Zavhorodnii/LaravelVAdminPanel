@@ -38,14 +38,14 @@ $(document).ready(function () {
         if (!$(this).closest('.header_admin').hasClass('show_not')) {
             $('.show_triangle').removeClass('none');
             if (!$('.notification_not_found').hasClass('none')) {
-                console.log('not_none')
+                // console.log('not_none')
                 $('.notification_not_found').removeClass("animate_not_open");
                 setTimeout(function () {
                     $('.notification_not_found').addClass('none animate_not_open');
                     $('.show_triangle').addClass('none');
                 }, 300);
             } else {
-                console.log('remove_none')
+                // console.log('remove_none')
                 // $('.show_triangle').toggleClass('none');
                 $('.notification_not_found').removeClass('none');
             }
@@ -67,7 +67,7 @@ $(document).ready(function () {
             notification_mess.remove();
             let header_admin = $('.header_admin');
             if (header_admin.find('.notification_message').length === 0) {
-                console.log('9999');
+                // console.log('9999');
                 header_admin.find('.header_admin_notification').removeClass('active');
                 header_admin.find('.show_triangle').addClass('none');
                 header_admin.removeClass('show_not');
@@ -142,9 +142,9 @@ $(document).ready(function () {
             $(this).addClass('checked');
         }
         if ($(this).hasClass('remove')) {
-            console.log("+++ ");
+            // console.log("+++ ");
             let data_item_id = $(this).attr("data-item_id");
-            console.log("data_item_id = " + data_item_id);
+            // console.log("data_item_id = " + data_item_id);
             $(this).closest('.multiple_control').find('.multiple_section_1').find("[data-item_id=" + data_item_id + "]").removeClass('checked').find('.custom_selection_item').attr('data-value', '0');
             $(this).remove();
         }
@@ -172,9 +172,9 @@ $(document).ready(function () {
     function add_section(event) {
         // let clone = $(this).closest('.repeater').children('.repeater_field')
         //     .children('.content_section').clone();
-        console.log('data-id = ' +  $(this).closest('.repeater').attr('data-id') + '-fields')
+        // console.log('data-id = ' +  $(this).closest('.repeater').attr('data-id') + '-fields')
         let clone = $('[data-id=' + $(this).closest('.repeater').attr('data-id') + '-fields]').children().clone();
-        console.log(clone);
+        // console.log(clone);
         clone.find('.repeater_button').click(add_section);
         clone.find('.add_item').click(add_section);
         clone.find('.switch_closed').click(switch_closed);
@@ -185,10 +185,10 @@ $(document).ready(function () {
         clone.find('.click').click(check_box)
 
         if ($(this).children('.position').length > 0) {
-            console.log('1111');
+            // console.log('1111');
             $(this).closest('.content_section').before(clone);
         } else {
-            console.log('2222');
+            // console.log('2222');
             clone.appendTo($(this).closest('.repeater').children('.content_repeater'));
         }
 
@@ -204,7 +204,7 @@ $(document).ready(function () {
     function delete_item_repeat(event) {
         let repeater = $(this).closest('.repeater');
         $(this).closest('.content_section').remove();
-        console.log('count: ' + repeater.children('.content_repeater').children('.content_section').length);
+        // console.log('count: ' + repeater.children('.content_repeater').children('.content_section').length);
         if (repeater.children('.content_repeater').children('.content_section').length === 0) {
             repeater.children('.button_section').removeClass('border_top');
         }
@@ -217,8 +217,8 @@ $(document).ready(function () {
             this_ = this_.closest('.repeater');
         prefix = this_.attr('name');
         let count_repeater = this_.children('.content_repeater').children('.content_section').children('.content_item').length;
-        console.log('count_repeater = ' + count_repeater);
-        console.log('prefix = ' + prefix);
+        // console.log('count_repeater = ' + count_repeater);
+        // console.log('prefix = ' + prefix);
 
         let $items = this_.children('.content_repeater').children('.content_section').children('.content_item');
 
@@ -226,7 +226,7 @@ $(document).ready(function () {
         (
             function (index) {
                 let $element = $(this).children('.js_find_elem');
-                console.log('index =' + index);
+                // console.log('index =' + index);
                 $(this).closest('.content_section').children('.count_item').text(++index);
                 $element.each
                 (
@@ -247,9 +247,9 @@ $(document).ready(function () {
                         if (typeof $repeater_base_name === typeof undefined || $repeater_base_name === false) {
                             $(this).attr('data-base_name', $(this).attr('name'));
                         }
-                        console.log('prefix = ' + prefix);
-                        console.log('index = ' + index);
-                        console.log('repeater_base_name = ' + $(this).attr('data-base_name'));
+                        // console.log('prefix = ' + prefix);
+                        // console.log('index = ' + index);
+                        // console.log('repeater_base_name = ' + $(this).attr('data-base_name'));
                         $(this).attr('name', prefix + '_' + index + '_' + $(this).attr('data-base_name'))
                         set_attr_repeat($(this));
                     }
@@ -262,14 +262,14 @@ $(document).ready(function () {
 
     function openPopup(id) {
         // closePopup();
-        console.log('show popup')
+        // console.log('show popup')
         let elem = $(".js-media-popup[data-id='" + id + "']");
         elem.removeClass('animate-bg-popup-close')
         elem.addClass('animate-bg-popup');
     }
 
     function closePopup() {
-        console.log('hide popup')
+        // console.log('hide popup')
         let elem = $(this).closest('.popup');
         elem.removeClass('animate-bg-popup');
         elem.addClass('animate-bg-popup-close')
@@ -299,7 +299,7 @@ $(document).ready(function () {
     }
 
     function change_select_popup_file($image_url){
-        console.log('$image_url = ' + $image_url)
+        // console.log('$image_url = ' + $image_url)
         let $items = $('.uploaded_files').children('.single_item');
         $items.each
         (
@@ -318,7 +318,7 @@ $(document).ready(function () {
         let $upload_file = $('.uploaded_files').find('.selected-file');
         // console.log($upload_file.length == 0)
         if($upload_file.length === 0){
-            console.log('error')
+            // console.log('error')
             return;
         }
         $this = $(this);
@@ -333,9 +333,9 @@ $(document).ready(function () {
         }
         data.append('alt_name', $file_alt);
 
-        for (let value of data.values()) {
-            console.log(value);
-        }
+        // for (let value of data.values()) {
+        //     console.log(value);
+        // }
 
         $.ajax({
             url: window.ajaxUpdateFileInfo,
@@ -345,8 +345,8 @@ $(document).ready(function () {
             contentType: false,
             data: data,
             success: function(data){
-                console.log('success');
-                console.log('status = ' + data.status);
+                // console.log('success');
+                // console.log('status = ' + data.status);
                 $(open_file).find('.js-paste-selected-file').attr(
                     'src',
                     $upload_file.find('.js_paste_name').attr('src')
@@ -409,7 +409,7 @@ $(document).ready(function () {
     })
 
     function selectInputFile(event){
-        console.log('select file');
+        // console.log('select file');
 
         let upload_button = $('.js-add-input-field');
         upload_button.addClass('none');
@@ -448,7 +448,7 @@ $(document).ready(function () {
                 return xhr;
             },
             success: function(data){
-                console.log('success');
+                // console.log('success');
                 upload_button.removeClass('none');
                 block_upload_file.addClass('none');
                 // console.log(data.status);
@@ -481,7 +481,7 @@ $(document).ready(function () {
     $('.js-select-upload-file').click(js_select_upload_file);
 
     function js_select_upload_file(event){
-        console.log('select_upload_file')
+        // console.log('select_upload_file')
         let $items = $('.uploaded_files').children('.single_item');
 
         if($(this).hasClass('selected-file')){
@@ -546,12 +546,12 @@ $(document).ready(function () {
     }
 
     $('.js-delete-file').click(function (event){
-        console.log('delete_file')
+        // console.log('delete_file')
         let selected_file = get_id_selected_file();
         // console.log('single file = ' + selected_file)
 
         if(!selected_file){
-            console.log('not selected file')
+            // console.log('not selected file')
             return;
         }
         let data = new FormData();
@@ -570,13 +570,13 @@ $(document).ready(function () {
             contentType: false,
             data: data,
             success: function(data){
-                console.log('success');
-                console.log('status = ' + data.status);
+                // console.log('success');
+                // console.log('status = ' + data.status);
                 if(data.status){
                     $('.uploaded_files').children('.selected-file').remove();
                     clear_selected_file();
-                    console.log('selected_file = ' + data.path)
-                    console.log('selected_change_file = ' + selected_change_file.attr('src'))
+                    // console.log('selected_file = ' + data.path)
+                    // console.log('selected_change_file = ' + selected_change_file.attr('src'))
                     if(data.path === selected_change_file.attr('src')) {
                         selected_change_file.attr('src', '');
                         selected_change_file.closest('.image_section').addClass('none').closest('.image')
@@ -592,7 +592,7 @@ $(document).ready(function () {
     })
 
     $(document).on("click", ".js-remove-selected-image", function () {
-        console.log('remove selected file')
+        // console.log('remove selected file')
         $(this).closest('.image_section').addClass('none').children('.js_paste_name').attr('src', '')
             .closest('.image').children('.js-open-file-popup').removeClass('none');
     })

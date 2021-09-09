@@ -30,9 +30,8 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        console.log('success');
-        console.log('status = ' + data.status);
-
+        // console.log('success');
+        // console.log('status = ' + data.status);
         if (data.status === 'ok') {
           single_page.remove();
         }
@@ -59,8 +58,7 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        if (data.status === 'ok') {
-          console.log('+++');
+        if (data.status === 'ok') {// console.log('+++')
         }
 
         removeLoader();

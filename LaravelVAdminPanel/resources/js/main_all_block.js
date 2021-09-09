@@ -27,8 +27,8 @@ $(document).ready(function (){
             contentType: false,
             data: data,
             success: function(data){
-                console.log('success');
-                console.log('status = ' + data.status);
+                // console.log('success');
+                // console.log('status = ' + data.status);
                 if(data.status === 'ok'){
                     single_page.remove();
                 }
@@ -57,7 +57,7 @@ $(document).ready(function (){
             data: data,
             success: function(data){
                 if(data.status === 'ok'){
-                    console.log('+++')
+                    // console.log('+++')
                 }
                 removeLoader();
             },

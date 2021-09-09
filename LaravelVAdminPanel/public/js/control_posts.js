@@ -3,12 +3,6 @@ var __webpack_exports__ = {};
 /*!***************************************!*\
   !*** ./resources/js/control_posts.js ***!
   \***************************************/
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 // import{ hello } from './app.js';
 $(document).ready(function () {
   console.log('control_posts.js');
@@ -58,8 +52,8 @@ $(document).ready(function () {
   }
 
   $('.js-update-post-item').click(function () {
-    console.log('update-return-button'); // let $names = $('.content_repeater').find('[name]')
-
+    // console.log('update-return-button');
+    // let $names = $('.content_repeater').find('[name]')
     var $names = $('.field_section_container').find('[data-type-filed]');
     addLoader();
     remove_all_page_notif();
@@ -87,13 +81,12 @@ $(document).ready(function () {
       data.append('post_id', post_id);
     }
 
-    data.append('draft', $('.sidebar_right').find('.field_section_container').find('.custom_checkbox').children('.custom_input_text').val());
-    console.log("len = " + $names.length);
+    data.append('draft', $('.sidebar_right').find('.field_section_container').find('.custom_checkbox').children('.custom_input_text').val()); // console.log("len = "  + $names.length)
+
     $names.each(function (index) {
-      console.log($(this));
+      // console.log($(this))
       var current_name = $(this).attr('data-type-filed');
-      var name = $(this).attr('name');
-      console.log("name = " + name);
+      var name = $(this).attr('name'); // console.log("name = " + name);
 
       if (current_name.indexOf('imageField') !== -1) {
         var value = $(this).attr('data-id');
@@ -125,25 +118,13 @@ $(document).ready(function () {
 
         data.append(name, $(this).val());
       }
-    });
-    console.log('before for');
-
-    var _iterator = _createForOfIteratorHelper(data.values()),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var value = _step.value;
-        console.log(value);
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
+    }); // console.log('before for')
+    // for (let value of data.values()) {
+    //     console.log(value);
+    // }
 
     if (errors > 0) {
-      console.log('error');
+      // console.log('error')
       removeLoader();
       return;
     } // removeLoader();
@@ -158,8 +139,8 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        console.log('success');
-        console.log('status = ' + data.status);
+        // console.log('success');
+        // console.log('status = ' + data.status);
         add_notification_page('Запись обновлена', 'ok');
         removeLoader();
 
@@ -176,7 +157,7 @@ $(document).ready(function () {
     });
   });
   $('.js-delete-post-item').click(function (event) {
-    console.log('delete item');
+    // console.log('delete item')
     addLoader(); // $url = window.location.href;
     // $arr = $url.split('/')
 
@@ -203,8 +184,8 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        console.log('success');
-        console.log('status = ' + data.status);
+        // console.log('success');
+        // console.log('status = ' + data.status);
         removeLoader();
         if (delete_item) delete_item.remove();else {
           if (data.status === 'ok') {
@@ -220,7 +201,7 @@ $(document).ready(function () {
     });
   });
   $('.js-change-draft-post').click(function (event) {
-    console.log('js-change-draft-post');
+    // console.log('js-change-draft-post')
     addLoader();
     var data = new FormData();
     var draft_block = $(this).closest('.js-ajax-check-control').find('.custom_input_text'); // console.log('draft_block = ' + draft_block.val());
@@ -238,8 +219,8 @@ $(document).ready(function () {
       contentType: false,
       data: data,
       success: function success(data) {
-        console.log('success');
-        console.log('status = ' + data.status);
+        // console.log('success');
+        // console.log('status = ' + data.status);
         removeLoader();
 
         if (data.status === 'error') {
