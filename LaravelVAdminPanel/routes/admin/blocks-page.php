@@ -34,6 +34,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/delivery-price',
         [\App\Http\Controllers\DeliveryPriceController::class, 'get_all_delivery_price']
     )->name('all-delivery-price-page');
+    Route::get('/delivery-day',
+        [\App\Http\Controllers\DeliveryWorkDayController::class, 'get_all_delivery_day']
+    )->name('all-delivery-day-page');
 //    Route::get('/feedback',
 //        [\App\Http\Controllers\BlockFeedbackController::class, 'get_all_feedback']
 //    )->name('all-feedback-page');

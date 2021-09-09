@@ -20,12 +20,12 @@
                 <li>
                     <div class="control_menu @yield('all-block-menu')"><!-- active -->
                         <div class="main_menu sidebar_menu_item ">
-                            <a href="{{ route('all-catalog-page') }}">
+                            <a href="{{ route('all-benefits') }}">
                                         <span class="sidebar_menu_icon">
                                             <i class="fas fa-file"></i>
                                         </span>
                             </a>
-                            <a href="{{ route('all-catalog-page') }}">
+                            <a href="{{ route('all-benefits') }}">
                                 <span class="sidebar_menu_text">Блоки</span>
                             </a>
                             <span class="sidebar_control_menu_item js-open-close-menu"><!-- none -->
@@ -145,6 +145,13 @@
                                 <a href="{{ route('all-delivery-price-page') }}" class="sidebar_menu_item @yield('all-delivery-price-submeny-all')">
                                     <span class="sidebar_menu_text">
                                         Цена
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('all-delivery-day-page') }}" class="sidebar_menu_item @yield('all-delivery-day-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Дни доставки
                                     </span>
                                 </a>
                             </li>

@@ -76,6 +76,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/delivery-price',
         [\App\Http\Controllers\DeliveryPriceController::class, 'create']
     )->name('create-delivery-price');
+    Route::post('/delivery-day',
+        [\App\Http\Controllers\DeliveryWorkDayController::class, 'edit']
+    )->name('edit-delivery-day');
 });
 
 
