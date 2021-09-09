@@ -68,6 +68,13 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('all-gallery-page') }}" class="sidebar_menu_item @yield('all-gallery-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Галерея
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

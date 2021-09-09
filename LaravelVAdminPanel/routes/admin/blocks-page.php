@@ -43,9 +43,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 //    Route::get('/feedback',
 //        [\App\Http\Controllers\BlockFeedbackController::class, 'get_all_feedback']
 //    )->name('all-feedback-page');
-//    Route::get('/gallery',
-//        [\App\Http\Controllers\BlockGalleryController::class, 'get_all_gallery']
-//    )->name('all-gallery-page');
+    Route::get('/gallery',
+        [\App\Http\Controllers\BlockGalleryController::class, 'get_all']
+    )->name('all-gallery-page');
     Route::get('/how-we-work',
         [\App\Http\Controllers\BlockHowWeWorkController::class, 'get_all_how_we_work']
     )->name('all-how-we-work-page');

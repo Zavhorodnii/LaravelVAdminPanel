@@ -39,9 +39,6 @@ Route::prefix('upload')->group(function (){
 });
 
 
-//Route::prefix('edit-block')->group(function (){
-//});
-
 Route::prefix('create-block')->group(function (){
     Route::post('/guarantees',
         [\App\Http\Controllers\GuaranteesController::class, 'edit_block_guarantees']
@@ -82,6 +79,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/delivery-address',
         [\App\Http\Controllers\DeliveryWorkAddressController::class, 'edit']
     )->name('edit-delivery-address');
+    Route::post('/gallery',
+        [\App\Http\Controllers\BlockGalleryController::class, 'edit']
+    )->name('edit-gallery');
 });
 
 
