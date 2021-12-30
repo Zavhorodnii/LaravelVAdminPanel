@@ -117,6 +117,24 @@ $(document).ready(function () {
         } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
 
         data.append(name, $(this).val());
+      } else if (current_name.indexOf('multiple_field') !== -1) {
+        if ($(this).closest('.mult_field').hasClass('selected_field')) {
+          var _value2 = $(this).attr('data-value');
+
+          if (_value2 === '') {
+            var _field2 = $(this).closest('.field');
+
+            if (_field2.hasClass('required')) {
+              add_notification_page('Не заполнено поле: ' + _field2.find('.title_section').text(), 'error');
+
+              _field2.addClass('error');
+
+              errors++;
+            }
+          } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
+
+          data.append(name, $(this).attr('data-value'));
+        }
       }
     }); // console.log('before for')
     // for (let value of data.values()) {

@@ -130,6 +130,24 @@ $(document).ready(function (){
                         $(this).closest('.field').removeClass('error')
                     data.append(name, $(this).val())
                 }
+                else if((current_name.indexOf('multiple_field') !== -1)){
+                    if($(this).closest('.mult_field').hasClass('selected_field')) {
+                        let value = $(this).attr('data-value');
+                        if (value === '') {
+                            let field = $(this).closest('.field')
+                            if (field.hasClass('required')) {
+                                add_notification_page(
+                                    'Не заполнено поле: ' + field.find('.title_section').text(),
+                                    'error'
+                                )
+                                field.addClass('error')
+                                errors++;
+                            }
+                        } else if ($(this).closest('.field').hasClass('error'))
+                            $(this).closest('.field').removeClass('error')
+                        data.append(name, $(this).attr('data-value'))
+                    }
+                }
             }
         );
         // console.log('before for')

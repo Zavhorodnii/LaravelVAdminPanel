@@ -1439,3 +1439,7 @@ option:hover {
   background: #EFEFEF url(/images/loader.gif?a8494e9c445ea14c63a07273783b5937) center/80px no-repeat;
   z-index: 100;
 }
+
+.gallery {
+  max-width: 250px;
+}

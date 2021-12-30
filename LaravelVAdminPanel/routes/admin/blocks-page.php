@@ -61,6 +61,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/audio-review',
         [\App\Http\Controllers\AudioReviewController::class, 'get_all_audio_review']
     )->name('all-audio-review');
+    Route::get('/products',
+        [\App\Http\Controllers\ProductController::class, 'get_all']
+    )->name('all-product');
 //    Route::get('/stock-kits',
 //        [\App\Http\Controllers\BlockStockKitsController::class, 'get_all_stock_kits']
 //    )->name('all-stock-kits-page');
@@ -97,6 +100,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/delivery-price',
             [\App\Http\Controllers\DeliveryPriceController::class, 'create_delivery_price_item']
         )->name('create-delivery-price-item');
+        Route::get('/create-product',
+            [\App\Http\Controllers\ProductController::class, 'create_page']
+        )->name('create-product');
     });
 
     Route::prefix('/update')->group(function(){
@@ -118,6 +124,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/delivery-price/{id}',
             [\App\Http\Controllers\DeliveryPriceController::class, 'open_update']
         )->name('update-delivery-price-item');
+        Route::get('/product/{id}',
+            [\App\Http\Controllers\ProductController::class, 'update']
+        )->name('update_product');
     });
 
 

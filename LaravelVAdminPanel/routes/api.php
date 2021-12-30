@@ -82,6 +82,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/gallery',
         [\App\Http\Controllers\BlockGalleryController::class, 'edit']
     )->name('edit-gallery');
+    Route::post('/create-product',
+        [\App\Http\Controllers\ProductController::class, 'create']
+    )->name('create-product-item');
 });
 
 
@@ -104,6 +107,9 @@ Route::prefix('delete')->group(function (){
     Route::post('/delivery-price',
         [\App\Http\Controllers\DeliveryPriceController::class, 'delete']
     )->name('delete-delivery-price');
+    Route::post('product',
+        [\App\Http\Controllers\ProductController::class, 'delete']
+    )->name('delete-product');
 });
 
 
@@ -126,4 +132,7 @@ Route::prefix('change-draft')->group(function(){
     Route::post('/delivery-price',
         [\App\Http\Controllers\DeliveryPriceController::class, 'change_draft']
     )->name('change-draft-delivery-controller');
+    Route::post('/product',
+        [\App\Http\Controllers\ProductController::class, 'change_draft']
+    )->name('product-draft');
 });
