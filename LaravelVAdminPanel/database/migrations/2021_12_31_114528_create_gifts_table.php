@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBestsellersTable extends Migration
+class CreateGiftsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateBestsellersTable extends Migration
      */
     public function up()
     {
-        Schema::create('bestsellers', function (Blueprint $table) {
+        Schema::create('gifts', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->string('all_text_title')->nullable();
-            $table->string('all_text_link')->nullable();
-            $table->boolean('draft')->default(false);
-            $table->boolean('slider_block')->default(true);
+            $table->string('description')->nullable();
+            $table->dateTime('date_finish')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateBestsellersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bestsellers');
+        Schema::dropIfExists('gifts');
     }
 }

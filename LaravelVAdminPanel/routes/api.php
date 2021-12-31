@@ -85,6 +85,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/create-product',
         [\App\Http\Controllers\ProductController::class, 'create']
     )->name('create-product-item');
+    Route::post('/bestseller',
+        [\App\Http\Controllers\BestsellerController::class, 'create']
+    )->name('create-bestseller-item');
 });
 
 
@@ -110,6 +113,9 @@ Route::prefix('delete')->group(function (){
     Route::post('product',
         [\App\Http\Controllers\ProductController::class, 'delete']
     )->name('delete-product');
+    Route::post('bestseller',
+        [\App\Http\Controllers\BestsellerController::class, 'delete']
+    )->name('delete-bestseller');
 });
 
 
@@ -135,4 +141,7 @@ Route::prefix('change-draft')->group(function(){
     Route::post('/product',
         [\App\Http\Controllers\ProductController::class, 'change_draft']
     )->name('product-draft');
+    Route::post('/bestseller',
+        [\App\Http\Controllers\BestsellerController::class, 'change_draft']
+    )->name('bestseller-draft');
 });

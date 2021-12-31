@@ -4,15 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('admin')->middleware('auth')->group(function(){
-//    Route::get('/all-gifts',
-//        [\App\Http\Controllers\BlockGiftsController::class, 'get_all_gifts']
-//    )->name('all-gifts-page');
-//    Route::get('/ads',
-//        [\App\Http\Controllers\BlockAdsController::class, 'get_all_ads']
-//    )->name('all-ads-page');
-//    Route::get('/bestsellers',
-//        [\App\Http\Controllers\BlockBestsellersController::class, 'get_all_bestsellers']
-//    )->name('all-bestsellers-page');
     Route::get('/benefits',
         [\App\Http\Controllers\BenefitsController::class, 'get_all_benefits']
     )->name('all-benefits');
@@ -40,9 +31,6 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/delivery-address',
         [\App\Http\Controllers\DeliveryWorkAddressController::class, 'get_all']
     )->name('all-delivery-address');
-//    Route::get('/feedback',
-//        [\App\Http\Controllers\BlockFeedbackController::class, 'get_all_feedback']
-//    )->name('all-feedback-page');
     Route::get('/gallery',
         [\App\Http\Controllers\BlockGalleryController::class, 'get_all']
     )->name('all-gallery-page');
@@ -64,22 +52,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/products',
         [\App\Http\Controllers\ProductController::class, 'get_all']
     )->name('all-product');
-//    Route::get('/stock-kits',
-//        [\App\Http\Controllers\BlockStockKitsController::class, 'get_all_stock_kits']
-//    )->name('all-stock-kits-page');
-
-//    Route::prefix('products')->group(function(){
-//        Route::get('/',
-//            [\App\Http\Controllers\ProductController::class, 'all_products']
-//        )->name('all-products');
-//        Route::get('/create',
-//            [\App\Http\Controllers\ProductController::class, 'create_product']
-//        )->name('create-product');
-//    });
-
-
-
-
+    Route::get('/bestseller',
+        [\App\Http\Controllers\BestsellerController::class, 'get_all']
+    )->name('all-bestseller');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',
@@ -103,6 +78,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/create-product',
             [\App\Http\Controllers\ProductController::class, 'create_page']
         )->name('create-product');
+        Route::get('/bestseller',
+            [\App\Http\Controllers\BestsellerController::class, 'create_page']
+        )->name('create-bestseller');
     });
 
     Route::prefix('/update')->group(function(){
@@ -127,10 +105,11 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/product/{id}',
             [\App\Http\Controllers\ProductController::class, 'update']
         )->name('update_product');
+        Route::get('/bestseller/{id}',
+            [\App\Http\Controllers\BestsellerController::class, 'update']
+        )->name('update-bestseller');
     });
 
-
-//    Route::get('edit')
 });
 
 

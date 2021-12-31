@@ -24,12 +24,14 @@ class ProductController extends Controller
             'blocks' => Products::select('id', 'title', 'draft', 'updated_at')->orderBy('id', 'DESC')->get(),
         ]);
     }
+
     public function create_page(){
         return view('admin/create/create-product-item',[
             'files' => Files::orderBy('id', 'DESC')->get(),
             'all_products' => Products::select('id', 'title')->where('draft', '=', false)->orderBy('id', 'DESC')->get(),
         ]);
     }
+
     public function create(Request $request){
         $post_id = $request->input('post_id');
         if ($post_id) {

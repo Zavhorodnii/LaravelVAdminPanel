@@ -248,10 +248,12 @@
                                                     }
                                                     return false;
                                                 };
-                                                if( array_key_exists('set-products', $fields) ){
-                                                    $checked = $check($fields['set-products']);
-                                                }else
-                                                    $checked = false
+                                                $checked = false;
+                                                if( isset($fields) ){
+                                                    if( array_key_exists('set-products', $fields) ){
+                                                        $checked = $check($fields['set-products']);
+                                                    }
+                                                }
                                                 ?>
                                                 <li class="copy_item <?php echo $checked ? 'checked' : '' ?>" data-item_id="{{ $item->id }}">
                                                     <div class="custom_selection_item" <?php echo $checked ? 'data-value="1"' : '' ?>>
@@ -561,10 +563,12 @@
                                                     }
                                                     return false;
                                                 };
-                                                if( array_key_exists('related-products', $fields) ){
-                                                    $checked = $check($fields['related-products']);
-                                                }else
-                                                    $checked = false
+                                                $checked = false;
+                                                if( isset($fields) ){
+                                                    if( array_key_exists('related-products', $fields) ){
+                                                        $checked = $check($fields['related-products']);
+                                                    }
+                                                }
                                                 ?>
                                                 <li class="copy_item <?php echo $checked ? 'checked' : '' ?>" data-item_id="{{ $item->id }}">
                                                     <div class="custom_selection_item" <?php echo $checked ? 'data-value="1"' : '' ?>>

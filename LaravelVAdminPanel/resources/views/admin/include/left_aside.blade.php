@@ -75,6 +75,13 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('all-bestseller') }}" class="sidebar_menu_item @yield('all-bestseller-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Хиты продаж
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
