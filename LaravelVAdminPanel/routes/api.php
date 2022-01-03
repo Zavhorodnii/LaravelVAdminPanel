@@ -88,6 +88,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/bestseller',
         [\App\Http\Controllers\BestsellerController::class, 'create']
     )->name('create-bestseller-item');
+    Route::post('edit-gift',
+       [\App\Http\Controllers\BlockGiftsController::class, 'create']
+    )->name('edit-gift-block');
 });
 
 

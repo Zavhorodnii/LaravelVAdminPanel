@@ -148,6 +148,23 @@ $(document).ready(function (){
                         data.append(name, $(this).attr('data-value'))
                     }
                 }
+                else if((current_name.indexOf('multiSelectField') !== -1)){
+                    let value = $(this).attr('data-product-id');
+                    if(value  === ''){
+                        let field = $(this).closest('.field')
+                        if(field.hasClass('required')){
+                            add_notification_page(
+                                'Не заполнено поле: ' + field.find('.title_section').text(),
+                                'error'
+                            )
+                            field.addClass('error')
+                            errors++;
+                        }
+                    }
+                    else if($(this).closest('.field').hasClass('error'))
+                        $(this).closest('.field').removeClass('error')
+                    data.append(name, value)
+                }
             }
         );
         // console.log('before for')

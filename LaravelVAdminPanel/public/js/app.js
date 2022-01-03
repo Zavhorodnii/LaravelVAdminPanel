@@ -1973,7 +1973,9 @@ $(document).ready(function () {
 
   function custom_selection_item(event) {
     var selected_val = $(this).find('.title_section').text();
+    var post_id = $(this).attr('data-product-id');
     $(this).closest('.single_selected_field').find('.item_text').text(selected_val);
+    $(this).closest('.single_selected_field').find('.item_text').attr('data-product-id', post_id);
     $(this).closest('.single_items_container').find('.custom_selection_item').attr('data-value', 0);
     $(this).attr('data-value', 1);
     $(this).closest('.single_items_container').toggleClass('container_hidden');

@@ -135,6 +135,22 @@ $(document).ready(function () {
 
           data.append(name, $(this).attr('data-value'));
         }
+      } else if (current_name.indexOf('multiSelectField') !== -1) {
+        var _value3 = $(this).attr('data-product-id');
+
+        if (_value3 === '') {
+          var _field3 = $(this).closest('.field');
+
+          if (_field3.hasClass('required')) {
+            add_notification_page('Не заполнено поле: ' + _field3.find('.title_section').text(), 'error');
+
+            _field3.addClass('error');
+
+            errors++;
+          }
+        } else if ($(this).closest('.field').hasClass('error')) $(this).closest('.field').removeClass('error');
+
+        data.append(name, _value3);
       }
     }); // console.log('before for')
     // for (let value of data.values()) {

@@ -16,7 +16,6 @@ class CreateGiftsTable extends Migration
         Schema::create('gifts', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
             $table->dateTime('date_finish')->nullable();
             $table->timestamps();
         });

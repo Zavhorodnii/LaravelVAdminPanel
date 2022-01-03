@@ -82,6 +82,13 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('gift-page') }}" class="sidebar_menu_item @yield('all-gift-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Подарки
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

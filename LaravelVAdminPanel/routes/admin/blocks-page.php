@@ -55,6 +55,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/bestseller',
         [\App\Http\Controllers\BestsellerController::class, 'get_all']
     )->name('all-bestseller');
+    Route::get('/gifts',
+        [\App\Http\Controllers\BlockGiftsController::class, 'get_all']
+    )->name('gift-page');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',
