@@ -195,7 +195,8 @@ $(document).ready(function () {
     addLoader(); // $url = window.location.href;
     // $arr = $url.split('/')
 
-    var data = new FormData(); // data.append('post_id', $arr[$arr.length - 1])
+    var data = new FormData();
+    var this_page = $(this); // data.append('post_id', $arr[$arr.length - 1])
 
     var delete_item = null;
     var post_id = $(this).attr('data-block-id');
@@ -225,6 +226,10 @@ $(document).ready(function () {
           if (data.status === 'ok') {
             window.location.replace(data.url);
           }
+        }
+
+        if (this_page.hasClass('reload_page')) {
+          window.location.reload();
         }
       },
       error: function error(jqXHR, status, errorThrown) {

@@ -212,6 +212,32 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <div class="control_menu @yield('all-block-categories-menu')"><!-- active -->
+                        <div class="main_menu sidebar_menu_item ">
+                            <a href="{{ route('all-categories') }}">
+                                        <span class="sidebar_menu_icon">
+                                            <i class="fas fa-file"></i>
+                                        </span>
+                            </a>
+                            <a href="{{ route('all-categories') }}">
+                                <span class="sidebar_menu_text">Категории</span>
+                            </a>
+                            <span class="sidebar_control_menu_item js-open-close-menu"><!-- none -->
+                                        <i class="fas fa-chevron-down"></i>
+                                    </span>
+                        </div>
+                        <ul class="sidebar_menu_items">
+                            <li>
+                                <a href="{{ route('all-categories') }}" class="sidebar_menu_item @yield('all-categories-block-submeny-all')">
+                                    <span class="sidebar_menu_text">
+                                        Все категории
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
             </ul>
         </div>

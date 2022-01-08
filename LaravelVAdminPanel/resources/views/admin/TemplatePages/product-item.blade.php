@@ -184,42 +184,83 @@
                             <div class="multiple_control">
                                 <div class="multiple_field multiple_section_1 style_custom_scroll">
                                     <input type="custom_input_text" value="0">
-                                    <ul>
-                                        <li class="copy_item" data-item_id="1">
-                                            <div class="custom_selection_item " data-value="0">
-                                                <label class="title_section" for="">Выбор 1</label>
-                                            </div>
-                                        </li>
-                                        <li class="copy_item" data-item_id="2">
-                                            <div class="custom_selection_item " data-value="0">
-                                                <label class="title_section" for="">Выбор 2</label>
-                                            </div>
-                                        </li>
-                                        <li class="copy_item" data-item_id="3">
-                                            <div class="custom_selection_item " data-value="0">
-                                                <label class="title_section" for="">Выбор 3</label>
-                                            </div>
-                                        </li>
-                                        <li class="copy_item" data-item_id="4">
-                                            <div class="custom_selection_item " data-value="0">
-                                                <label class="title_section" for="">Выбор 4</label>
-                                            </div>
-                                        </li>
-                                        <li class="copy_item" data-item_id="5">
-                                            <div class="custom_selection_item " data-value="0">
-                                                <label class="title_section" for="">Выбор 5</label>
-                                            </div>
-                                        </li>
-                                        <li class="copy_item" data-item_id="6">
-                                            <div class="custom_selection_item " data-value="0">
-                                                <label class="title_section" for="">Выбор 6</label>
-                                            </div>
-                                        </li>
+                                    <ul class="mult_field">
+                                        @if(isset( $categories ))
+                                            @php
+                                                $index = 1;
+                                            @endphp
+                                            @foreach($categories as $item)
+                                                <?php
+                                                $check = function($related_products) use ($item){
+                                                    foreach ($related_products as $product){
+                                                        if( $product[0]->id == $item['id'])
+                                                            return true;
+                                                    }
+                                                    return false;
+                                                };
+                                                $checked = false;
+                                                if( isset($fields) ){
+                                                    if( array_key_exists('category', $fields) ){
+                                                        $checked = $check($fields['category']);
+                                                    }
+                                                }
+                                                ?>
+                                                <li class="copy_item <?php echo $checked ? 'checked' : '' ?>" data-item_id="{{ $item['id'] }}">
+                                                    <div class="custom_selection_item" <?php echo $checked ? 'data-value="1"' : '' ?>>
+                                                        <label class="title_section"
+                                                               data-type-filed="multiple_field"
+                                                               name="category_{{ $item['id'] }}"
+                                                               data-value="{{ $item['id'] }}"
+                                                               for="">{{ $item['title'] }}</label>
+                                                    </div>
+                                                </li>
+                                                @php
+                                                    $index++;
+                                                @endphp
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="multiple_field multiple_section_2 style_custom_scroll">
                                     <input type="custom_input_text" value="0">
-                                    <ul class="paste_clone">
+                                    <ul class="paste_clone mult_field selected_field">
+                                        @if(isset( $categories ))
+                                            @php
+                                                $index = 1;
+                                            @endphp
+                                            @foreach($categories as $item)
+                                                @php
+                                                $check = function($related_products) use ($item){
+                                                    foreach ($related_products as $product){
+                                                        if( $product[0]->id == $item['id'])
+                                                            return true;
+                                                    }
+                                                    return false;
+                                                };
+                                                $checked = false;
+                                                if( isset($fields) ){
+                                                    if( array_key_exists('category', $fields) ){
+                                                        $checked = $check($fields['category']);
+                                                    }
+                                                }
+                                                @endphp
+                                                @if( !$checked)
+                                                    @continue
+                                                @endif
+                                                <li class="copy_item remove" data-item_id="{{ $item['id'] }}">
+                                                    <div class="custom_selection_item" data-value="1">
+                                                        <label class="title_section"
+                                                               data-type-filed="multiple_field"
+                                                               name="category_{{ $item['id'] }}"
+                                                               data-value="{{ $item['id'] }}"
+                                                               for="">{{ $item['title'] }}</label>
+                                                    </div>
+                                                </li>
+                                                @php
+                                                    $index++;
+                                                @endphp
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

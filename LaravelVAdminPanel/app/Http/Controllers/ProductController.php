@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Files;
 use App\Models\Product_addition_info;
 use App\Models\Product_addition_info_item;
+use App\Models\Product_category;
 use App\Models\Product_features;
 use App\Models\Product_gallery;
 use App\Models\Product_related_products;
 use App\Models\Product_set;
 use App\Models\Product_video;
 use App\Models\Products;
+use App\Models\Сategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Product_;
@@ -26,9 +28,14 @@ class ProductController extends Controller
     }
 
     public function create_page(){
+        $category = Сategory::select('id', 'title', 'сategories_id')->orderBy('id', 'ASC')->get();
+        $set = [];
+
+        $set = create_catalog_view($category, $set);
         return view('admin/create/create-product-item',[
             'files' => Files::orderBy('id', 'DESC')->get(),
             'all_products' => Products::select('id', 'title')->where('draft', '=', false)->orderBy('id', 'DESC')->get(),
+            'categories' => $set,
         ]);
     }
 
@@ -37,6 +44,7 @@ class ProductController extends Controller
         if ($post_id) {
             $product = Products::find($post_id);
             Product_video::where('products_id', '=', $post_id)->delete();
+            Product_category::where('products_id', '=', $post_id)->delete();
             Product_set::where('products_id', '=', $post_id)->delete();
             Product_related_products::where('products_id', '=', $post_id)->delete();
             Product_gallery::where('products_id', '=', $post_id)->delete();
@@ -128,6 +136,18 @@ class ProductController extends Controller
             }
         }
 
+        if( isset( $array_fields['category'] ) && is_array( $array_fields['category'] ) &&
+            count( $array_fields['category'] ) > 0) {
+            foreach ($array_fields['category'] as $value) {
+                if (isset($value)) {
+                    $product_category = new Product_category;
+                    $product_category->products_id = $product->id;
+                    $product_category->сategories_id = $value;
+                    $product_category->save();
+                }
+            }
+        }
+
         if( isset( $array_fields['repeater-addition'] ) && is_array( $array_fields['repeater-addition'] ) &&
             count( $array_fields['repeater-addition'] ) > 0) {
             foreach ($array_fields['repeater-addition'] as $value) {
@@ -160,6 +180,7 @@ class ProductController extends Controller
             ]);
 
     }
+
     public function update($id){
         $product = Products::find($id);
         $item_fields['post_id'] = $id;
@@ -261,6 +282,17 @@ class ProductController extends Controller
             }
         }
 
+        $product_categories = Product_category::select('сategories_id')->where('products_id', '=', $id)->get();;
+        $index = 1;
+        if( isset($product_categories) ){
+            foreach ( $product_categories as $item ){
+                $item_fields['category'][$index] = Сategory::select('id', 'title')
+                    ->where('id', '=', $item->сategories_id)
+                    ->get();
+                $index++;
+            }
+        }
+
         $product_addition_info = Product_addition_info::where('products_id', '=', $id)->get();;
         $index = 1;
         if( isset($product_addition_info) ){
@@ -285,6 +317,10 @@ class ProductController extends Controller
             }
         }
 
+        $category = Сategory::select('id', 'title', 'сategories_id')->orderBy('id', 'ASC')->get();
+        $set = [];
+
+        $set = create_catalog_view($category, $set);
 
 //        dd($item_fields);
 
@@ -295,6 +331,7 @@ class ProductController extends Controller
                 ->where('id', '!=', $product->id)
                 ->orderBy('id', 'DESC')->get(),
             'fields'    => $item_fields,
+            'categories' => $set,
         ]);
     }
 

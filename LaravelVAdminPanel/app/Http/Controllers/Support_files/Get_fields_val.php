@@ -38,3 +38,16 @@ function create_fields_array($fields, $value, &$return_item_page, $get_image_inf
         return $value;
     }
 }
+
+function create_catalog_view($catalog, $set, $prefix = '', $parent_id = null){
+    foreach ($catalog as $item){
+        if( $item->сategories_id == $parent_id ){
+            $set[] = [
+                'id' => $item->id,
+                'title' =>$prefix . $item->title,
+            ];
+            $set = create_catalog_view($catalog, $set, $prefix . '— ', $item->id);
+        }
+    }
+    return $set;
+}

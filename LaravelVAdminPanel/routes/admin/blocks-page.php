@@ -58,6 +58,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/gifts',
         [\App\Http\Controllers\BlockGiftsController::class, 'get_all']
     )->name('gift-page');
+    Route::get('categories',
+        [\App\Http\Controllers\CategoryController::class, 'get_all']
+    )->name('all-categories');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',
@@ -84,6 +87,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/bestseller',
             [\App\Http\Controllers\BestsellerController::class, 'create_page']
         )->name('create-bestseller');
+        Route::get('category',
+            [\App\Http\Controllers\CategoryController::class, 'create_page']
+        )->name('create-category');
     });
 
     Route::prefix('/update')->group(function(){
@@ -111,6 +117,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/bestseller/{id}',
             [\App\Http\Controllers\BestsellerController::class, 'update']
         )->name('update-bestseller');
+        Route::get('/category/{id}',
+            [\App\Http\Controllers\CategoryController::class, 'update']
+        )->name('update-category');
     });
 
 });

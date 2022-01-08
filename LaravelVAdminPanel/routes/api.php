@@ -91,6 +91,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('edit-gift',
        [\App\Http\Controllers\BlockGiftsController::class, 'create']
     )->name('edit-gift-block');
+    Route::post('category',
+       [\App\Http\Controllers\CategoryController::class, 'create']
+    )->name('create-category-item');
 });
 
 
@@ -119,6 +122,9 @@ Route::prefix('delete')->group(function (){
     Route::post('bestseller',
         [\App\Http\Controllers\BestsellerController::class, 'delete']
     )->name('delete-bestseller');
+    Route::post('category',
+        [\App\Http\Controllers\CategoryController::class, 'delete']
+    )->name('delete-category');
 });
 
 

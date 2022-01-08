@@ -220,6 +220,7 @@ $(document).ready(function (){
         // $url = window.location.href;
         // $arr = $url.split('/')
         let data = new FormData();
+        let this_page = $(this);
 
         // data.append('post_id', $arr[$arr.length - 1])
         let delete_item = null;
@@ -251,6 +252,9 @@ $(document).ready(function (){
                     if(data.status === 'ok'){
                         window.location.replace(data.url);
                     }
+                }
+                if( this_page.hasClass('reload_page') ){
+                    window.location.reload();
                 }
             },
             error: function(jqXHR, status, errorThrown){
