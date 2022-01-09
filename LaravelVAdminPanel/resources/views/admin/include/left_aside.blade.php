@@ -238,6 +238,32 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <div class="control_menu @yield('all-block-site_menu-menu')"><!-- active -->
+                        <div class="main_menu sidebar_menu_item ">
+                            <a href="{{ route('site-menu-page') }}">
+                                        <span class="sidebar_menu_icon">
+                                            <i class="fas fa-file"></i>
+                                        </span>
+                            </a>
+                            <a href="{{ route('site-menu-page') }}">
+                                <span class="sidebar_menu_text">Настройки сайта</span>
+                            </a>
+                            <span class="sidebar_control_menu_item js-open-close-menu"><!-- none -->
+                                        <i class="fas fa-chevron-down"></i>
+                                    </span>
+                        </div>
+                        <ul class="sidebar_menu_items">
+                            <li>
+                                <a href="{{ route('site-menu-page') }}" class="sidebar_menu_item @yield('all-site_menu-block-submenu-all')">
+                                    <span class="sidebar_menu_text">
+                                        Меню сайта
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
             </ul>
         </div>

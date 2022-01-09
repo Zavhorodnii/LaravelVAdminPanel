@@ -61,6 +61,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('categories',
         [\App\Http\Controllers\CategoryController::class, 'get_all']
     )->name('all-categories');
+    Route::get('/site-menu',
+        [\App\Http\Controllers\SiteMenuController::class, 'get_all']
+    )->name('site-menu-page');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',

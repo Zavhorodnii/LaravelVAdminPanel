@@ -94,6 +94,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('category',
        [\App\Http\Controllers\CategoryController::class, 'create']
     )->name('create-category-item');
+    Route::post('/site-menu',
+        [\App\Http\Controllers\SiteMenuController::class, 'edit']
+    )->name('edit-site-menu');
 });
 
 
