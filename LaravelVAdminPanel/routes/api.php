@@ -97,6 +97,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/site-menu',
         [\App\Http\Controllers\SiteMenuController::class, 'edit']
     )->name('edit-site-menu');
+    Route::post('/social-link',
+        [\App\Http\Controllers\SocialLinkController::class, 'edit']
+    )->name('edit-social-link');
 });
 
 
