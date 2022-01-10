@@ -261,12 +261,17 @@
                                     </span>
                                 </a>
                             </li>
-                        </ul>
-                        <ul class="sidebar_menu_items">
                             <li>
                                 <a href="{{ route('social-link-page') }}" class="sidebar_menu_item @yield('all-social_link-block-submenu-all')">
                                     <span class="sidebar_menu_text">
                                         Соц сети
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('payment-page') }}" class="sidebar_menu_item @yield('all-payment-block-submenu-all')">
+                                    <span class="sidebar_menu_text">
+                                        Оплата
                                     </span>
                                 </a>
                             </li>

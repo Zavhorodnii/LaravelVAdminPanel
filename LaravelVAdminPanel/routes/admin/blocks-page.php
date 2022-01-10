@@ -67,6 +67,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/social-link',
         [\App\Http\Controllers\SocialLinkController::class, 'get_all']
     )->name('social-link-page');
+    Route::get('/payment',
+        [\App\Http\Controllers\PaymentController::class, 'get_all']
+    )->name('payment-page');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',

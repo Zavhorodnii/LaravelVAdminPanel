@@ -100,6 +100,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/social-link',
         [\App\Http\Controllers\SocialLinkController::class, 'edit']
     )->name('edit-social-link');
+    Route::post('/payment',
+        [\App\Http\Controllers\PaymentController::class, 'edit']
+    )->name('edit-payment');
 });
 
 

@@ -828,6 +828,7 @@ option:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 .image_section .control_buttons .style_button {
   margin: 10px;
