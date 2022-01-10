@@ -103,6 +103,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/payment',
         [\App\Http\Controllers\PaymentController::class, 'edit']
     )->name('edit-payment');
+    Route::post('/settings-site',
+        [\App\Http\Controllers\SettingsSiteController::class, 'edit']
+    )->name('edit-settings-site');
 });
 
 

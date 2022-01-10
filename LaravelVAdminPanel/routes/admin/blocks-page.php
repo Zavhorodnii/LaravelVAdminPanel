@@ -70,6 +70,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/payment',
         [\App\Http\Controllers\PaymentController::class, 'get_all']
     )->name('payment-page');
+    Route::get('/settings-site',
+        [\App\Http\Controllers\SettingsSiteController::class, 'get_all']
+    )->name('settings-site-page');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',

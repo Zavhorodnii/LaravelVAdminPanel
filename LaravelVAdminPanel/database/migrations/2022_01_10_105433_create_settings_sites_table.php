@@ -20,6 +20,16 @@ class CreateSettingsSitesTable extends Migration
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+            $table->text('header_text')->nullable();
+            $table->string('work_time')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('text_under_email')->nullable();
+            $table->string('title_above_number')->nullable();
+            $table->string('subtitle_above_number')->nullable();
+            $table->text('left_text_block')->nullable();
+            $table->text('right_text_block')->nullable();
+            $table->string('copyright')->nullable();
         });
     }
 

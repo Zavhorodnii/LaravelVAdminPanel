@@ -275,6 +275,13 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('settings-site-page') }}" class="sidebar_menu_item @yield('all-settings-site-block-submenu-all')">
+                                    <span class="sidebar_menu_text">
+                                        Общие настройки
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
