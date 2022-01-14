@@ -106,6 +106,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('/settings-site',
         [\App\Http\Controllers\SettingsSiteController::class, 'edit']
     )->name('edit-settings-site');
+    Route::post('/page',
+        [\App\Http\Controllers\PageController::class, 'create']
+    )->name('create-page-item');
 });
 
 
@@ -137,6 +140,9 @@ Route::prefix('delete')->group(function (){
     Route::post('category',
         [\App\Http\Controllers\CategoryController::class, 'delete']
     )->name('delete-category');
+    Route::post('page',
+        [\App\Http\Controllers\PageController::class, 'delete']
+    )->name('delete-page');
 });
 
 

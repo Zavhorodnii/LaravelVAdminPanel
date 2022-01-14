@@ -285,6 +285,36 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <div class="control_menu @yield('all-block-pages-menu')"><!-- active -->
+                        <div class="main_menu sidebar_menu_item ">
+                            <a href="{{ route('all-pages-page') }}">
+                                        <span class="sidebar_menu_icon">
+                                            <i class="fas fa-file"></i>
+                                        </span>
+                            </a>
+                            <a href="{{ route('all-pages-page') }}">
+                                <span class="sidebar_menu_text">Страницы</span>
+                            </a>
+                            <span class="sidebar_control_menu_item js-open-close-menu"><!-- none -->
+                                        <i class="fas fa-chevron-down"></i>
+                                    </span>
+                        </div>
+                        <ul class="sidebar_menu_items">
+                            <li>
+                                <a href="{{ route('all-pages-page') }}" class="sidebar_menu_item @yield('all-pages-block-submenu-all')">
+                                    <span class="sidebar_menu_text">
+                                        Страницы
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+                        </ul>
+                    </div>
+                </li>
 
             </ul>
         </div>

@@ -147,7 +147,7 @@ $(document).ready(function () {
             // console.log("+++ ");
             let data_item_id = $(this).attr("data-item_id");
             // console.log("data_item_id = " + data_item_id);
-            $(this).closest('.multiple_control').find('.multiple_section_1').find("[data-item_id=" + data_item_id + "]").removeClass('checked').find('.custom_selection_item').attr('data-value', '0');
+            $(this).closest('.multiple_control').find('.multiple_section_1').find("[data-item_id='" + data_item_id + "']").removeClass('checked').find('.custom_selection_item').attr('data-value', '0');
             $(this).remove();
         }
     }

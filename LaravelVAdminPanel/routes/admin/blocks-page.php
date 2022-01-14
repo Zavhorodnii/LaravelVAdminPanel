@@ -73,6 +73,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/settings-site',
         [\App\Http\Controllers\SettingsSiteController::class, 'get_all']
     )->name('settings-site-page');
+    Route::get('/pages',
+        [\App\Http\Controllers\PageController::class, 'get_all']
+    )->name('all-pages-page');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',
@@ -102,6 +105,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('category',
             [\App\Http\Controllers\CategoryController::class, 'create_page']
         )->name('create-category');
+        Route::get('page',
+            [\App\Http\Controllers\PageController::class, 'create_page']
+        )->name('create-page');
     });
 
     Route::prefix('/update')->group(function(){
@@ -132,6 +138,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/category/{id}',
             [\App\Http\Controllers\CategoryController::class, 'update']
         )->name('update-category');
+        Route::get('/page/{id}',
+            [\App\Http\Controllers\PageController::class, 'update']
+        )->name('update-page');
     });
 
 });
