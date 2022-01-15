@@ -10,7 +10,7 @@ Route::get('/admin', function () {
 Route::prefix('admin')->group(function(){
 
     Route::post('/auth',
-        [\App\Http\Controllers\AdminLoginController::class, 'admin_check']
+        [\App\Http\Controllers\Admin\AdminLoginController::class, 'admin_check']
     )->name('admin-auth');
 
     Route::get('/panel', function (){
@@ -18,7 +18,7 @@ Route::prefix('admin')->group(function(){
     })->name('admin-panel');
 
     Route::get('/pages',
-        [\App\Http\Controllers\PagesController::class, 'all_pages']
+        [\App\Http\Controllers\Admin\PagesController::class, 'all_pages']
     )->name('all_pages');
 });
 

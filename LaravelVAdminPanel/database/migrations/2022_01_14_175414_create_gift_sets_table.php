@@ -15,6 +15,8 @@ class CreateGiftSetsTable extends Migration
     {
         Schema::create('gift_sets', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->string('subtitle')->nullable();
             $table->timestamps();
         });
     }

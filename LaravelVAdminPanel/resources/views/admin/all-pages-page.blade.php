@@ -22,20 +22,6 @@
             <div class="field_section_container">
                 <div class="notification-save-message">
                     <ul class=" js-paste-notifications">
-                        {{--                        <li class="style-notification padding_t_10 padding_lrb_10 error">--}}
-                        {{--                            <p>--}}
-                        {{--                                Не заполнено оглавление записи--}}
-                        {{--                            </p>--}}
-                        {{--                            <div class="notification_message_control js-remove-page-notif ">--}}
-                        {{--                                <i class="fas fa-times delete_notif"></i>--}}
-                        {{--                            </div>--}}
-                        {{--                        </li>--}}
-                        {{--                        <li class="padding_t_10 padding_lrb_10 ok">--}}
-                        {{--                            <p>--}}
-                        {{--                                Очень длинное уведомление в виде обычного серого текста--}}
-                        {{--                                Скорее всего это обычное уведомление--}}
-                        {{--                            </p>--}}
-                        {{--                        </li>--}}
                     </ul>
                 </div>
             </div>
@@ -58,7 +44,7 @@
                                     Оглавление блока
                                 </div>
                             </div>
-                            <div class="addition_info addition_title">
+                            <div class="addition_info margin-0 addition_title">
 {{--                                <div class="draft-info">--}}
 {{--                                    <div class="update">Черновик</div>--}}
 {{--                                </div>--}}
