@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Bestseller;
 use App\Models\Catalog;
 use App\Models\Files;
@@ -9,8 +10,6 @@ use App\Models\Page;
 use App\Models\PageBlock;
 use App\Models\TextBlock;
 use Illuminate\Http\Request;
-
-require_once 'Support_files/Get_fields_val.php';
 
 class PageController extends Controller
 {
@@ -38,7 +37,7 @@ class PageController extends Controller
             $page = new Page;
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 //        var_export($array_fields);
 
         $page->title = $array_fields['title'];
@@ -130,6 +129,10 @@ class PageController extends Controller
         $set[] = [
             'title' => 'Галерея',
             'id'  => 'gallery|',
+        ];
+        $set[] = [
+            'title' => 'Подарки Акций',
+            'id'  => 'gift-set|',
         ];
 
         $items = TextBlock::select('id', 'title')->where('draft', '=', false)->get();

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\DeliveryBlock;
 use App\Models\DeliveryTypePay;
 use App\Models\Files;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class BlockDeliveryController extends Controller
 {
@@ -20,7 +20,7 @@ class BlockDeliveryController extends Controller
     function edit_delivery_block(Request $request){
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         DeliveryBlock::query()->delete();
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\AudioReview;
 use App\Models\Files;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class AudioReviewController extends Controller
 {
@@ -28,7 +28,7 @@ class AudioReviewController extends Controller
         } else
             $items = new AudioReview;
 
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         $items->person_name = $array_fields['person-name'];
         $items->draft = $array_fields['draft'];

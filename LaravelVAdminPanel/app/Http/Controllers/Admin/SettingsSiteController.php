@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\SettingsSite;
 use Illuminate\Http\Request;
-
-require_once 'Support_files/Get_fields_val.php';
 
 class SettingsSiteController extends Controller
 {
@@ -19,7 +18,7 @@ class SettingsSiteController extends Controller
 
     function edit(Request $request){
 
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
         SettingsSite::query()->delete();
 
         $items = new SettingsSite;

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\HowWeWorkItems;
 use App\Models\HowWeWorkTitle;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class BlockHowWeWorkController extends Controller
 {
@@ -20,7 +20,7 @@ class BlockHowWeWorkController extends Controller
     function edit_block_how_we_work(Request $request){
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         HowWeWorkTitle::query()->delete();
 

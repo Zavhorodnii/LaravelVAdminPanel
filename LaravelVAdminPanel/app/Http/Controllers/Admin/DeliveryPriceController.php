@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\DeliveryAllCity;
 use App\Models\DeliveryPrice;
 use App\Models\DeliveryPriceItems;
 use App\Models\Files;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class DeliveryPriceController extends Controller
 {
@@ -75,7 +75,7 @@ class DeliveryPriceController extends Controller
         } else
             $item_price = new DeliveryPrice;
 
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 //        var_export($array_fields);
 
         $item_price->title_repeater = $array_fields['repeater-title'];

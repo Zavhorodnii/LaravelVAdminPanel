@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\TextBlock;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-
-require_once 'Support_files/Get_fields_val.php';
 
 class TextBlockController extends Controller
 {
@@ -30,7 +29,7 @@ class TextBlockController extends Controller
         } else
             $catalog = new TextBlock;
 
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         $catalog->title = $array_fields['title'];
         $catalog->description = $array_fields['description'];

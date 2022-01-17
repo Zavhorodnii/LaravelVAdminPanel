@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\ReviewsTitle;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class BlockReviewsController extends Controller
 {
@@ -19,7 +19,7 @@ class BlockReviewsController extends Controller
     }
 
     function update(Request $request){
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         ReviewsTitle::query()->delete();
 

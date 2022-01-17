@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\FrontCatalogView;
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\Product_addition_info;
 use App\Models\Product_addition_info_item;
@@ -17,8 +19,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Product_;
 
-require_once 'Support_files/Get_fields_val.php';
-
 class ProductController extends Controller
 {
     public function get_all(){
@@ -31,7 +31,7 @@ class ProductController extends Controller
         $category = Сategory::select('id', 'title', 'сategories_id')->orderBy('id', 'ASC')->get();
         $set = [];
 
-        $set = create_catalog_view($category, $set);
+        $set = FrontCatalogView::create_catalog_view($category, $set);
         return view('admin/create/create-product-item',[
             'files' => Files::orderBy('id', 'DESC')->get(),
             'all_products' => Products::select('id', 'title')->where('draft', '=', false)->orderBy('id', 'DESC')->get(),
@@ -54,7 +54,7 @@ class ProductController extends Controller
             $product = new Products;
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 //        var_export($array_fields);
 
         $product->draft = $array_fields['draft'];
@@ -320,7 +320,7 @@ class ProductController extends Controller
         $category = Сategory::select('id', 'title', 'сategories_id')->orderBy('id', 'ASC')->get();
         $set = [];
 
-        $set = create_catalog_view($category, $set);
+        $set = FrontCatalogView::create_catalog_view($category, $set);
 
 //        dd($item_fields);
 

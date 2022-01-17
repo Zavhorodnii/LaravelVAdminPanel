@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\VideoReview;
 use Illuminate\Http\Request;
-
-require_once 'Support_files/Get_fields_val.php';
 
 class VideoReviewController extends Controller
 {
@@ -29,7 +28,7 @@ class VideoReviewController extends Controller
         } else
             $items = new VideoReview;
 
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         $items->person_name = $array_fields['person-name'];
         $items->draft = $array_fields['draft'];

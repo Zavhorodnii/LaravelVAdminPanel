@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\DeliveryWorkDay;
 use App\Models\DeliveryWorkRegion;
 use App\Models\Files;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class DeliveryWorkDayController extends Controller
 {
@@ -20,7 +20,7 @@ class DeliveryWorkDayController extends Controller
     function edit(Request $request){
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         DeliveryWorkRegion::query()->delete();
 

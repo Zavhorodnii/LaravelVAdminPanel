@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\Payment;
 use Illuminate\Http\Request;
-
-require_once 'Support_files/Get_fields_val.php';
 
 class PaymentController extends Controller
 {
@@ -21,7 +20,7 @@ class PaymentController extends Controller
     function edit(Request $request){
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
 //        var_export($array_fields);
 

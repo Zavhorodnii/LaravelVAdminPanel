@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\GalleryImage;
 use App\Models\GalleryTitle;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class BlockGalleryController extends Controller
 {
@@ -20,7 +20,7 @@ class BlockGalleryController extends Controller
     function edit(Request $request){
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         GalleryTitle::query()->delete();
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\Guarantees;
 use Illuminate\Http\Request;
-require_once 'Support_files/Get_fields_val.php';
 
 class GuaranteesController extends Controller
 {
@@ -19,7 +19,7 @@ class GuaranteesController extends Controller
     function edit_block_guarantees(Request $request){
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 
         Guarantees::query()->delete();
 

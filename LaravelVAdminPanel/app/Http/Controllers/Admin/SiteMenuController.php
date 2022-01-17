@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\CreateMenuStruct;
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\SiteMenu;
 use Illuminate\Http\Request;
-
-require_once 'Support_files/Get_fields_val.php';
 
 class SiteMenuController extends Controller
 {
@@ -15,13 +15,13 @@ class SiteMenuController extends Controller
         return view('admin/site_menu-page', [
             'files' => Files::orderBy('id', 'DESC')->get(),
 //            'fields' => $this->get_db_fields(),
-            'fields' => create_menu_struct($site, []),
+            'fields' => CreateMenuStruct::create_menu_struct($site, []),
         ]);
     }
 
     function edit(Request $request){
 
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
         SiteMenu::query()->delete();
 
         if(isset( $array_fields['repeater-menu-l1'] )) {

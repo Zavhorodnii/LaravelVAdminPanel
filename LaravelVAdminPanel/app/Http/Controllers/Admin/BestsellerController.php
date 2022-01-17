@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Bestseller;
 use App\Models\Bestseller_product;
 use App\Models\Files;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
-require_once 'Support_files/Get_fields_val.php';
+//use function App\Http\Controllers\Admin\Support_files\get_fields_val;
 
 class BestsellerController extends Controller
 {
@@ -34,7 +35,7 @@ class BestsellerController extends Controller
             $bestseller = new Bestseller;
 
 //        var_export($request->input());
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 //        var_export($array_fields);
 
         $bestseller->draft = $array_fields['draft'];

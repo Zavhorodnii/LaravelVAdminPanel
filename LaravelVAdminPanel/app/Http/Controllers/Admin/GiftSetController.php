@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\RequestInput;
 use App\Models\Files;
 use App\Models\GiftSet;
 use App\Models\GiftSetBlock;
 use App\Models\GiftSetBlockItems;
 use App\Models\Products;
 use Illuminate\Http\Request;
-
-require_once 'Support_files/Get_fields_val.php';
 
 class GiftSetController extends Controller
 {
@@ -24,7 +23,7 @@ class GiftSetController extends Controller
     public function create(Request $request){
         GiftSet::query()->delete();
 
-        $array_fields = get_fields_val($request);
+        $array_fields = RequestInput::get_fields_val($request);
 //        var_export($array_fields);
 //        return
 
