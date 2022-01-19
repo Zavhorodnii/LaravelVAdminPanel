@@ -1375,6 +1375,7 @@ option:hover {
   background-color: #1de8b5;
 }
 .file-manager .all-files .uploaded_files .single_item .single-upload-file {
+    max-height: 130px;
   width: 100%;
 }
 .file-manager .all-files .uploaded_files .selected-file {

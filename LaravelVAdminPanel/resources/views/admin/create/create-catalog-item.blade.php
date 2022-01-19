@@ -74,11 +74,6 @@
 
 
 @section('ajaxUrl')
-{{--    <script>--}}
-{{--        tinymce.init({--}}
-{{--            selector: 'textarea'--}}
-{{--        });--}}
-{{--    </script>--}}
     <script>
         window.ajax_update_post = '{{ route('create_block_catalog') }}';
     </script>

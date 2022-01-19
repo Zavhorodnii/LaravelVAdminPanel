@@ -10,7 +10,7 @@
           rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
           integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-{{--    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>--}}
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <title>@yield('page-title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -33,6 +33,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
+{{--    <script>--}}
+{{--        tinymce.init({--}}
+{{--            selector: 'textarea'--}}
+{{--        });--}}
+{{--    </script>--}}
 
 <script>
     window.ajaxUploadUrl = '{{ route('upload-file') }}';

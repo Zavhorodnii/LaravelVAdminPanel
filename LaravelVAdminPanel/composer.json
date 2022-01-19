@@ -24,7 +24,11 @@
         "files": [
             "app/Helpers/Admin/RequestInput.php",
             "app/Helpers/Admin/FrontCatalogView.php",
-            "app/Helpers/Admin/CreateMenuStruct.php"
+            "app/Helpers/Admin/CreateMenuStruct.php",
+            "app/Helpers/Admin/SettingsSiteFields.php",
+            "app/Helpers/Admin/BenefitsFields.php",
+            "app/Helpers/Admin/GiftFields.php",
+            "app/Helpers/Admin/PaymentFields.php"
         ],
         "psr-4": {
             "App\\": "app/",

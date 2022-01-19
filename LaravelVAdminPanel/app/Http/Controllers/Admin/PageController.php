@@ -112,34 +112,38 @@ class PageController extends Controller
         ];
         $set[] = [
             'title' => 'Гарантии',
-            'id'  => 'guarantees|',
+            'id'  => 'Guarantees|',
         ];
         $set[] = [
             'title' => 'Отзывы',
-            'id'  => 'review|',
+            'id'  => 'Review|',
         ];
         $set[] = [
             'title' => 'Как мы работаем',
-            'id'  => 'how-we-work|',
+            'id'  => 'HowWeWork|',
         ];
         $set[] = [
             'title' => 'Доставка',
-            'id'  => 'delivery|',
+            'id'  => 'Delivery|',
         ];
         $set[] = [
             'title' => 'Галерея',
-            'id'  => 'gallery|',
+            'id'  => 'Gallery|',
         ];
         $set[] = [
             'title' => 'Подарки Акций',
-            'id'  => 'gift-set|',
+            'id'  => 'GiftSet|',
+        ];
+        $set[] = [
+            'title' => 'Банер',
+            'id'  => 'Banner|',
         ];
 
         $items = TextBlock::select('id', 'title')->where('draft', '=', false)->get();
         foreach ($items as $item ){
             $set[] = [
                 'title'     => 'Текстовый блок: ' . $item->title,
-                'id'      => 'TextBloc|' . $item->id,
+                'id'      => 'TextBlockFields|' . $item->id,
             ];
         }
         $items = Catalog::select('id', 'title')->where('draft', '=', false)->get();
