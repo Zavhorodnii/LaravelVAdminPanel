@@ -112,6 +112,9 @@ Route::prefix('create-block')->group(function (){
     Route::post('edit-gift-set',
         [\App\Http\Controllers\Admin\GiftSetController::class, 'create']
     )->name('edit-gift-set');
+    Route::post('hurry-up-to-buy',
+        [\App\Http\Controllers\Admin\HurryUpToBuyController::class, 'create']
+    )->name('edit-hurry-up-block');
 });
 
 

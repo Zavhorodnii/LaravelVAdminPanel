@@ -49,16 +49,16 @@
                        @endif
                 >
             </div>
-            <div class="section_input required field border_top padding_10 js_find_elem">
+            <div class="text-area field required section_input border_top padding_10 js_find_elem">
                 <div class="title_section">
-                    Описание<span>*</span>
+                    Описание
                 </div>
-                <input class="style_input_field js_paste_name"
-                       type="text" data-type-filed="inputField" name="description"
-                       @if(isset($fields['description']))
-                           value="{{ $fields['description'] }}"
-                       @endif
-                >
+                <textarea rows="3"
+                          class="style_input_field style_custom_scroll js_paste_name"
+                          data-type-filed="textareaInput"
+                          data-base_name="description"
+                          name="description"
+                >{{ $fields['description'] ?? '' }}</textarea>
             </div>
             <div class="switch_section border_top padding_10 js_find_elem">
                 <div class="title_section">Показать топ</div>

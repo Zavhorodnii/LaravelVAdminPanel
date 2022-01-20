@@ -14,64 +14,24 @@ class BlockCatalogController extends Controller
     public function get_all_catalog(){
         return view('admin/all-catalog-page',[
             'blocks' => Catalog::all(),
-//            'blocks' => [],
         ]);
     }
 
     public function create_catalog_item(){
         return view('admin/create/create-catalog-item', [
             'files' => Files::orderBy('id', 'DESC')->get(),
-//            'fields' => $this->get_db_fields(),
         ]);
     }
 
     public function update_catalog_item($id){
 
-        $catalog = Catalog::find($id);
-        $item_fields['post_id'] = $id;
-        $item_fields['title'] = $catalog->title;
-        $item_fields['description'] = $catalog->description;
-        $item_fields['draft'] = $catalog->draft;
-        $item_fields['show_top'] = $catalog->show_top;
-        $item_fields['important_title'] = $catalog->important_title;
-        $item_fields['important_link'] = $catalog->important_link;
-
-        $catalog_item = CatalogItems::where('catalog_id', '=', $id)->get();;
-
-        $index = 1;
-        foreach ($catalog_item as $items){
-            $img_path = Files::find($items->file_id);
-            if(isset($img_path)) {
-                $file = [
-                    'status' => 'ok',
-                    'id' => $items->file_id,
-                    'url' => $img_path->file_path,
-                ];
-            }else{
-                $file = [
-                    'status' => 'error'
-                ];
-            }
-            $item_fields['repeater'][$index] = [
-                'title' => $items->title,
-                'file-id' => $file,
-                'page-link' => $items->page_link,
-                'top_title' => $items->top_title,
-                'top_link' => $items->top_link,
-            ];
-            $index++;
-        }
-//        var_export($item_fields);
-
         return view('admin/edit/edit-catalog-item', [
             'files'     => Files::orderBy('id', 'DESC')->get(),
-            'fields'    => $item_fields,
+            'fields'    => \App\Helpers\Catalog::get_fields($id),
         ]);
     }
 
     public function create(Request $request){
-//        var_export($request->input());
-
         $post_id = $request->input('post_id');
         if ($post_id) {
             $catalog = Catalog::find($post_id);
@@ -105,7 +65,6 @@ class BlockCatalogController extends Controller
                     $catalog_item->save();
             }
         }
-//        var_export($array_fields);
 
         return response()
             ->json([

@@ -1,10 +1,11 @@
 
+@foreach( $fields['Benefits'] as $fields_)
 <div class="benefits">
     <div class="container">
         <div class="benefits__wrapper">
             <div class="benefits__items">
 
-                @foreach( $fields['Benefits'] as $field)
+                @foreach( $fields_ as $field)
                     <div data-aos="fade-down" data-aos-duration="800" class="benefits__item">
                             <div class="benefits__icon icon">
                                 <svg>
@@ -21,3 +22,4 @@
         </div>
     </div>
 </div>
+@endforeach

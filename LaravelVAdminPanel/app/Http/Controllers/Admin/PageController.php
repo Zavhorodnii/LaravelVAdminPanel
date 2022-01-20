@@ -111,6 +111,10 @@ class PageController extends Controller
             'id'  => 'Gift|',
         ];
         $set[] = [
+            'title' => 'Успей купить',
+            'id'  => 'HurryUpToBuy|',
+        ];
+        $set[] = [
             'title' => 'Гарантии',
             'id'  => 'Guarantees|',
         ];

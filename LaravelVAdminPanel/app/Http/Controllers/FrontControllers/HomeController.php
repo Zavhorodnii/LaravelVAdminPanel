@@ -20,8 +20,10 @@ class HomeController extends Controller
 
         $blocks = PageBlock::where('pages_id', '=', $mainPage->id)->get();
         foreach ( $blocks as $block ){
-            $this->fields[$block->type_block] = ( "App\Http\Controllers\Front\\". $block->type_block)::getFields($block->block_id);
+            $this->fields[$block->type_block][] = ( "App\Http\Controllers\Front\\". $block->type_block)::getFields($block->block_id);
         }
+
+//        dd($this->fields);
 
         $site = SiteMenu::all();
 

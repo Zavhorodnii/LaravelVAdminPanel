@@ -79,6 +79,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/gift-set',
         [\App\Http\Controllers\Admin\GiftSetController::class, 'get_all']
     )->name('gift-set-page');
+    Route::get('/hurry-up-to-buy',
+        [\App\Http\Controllers\Admin\HurryUpToBuyController::class, 'get_all']
+    )->name('hurry-up-to-buy-page');
 
     Route::prefix('create')->group(function (){
         Route::get('/catalog-item',

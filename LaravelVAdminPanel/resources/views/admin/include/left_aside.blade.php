@@ -90,6 +90,13 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{ route('hurry-up-to-buy-page') }}" class="sidebar_menu_item @yield('all-hurry-up-submenu-all')">
+                                    <span class="sidebar_menu_text">
+                                        Успей купить
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('gift-set-page') }}" class="sidebar_menu_item @yield('all-gift-set-submenu-all')">
                                     <span class="sidebar_menu_text">
                                         Комплекты подарков
