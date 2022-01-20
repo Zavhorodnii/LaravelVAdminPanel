@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\BestsellerFields;
 use App\Helpers\RequestInput;
 use App\Models\Bestseller;
 use App\Models\Bestseller_product;
@@ -68,33 +69,12 @@ class BestsellerController extends Controller
 
     public function update($id){
 
-        $product = Bestseller::find($id);
-        $item_fields['post_id'] = $id;
-        $item_fields['title'] = $product->title;
-        $item_fields['all-text-title'] = $product->all_text_title;
-        $item_fields['all-text-link'] = $product->all_text_link;
-        $item_fields['draft'] = $product->draft;
-        $item_fields['slider-block'] = $product->slider_block;
-
-        $related_products = Bestseller_product::select('products_id')->where('bestsellers_id', '=', $id)->get();;
-        $index = 1;
-        if( isset($related_products) ){
-            foreach ( $related_products as $item ){
-                $item_fields['related-products'][$index] = Products::select('id', 'title')
-                    ->where('id', '=', $item->products_id)
-                    ->get();
-                $index++;
-            }
-        }
-
-//        dd($item_fields);
-
         return view('admin/edit/edit-bestseller-item', [
-            'files'     => Files::orderBy('id', 'DESC')->get(),
-            'all_products' => Products::select('id', 'title')
+            'files'             => Files::orderBy('id', 'DESC')->get(),
+            'all_products'      => Products::select('id', 'title')
                 ->where('draft', '=', false)
                 ->orderBy('id', 'DESC')->get(),
-            'fields'    => $item_fields,
+            'fields'            => BestsellerFields::get_fields($id),
         ]);
     }
 

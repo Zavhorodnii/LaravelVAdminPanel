@@ -6,7 +6,7 @@
                 <div class="footer-top__row">
                     <div class="footer-top__column">
                         <div class="footer-top__logo">
-                            <a href="#">
+                            <a href="{{ \Illuminate\Support\Facades\URL::to("/") }}">
                                 <picture>
                                     <source srcset="{{ \Illuminate\Support\Facades\URL::asset( $siteSettings['siteSettings']['file-id']['url'] ) }}" type="image/webp">
                                     <img src="{{ \Illuminate\Support\Facades\URL::asset( $siteSettings['siteSettings']['file-id']['url'] ) }}" alt="Logo">

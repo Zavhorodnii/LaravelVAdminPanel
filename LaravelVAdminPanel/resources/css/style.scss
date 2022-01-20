@@ -951,6 +951,7 @@ option {
 }
 
 .selected_image {
+    max-width: 310px;
     height: 150px;
     transition: all .3s ease-out;
 }

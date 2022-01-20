@@ -122,7 +122,7 @@
                                     <div class="repeater border_top padding_10"
                                          data-id="repeater-list"
                                          name="repeater-set_{{ $repeater_set_key }}_repeater-list"
-                                         name="repeater-list">
+                                         data-base_name="repeater-list">
                                         <div class="title_section">
                                             Список
                                         </div>

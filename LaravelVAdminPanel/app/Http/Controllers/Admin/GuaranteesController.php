@@ -12,18 +12,14 @@ class GuaranteesController extends Controller
     function get_all_guarantees(){
         return view('admin/guarantees-page', [
             'files' => Files::orderBy('id', 'DESC')->get(),
-            'fields' => $this->get_db_fields(),
+            'fields' => \App\Helpers\Guarantees::get_db_fields(),
         ]);
     }
 
     function edit_block_guarantees(Request $request){
-
-//        var_export($request->input());
         $array_fields = RequestInput::get_fields_val($request);
 
         Guarantees::query()->delete();
-
-//        var_export($array_fields);
 
         foreach( $array_fields as $fields ){
             if( is_array($fields) )
@@ -40,33 +36,5 @@ class GuaranteesController extends Controller
             ->json([
                 'status'    => 'ok',
             ]);
-    }
-
-    function get_db_fields(){
-        $all_fields = Guarantees::all();
-//        var_export($all_fields);
-        $fields = array();
-        $index = 1;
-        foreach ($all_fields as $items){
-            $img_path = Files::find($items->file_id);
-            if(isset($img_path)) {
-                $file = [
-                    'status' => 'ok',
-                    'id' => $items->file_id,
-                    'url' => $img_path->file_path,
-                ];
-            }else{
-                $file = [
-                    'status' => 'error'
-                ];
-            }
-            $fields[$index] = [
-                'inputField' => $items->title,
-                'imageField' => $file,
-                'textareaInput' => $items->description,
-            ];
-            $index++;
-        }
-        return $fields;
     }
 }

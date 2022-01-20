@@ -30,7 +30,10 @@
             "app/Helpers/Admin/GiftFields.php",
             "app/Helpers/Admin/PaymentFields.php",
             "app/Helpers/Admin/HurryUpToBuy.php",
-            "app/Helpers/Admin/Catalog.php"
+            "app/Helpers/Admin/Catalog.php",
+            "app/Helpers/Admin/Guarantees.php",
+            "app/Helpers/Admin/BestsellerFields.php",
+            "app/Helpers/Admin/GiftSet.php"
         ],
         "psr-4": {
             "App\\": "app/",
