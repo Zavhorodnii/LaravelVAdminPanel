@@ -293,7 +293,7 @@ $(document).ready(function () {
 
         if($(this).hasClass('js-change-selected-image')){
             selected_change_file = $(this).closest('.image_section').children('.js_paste_name')
-            $image_url = $(selected_change_file).attr('src')
+            $image_url = $(selected_change_file).attr('data-id')
             change_select_popup_file($image_url);
         }
 
@@ -306,7 +306,7 @@ $(document).ready(function () {
         $items.each
         (
             function (index) {
-                if($(this).find('.single-upload-file').attr('src') === $image_url){
+                if($(this).find('.single-upload-file').attr('data-id') === $image_url){
                     $(this).addClass('selected-file');
                     ajax_get_file_info($(this).find('.single-upload-file').attr('data-id'));
                 }
@@ -578,12 +578,15 @@ $(document).ready(function () {
                     $('.uploaded_files').children('.selected-file').remove();
                     clear_selected_file();
                     // console.log('selected_file = ' + data.path)
-                    // console.log('selected_change_file = ' + selected_change_file.attr('src'))
-                    if(data.path === selected_change_file.attr('src')) {
-                        selected_change_file.attr('src', '');
-                        selected_change_file.closest('.image_section').addClass('none').closest('.image')
-                            .children('.js-open-file-popup').removeClass('none');
-                    }
+                    // console.log('selected_change_file = ' + selected_change_file)
+                    // console.log('selected_change_file = ' + selected_change_file.attr('data-file-path'))
+                    // if( selected_change_file != null) {
+                        if (data.id === selected_change_file.attr('data-id')) {
+                            selected_change_file.attr('data-id', '');
+                            selected_change_file.closest('.image_section').addClass('none').closest('.image')
+                                .children('.js-open-file-popup').removeClass('none');
+                        }
+                    // }
                 }
 
             },

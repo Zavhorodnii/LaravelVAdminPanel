@@ -22,6 +22,8 @@ class FileController extends Controller
             $file->file_path = Storage::url($file_path);
             $file->save();
             $id = $file->id;
+            if ( $request->file->getMimeType() == 'audio/mpeg' )
+                $file_path = 'default_mp3.webp';
 
             return response()
                 ->json([
@@ -76,6 +78,7 @@ class FileController extends Controller
             ->json([
                 'status' => $status_delete,
                 'path'    => $file_path,
+                'id'      => $request->input('id'),
             ]);
     }
 

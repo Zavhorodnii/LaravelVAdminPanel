@@ -16,5 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/main_all_block.js', 'public/js')
     .js('resources/js/control_posts.js', 'public/js')
     .js('resources/js/ajax.js', 'public/js')
+    .js('resources/js/tinymce/tinymce.min.js', 'public/js/tinymce')
+    .js('resources/js/initTinymce.js', 'public/js')
     .sass('resources/css/login.scss', 'public/css')
     .sass('resources/css/style.scss', 'public/css');

@@ -63,7 +63,7 @@
             </div>
             <div class="image field  border_top padding_10 js_find_elem">
                 <div class="title_section">
-                    Изображение
+                    Файл
                 </div>
                 <button class="choice js-open-file-popup style_button @if(isset($fields) && $fields['file-id']['status'] == 'ok') none @endif"
                         type="file" data-popup="show-popup">Выбрать
@@ -72,7 +72,15 @@
                     <img class="selected_image js_paste_name js-paste-selected-file"
                          name="file-id" data-type-filed="imageField"
                          data-base_name="file-id"
-                         src="@if( isset($fields) && $fields['file-id']['status'] == 'ok') {{ $fields['file-id']['url'] }} @endif"
+                         @php
+                            if(isset($fields)){
+                             $file_path = $fields['file-id']['url'];
+                             $path = str_replace('/storage', 'storage', $file_path);
+                             if ( mime_content_type($path) == 'audio/mpeg' )
+                                 $file_path = \Illuminate\Support\Facades\Storage::url('default_mp3.webp');
+                             }
+                         @endphp
+                         src="@if( isset($fields) && $fields['file-id']['status'] == 'ok') {{ $file_path }} @endif"
                          alt="" data-id="@if( isset($fields) && $fields['file-id']['status'] == 'ok') {{ $fields['file-id']['id'] }} @endif">
                     <div class="control_buttons">
                         <button

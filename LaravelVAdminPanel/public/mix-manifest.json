@@ -4,6 +4,8 @@
     "/js/main_all_block.js": "/js/main_all_block.js",
     "/js/control_posts.js": "/js/control_posts.js",
     "/js/ajax.js": "/js/ajax.js",
+    "/js/tinymce/tinymce.min.js": "/js/tinymce/tinymce.min.js",
+    "/js/initTinymce.js": "/js/initTinymce.js",
     "/css/style.css": "/css/style.css",
     "/css/login.css": "/css/login.css"
 }
