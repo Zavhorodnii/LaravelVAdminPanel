@@ -178,3 +178,12 @@ Route::prefix('change-draft')->group(function(){
         [\App\Http\Controllers\Admin\BestsellerController::class, 'change_draft']
     )->name('bestseller-draft');
 });
+
+
+Route::prefix('front')->group(function (){
+
+    Route::post('/add-review',
+        [\App\Http\Controllers\FrontControllers\AddReviewController::class, 'set_review']
+    )->name('front-add-review');
+
+});

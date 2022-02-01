@@ -12,6 +12,9 @@
     <link rel="preload" href="{{ \Illuminate\Support\Facades\URL::asset('front/fonts/SegoeUI-Medium.woff') }}" as="font" crossorigin="anonymous">
     <link rel="preload" href="{{ \Illuminate\Support\Facades\URL::asset('front/fonts/Roboto-Regular.woff') }}" as="font" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('front/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ \Illuminate\Support\Facades\URL::asset('front/css/v_style.css') }}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 
@@ -31,6 +34,11 @@
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/libs/jquery-3.5.1.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/libs/yt-lazyload.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/main.min.js') }}"></script>
+<script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/v_script.js') }}"></script>
 </body>
+
+<script>
+    window.addReview = '{{ route('front-add-review') }}';
+</script>
 
 </html>
