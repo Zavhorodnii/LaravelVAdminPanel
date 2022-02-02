@@ -42,20 +42,10 @@ document.querySelector('.js-send-form-review').addEventListener('click', functio
 
     let form_files = js_get_form_info.querySelector('.js-get-files');
 
-
-    console.log('m = ' + message.value)
-    console.log('ready')
-
     const request = new XMLHttpRequest();
     const url = window.addReview;
 
     let token = document.querySelector('meta[name="csrf-token"]')
-
-    //	Здесь нужно указать в каком формате мы будем принимать данные вот и все	отличие
-
-    // принцип	тот же самый что и у обычного POST	запроса
-
-
     let data = new FormData();
 
     data.append('action', 'ajax_form_footer');
@@ -71,7 +61,6 @@ document.querySelector('.js-send-form-review').addEventListener('click', functio
     for ( ; i < len; i++ ) {
         data.append('file_' + i, form_files.files[i]);
     }
-    console.log('url = ' + url)
     request.responseType =	"json";
     request.open("POST", url, true);
     request.onreadystatechange = function()
