@@ -38,7 +38,8 @@
             "app/Helpers/Admin/HowWeWork.php",
             "app/Helpers/Admin/GetDeliveryPriceByID.php",
             "app/Helpers/Admin/GetDeliveryWorkDay.php",
-            "app/Helpers/Admin/GetDeliveryWorkAddress.php"
+            "app/Helpers/Admin/GetDeliveryWorkAddress.php",
+            "app/Helpers/Admin/GetGalleryField.php"
         ],
         "psr-4": {
             "App\\": "app/",
