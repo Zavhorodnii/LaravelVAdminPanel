@@ -54,10 +54,8 @@ class BlockDeliveryController extends Controller
     function get_db_fields(){
         $all_fields = DeliveryTypePay::all();
         $title_block = DeliveryBlock::all();
-//        var_export($all_fields);
         $fields = array();
         $index = 1;
-//        var_export($title_block[0]->title);
         if(isset($title_block[0]))
             $fields['title'] = $title_block[0]->title;
         if(isset($title_block[0]))

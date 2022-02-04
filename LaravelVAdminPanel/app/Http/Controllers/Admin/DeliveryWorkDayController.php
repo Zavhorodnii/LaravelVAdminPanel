@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\GetDeliveryWorkDay;
 use App\Helpers\RequestInput;
 use App\Models\DeliveryWorkDay;
 use App\Models\DeliveryWorkRegion;
@@ -13,7 +14,7 @@ class DeliveryWorkDayController extends Controller
     function get_all_delivery_day(){
         return view('admin/delivery-day-page', [
             'files' => Files::orderBy('id', 'DESC')->get(),
-            'fields' => $this->get_db_fields(),
+            'fields' => GetDeliveryWorkDay::get_db_fields(),
         ]);
     }
 
@@ -54,36 +55,5 @@ class DeliveryWorkDayController extends Controller
             ->json([
                 'status'    => 'ok',
             ]);
-    }
-
-    function get_db_fields(){
-        $all_fields = DeliveryWorkRegion::all();
-//        var_export($all_fields);
-        $fields = array();
-        $index = 1;
-        foreach ($all_fields as $items){
-            $fields['repeater1'][$index] = [
-                'region' => $items->region,
-                'id-for-select' => $items->id_for_select,
-            ];
-            $index++;
-        }
-        $all_fields = DeliveryWorkDay::all();
-        $index = 1;
-        foreach ($all_fields as $items){
-            $fields['repeater2'][$index] = [
-                'delivery-region-title' => $items->delivery_region_title,
-                'id-select' => $items->id_select,
-                'monday' => $items->monday,
-                'tuesday' => $items->tuesday,
-                'wednesday' => $items->wednesday,
-                'thursday' => $items->thursday,
-                'friday' => $items->friday,
-                'saturday' => $items->saturday,
-                'sunday' => $items->sunday,
-            ];
-            $index++;
-        }
-        return $fields;
     }
 }

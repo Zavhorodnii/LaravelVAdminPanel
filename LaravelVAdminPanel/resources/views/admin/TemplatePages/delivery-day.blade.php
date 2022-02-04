@@ -153,9 +153,9 @@
                                 </div>
                                 <div class="content_item">
 
-                                    <div class="section_input field border_top padding_10 js_find_elem">
+                                    <div class="section_input required field border_top padding_10 js_find_elem">
                                         <div class="title_section">
-                                            Id для выбора
+                                            Регион<span>*</span>
                                         </div>
                                         <input class="style_input_field js_paste_name"
                                                data-type-filed="inputField"
@@ -163,9 +163,9 @@
                                                value="{{ $repeater2_value['delivery-region-title'] }}">
                                     </div>
 
-                                    <div class="section_input required field border_top padding_10 js_find_elem">
+                                    <div class="section_input field border_top padding_10 js_find_elem">
                                         <div class="title_section">
-                                            Регион<span>*</span>
+                                            Id для выбора
                                         </div>
                                         <input class="style_input_field js_paste_name"
                                                data-type-filed="inputField"
@@ -289,7 +289,7 @@
                             </div>
                             <div class="section_input field border_top padding_10 js_find_elem">
                                 <div class="title_section">
-                                    Id который выбрать
+                                    Id для выбора
                                 </div>
                                 <input class="style_input_field js_paste_name"
                                        type="text" name="id-select"

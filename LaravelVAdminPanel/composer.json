@@ -35,7 +35,10 @@
             "app/Helpers/Admin/BestsellerFields.php",
             "app/Helpers/Admin/GiftSet.php",
             "app/Helpers/Admin/Notification.php",
-            "app/Helpers/Admin/HowWeWork.php"
+            "app/Helpers/Admin/HowWeWork.php",
+            "app/Helpers/Admin/GetDeliveryPriceByID.php",
+            "app/Helpers/Admin/GetDeliveryWorkDay.php",
+            "app/Helpers/Admin/GetDeliveryWorkAddress.php"
         ],
         "psr-4": {
             "App\\": "app/",
