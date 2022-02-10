@@ -13,7 +13,7 @@ Route::prefix('/')->group(function (){
     )->name('home-page');
 
     Route::get('product/{slug}',
-        [\App\Http\Controllers\FrontControllers\HomeController::class, 'get']
+        [\App\Http\Controllers\FrontControllers\ProductPageController::class, 'get']
     )->name('product-page');
 
 });

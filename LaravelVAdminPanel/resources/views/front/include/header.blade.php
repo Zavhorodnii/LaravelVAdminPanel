@@ -84,7 +84,7 @@
                     </div>
                     <span>Каталог</span>
                 </a>
-                <div class="catalog active">
+                <div class="catalog  @yield('header_menu_active')">
                     <div class="catalog__body ">
                         <div class="catalog__content">
                             <ul>

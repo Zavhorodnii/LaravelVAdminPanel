@@ -186,4 +186,8 @@ Route::prefix('front')->group(function (){
         [\App\Http\Controllers\FrontControllers\AddReviewController::class, 'set_review']
     )->name('front-add-review');
 
+    Route::post('/sendmail',
+        [\App\Http\Controllers\FrontControllers\ConsultationController::class, 'sendMail']
+    )->name('front-send-mail');
+
 });

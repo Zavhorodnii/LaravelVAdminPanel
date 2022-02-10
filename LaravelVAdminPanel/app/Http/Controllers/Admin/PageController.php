@@ -142,6 +142,10 @@ class PageController extends Controller
             'title' => 'Банер',
             'id'  => 'Banner|',
         ];
+        $set[] = [
+            'title' => 'Консультация',
+            'id'  => 'Consultation|',
+        ];
 
         $items = TextBlock::select('id', 'title')->where('draft', '=', false)->get();
         foreach ($items as $item ){

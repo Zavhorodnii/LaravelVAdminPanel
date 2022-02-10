@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontControllers;
 
 use App\Helpers\CreateMenuStruct;
+use App\Helpers\GetFrontPageBlocks;
 use App\Helpers\PaymentFields;
 use App\Http\Controllers\Admin\Controller;
 use App\Http\Controllers\Front\GetSettingsSiteFields;
@@ -16,14 +17,8 @@ class HomeController extends Controller
     protected array $fields = array();
     public function get(){
 
-        $mainPage = Page::where('slug', '=', null)->orderBy('id', 'ASC')->first();
-
-        $blocks = PageBlock::where('pages_id', '=', $mainPage->id)->get();
-        foreach ( $blocks as $block ){
-            $this->fields[$block->type_block][] = ( "App\Http\Controllers\Front\\". $block->type_block)::getFields($block->block_id);
-        }
-
-//        dd($this->fields);
+        $front_page_slug = null;
+        $this->fields = GetFrontPageBlocks::get_page_blocks($front_page_slug);
 
         $site = SiteMenu::all();
 
@@ -31,7 +26,7 @@ class HomeController extends Controller
             'siteSettings'  => GetSettingsSiteFields::getFields(null),
             'payment'       => PaymentFields::get_db_fields(),
             'siteMenu'      => CreateMenuStruct::create_menu_struct($site, []),
-            'title'         => $mainPage->title,
+            'title'         => GetFrontPageBlocks::get_page_title($front_page_slug),
             'fields'        => $this->fields,
         ]);
 

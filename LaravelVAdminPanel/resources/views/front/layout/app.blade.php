@@ -31,14 +31,16 @@
     @include('front.include.popup')
 
 </div>
+
+<script>
+    window.addReview = '{{ route('front-add-review') }}';
+    window.sendMail = '{{ route('front-send-mail') }}';
+</script>
+
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/libs/jquery-3.5.1.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/libs/yt-lazyload.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/main.min.js') }}"></script>
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/v_script.js') }}"></script>
 </body>
-
-<script>
-    window.addReview = '{{ route('front-add-review') }}';
-</script>
 
 </html>
