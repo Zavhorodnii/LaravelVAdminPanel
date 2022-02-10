@@ -1,3 +1,4 @@
 require('./bootstrap');
 require('./index');
-require('./ajax');
+// require('./tinymce/tinymce.min')
+// require('./ajax');
