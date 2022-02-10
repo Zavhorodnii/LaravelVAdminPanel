@@ -43,10 +43,17 @@
 
                     @foreach($files as $file)
 {{--                        selected-file--}}
+                    @php
+                    $file_path = $file->file_path;
+                    $path = str_replace('/storage', 'storage', $file_path);
+                    if ( mime_content_type($path) == 'audio/mpeg' )
+                        $file_path = \Illuminate\Support\Facades\Storage::url('default_mp3.webp');
+                    @endphp
                         <div class="single_item js-select-upload-file ">
                             <img class="single-upload-file js_paste_name"
                                  type="text" name="name6"
-                                 src="{{ $file->file_path }}"
+                                 data-file-path="{{ $file->file_path }}"
+                                 src="{{ $file_path }}"
                                  alt="{{ $file->alt_name }}" data-id="{{ $file->id }}">
                         </div>
                     @endforeach
