@@ -96,6 +96,10 @@ option:hover {
   grid-template-areas: "sidebar header header" "sidebar content sidebar_right" "sidebar footer_site footer_site";
 }
 
+.margin-0 {
+  margin: 0 !important;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -800,8 +804,13 @@ option:hover {
 }
 
 .selected_image {
+  max-width: 310px;
   height: 150px;
   transition: all 0.3s ease-out;
+}
+
+.gallery .selected_image {
+  height: 120px;
 }
 
 .image_section {
@@ -824,6 +833,7 @@ option:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 .image_section .control_buttons .style_button {
   margin: 10px;
@@ -1355,7 +1365,7 @@ option:hover {
 }
 .file-manager .all-files .uploaded_files .single_item {
   width: 130px;
-  height: 130px;
+  height: 140px;
   margin: 5px;
   background-color: #d3d3d3;
   display: flex;
@@ -1367,6 +1377,7 @@ option:hover {
 }
 .file-manager .all-files .uploaded_files .single_item .single-upload-file {
   width: 100%;
+  max-height: 130px;
 }
 .file-manager .all-files .uploaded_files .selected-file {
   background-color: #0d7377;
@@ -1434,4 +1445,8 @@ option:hover {
   pointer-events: none;
   background: #EFEFEF url(/images/loader.gif?a8494e9c445ea14c63a07273783b5937) center/80px no-repeat;
   z-index: 100;
+}
+
+.gallery {
+  max-width: 250px;
 }

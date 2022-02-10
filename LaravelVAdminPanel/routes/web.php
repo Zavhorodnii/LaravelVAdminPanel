@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (){
-    return "Main page";
-});
+//Route::get('/', function (){
+//    return "Main page";
+//});
 
+require_once 'front/web.php';
 require_once 'admin/web.php';
 

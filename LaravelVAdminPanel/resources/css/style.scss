@@ -179,6 +179,10 @@ option {
   "sidebar footer_site footer_site";
 }
 
+.margin-0{
+    margin: 0 !important;
+}
+
 .header {
     position: sticky;
     top: 0;
@@ -947,9 +951,13 @@ option {
 }
 
 .selected_image {
+    max-width: 310px;
     height: 150px;
     transition: all .3s ease-out;
+}
 
+.gallery .selected_image{
+    height: 120px;
 }
 
 .image_section {
@@ -974,6 +982,7 @@ option {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        text-align: center;
 
         .style_button {
             margin: 10px;
@@ -1545,7 +1554,7 @@ option {
 
             .single_item {
                 width: 130px;
-                height: 130px;
+                height: 140px;
                 margin: 5px;
                 background-color: #d3d3d3;
                 display: flex;
@@ -1559,6 +1568,7 @@ option {
 
                 .single-upload-file {
                     width: 100%;
+                    max-height: 130px;
                 }
             }
 
@@ -1648,5 +1658,9 @@ option {
         background: #EFEFEF url("../../storage/app/public/loader.gif") center/80px no-repeat;
         z-index: 100;
     }
+}
+
+.gallery{
+    max-width: 250px;
 }
 
