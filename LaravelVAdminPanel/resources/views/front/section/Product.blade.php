@@ -108,6 +108,32 @@
                 </div>
             </div>
         </div>
+
+        @if( isset($productInfo['set-products']))
+            <div class="quick__complect ">
+                <div class="quick__complect-title">
+                    Комплектация
+                </div>
+                <div class="quick__complect-items">
+                    @foreach( $productInfo['set-products'] as $set )
+
+                        <a href="{{ route('product-page', $set['slug']) }}" class="quick__complect-item">
+                            <div class="quick__complect-top">
+                                <div class="quick__complect-img ibg">
+                                    <picture>
+                                        <source srcset="{{ \Illuminate\Support\Facades\URL::asset($set['image']) }}" type="image/webp">
+                                        <img src="{{ \Illuminate\Support\Facades\URL::asset($set['image']) }}" alt="Rukav">
+                                    </picture>
+                                </div>
+                                <div class="quick__complect-name">{!! $set['title'] !!}</div>
+                            </div>
+                            <div class="quick__complect-price"> {{ $set['price'] }} руб</div>
+                        </a>
+
+                    @endforeach
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 

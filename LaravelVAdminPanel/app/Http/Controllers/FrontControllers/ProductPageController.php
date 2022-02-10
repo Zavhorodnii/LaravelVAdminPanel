@@ -22,6 +22,11 @@ class ProductPageController extends Controller
         foreach ( $productInfo['related-products'] as $product){
             $productInfo['related-product-info'][$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
         }
+        $setProductInfo = null;
+        foreach ( $productInfo['set-products'] as $product){
+            $setProductInfo[$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
+        }
+        $productInfo['set-products'] = $setProductInfo;
 
 //        dd($this->fields);
 //        dd($productInfo);
