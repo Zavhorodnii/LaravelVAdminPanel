@@ -19,12 +19,16 @@ class ProductPageController extends Controller
         $site = SiteMenu::all();
 
         $productInfo = GetProductInfo::get_product_info(null, $slug);
-        foreach ( $productInfo['related-products'] as $product){
-            $productInfo['related-product-info'][$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
+        if ( array_key_exists('related-products', $productInfo)) {
+            foreach ($productInfo['related-products'] as $product) {
+                $productInfo['related-product-info'][$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
+            }
         }
         $setProductInfo = null;
-        foreach ( $productInfo['set-products'] as $product){
-            $setProductInfo[$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
+        if ( array_key_exists('set-products', $productInfo)) {
+            foreach ($productInfo['set-products'] as $product) {
+                $setProductInfo[$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
+            }
         }
         $productInfo['set-products'] = $setProductInfo;
 
