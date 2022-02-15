@@ -191,3 +191,9 @@ Route::prefix('front')->group(function (){
     )->name('front-send-mail');
 
 });
+
+Route::name('cart')->prefix('cart')->group( function (){
+    Route::post('/control',
+        [\App\Http\Controllers\FrontControllers\CartController::class, 'cartControl']
+    )->name('.control');
+});

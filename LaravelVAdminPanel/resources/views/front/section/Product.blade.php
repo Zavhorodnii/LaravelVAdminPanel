@@ -93,9 +93,9 @@
                                 <div class="quick__old-price">{{ $productInfo['price'] }} руб</div>
                             @endif
                         </div>
-                        <div class="quick__btn-buy buttons-buy">
+                        <div class="quick__btn-buy buttons-buy js-get-product-info" data-product-id="{{ $productInfo['post_id'] ?? '' }}">
                             <button class="buttons-buy__one-click">Купить в 1 клик</button>
-                            <a class="buttons-buy__basket-btn" href="#">
+                            <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                 <div class="buttons-buy__icon icon">
                                     <svg>
                                         <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">
@@ -294,9 +294,9 @@
                                     <div class="card__price">
                                         {{ $product_item[0]->regular_price ?? $product_item[0]->price }} руб
                                     </div>
-                                    <div class="card__buttons buttons-buy">
+                                    <div class="card__buttons buttons-buy js-get-product-info" data-product-id="{{ $product_item[0]->id ?? '' }}">
                                         <button class="buttons-buy__one-click">Купить в 1 клик</button>
-                                        <a class="buttons-buy__basket-btn" href="#">
+                                        <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                             <div class="buttons-buy__icon icon">
                                                 <svg>
                                                     <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">
@@ -429,9 +429,9 @@
                                             <div class="quick__old-price">{{ $product_relative['price'] }} руб</div>
                                         @endif
                                     </div>
-                                    <div class="quick__btn-buy buttons-buy">
+                                    <div class="quick__btn-buy buttons-buy js-get-product-info" data-product-id="{{ $product_item[0]->id ?? '' }}">
                                         <button class="buttons-buy__one-click">Купить в 1 клик</button>
-                                        <a class="buttons-buy__basket-btn" href="#">
+                                        <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                             <div class="buttons-buy__icon icon">
                                                 <svg>
                                                     <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">

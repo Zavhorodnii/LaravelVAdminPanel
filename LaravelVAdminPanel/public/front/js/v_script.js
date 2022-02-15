@@ -156,4 +156,53 @@ if (document.querySelector('.js-send-consultation') !== null) {
         request.send(data);
     })
 }
+
+if (document.querySelector('.js-click-add-to-cart') !== null) {
+    document.querySelectorAll('.js-click-add-to-cart').forEach(item => {
+        item.addEventListener('click', addToCart)
+    })
+}
+
+function addToCart(e) {
+    e.preventDefault();
+    console.log('js-click-add-to-cart');
+
+    let js_get_form_info = this.closest('.js-get-product-info')
+    let product_id = js_get_form_info.getAttribute('data-product-id');
+
+
+    const request = new XMLHttpRequest();
+    const url = window.cartControl;
+
+    let token = document.querySelector('meta[name="csrf-token"]')
+    let data = new FormData();
+
+    console.log('product_id = ', product_id)
+    console.log('cartControl = ', window.cartControl)
+
+    data.append('product_id', product_id);
+    data.append("_token", token.getAttribute('content'));
+
+    request.responseType = "json";
+    request.open("POST", url, true);
+    request.onreadystatechange = function () {
+        let obj = request.response;
+        if (this.readyState !== 4)
+            return;
+
+        if (this.status === 200) {
+            // let data = JSON.parse(this.responseText);
+            // console.log(this);
+            if (obj.status === 'ok') {
+                console.log('cookie = ' + obj.cookie_control)
+            }
+
+        } else {
+            if (obj.onError != null)
+                obj.onError(this.status, this.statusText, this.responseText);
+        }
+    }
+    request.send(data);
+}
+
 console.log('v_ajax2');

@@ -35,6 +35,16 @@ class ProductPageController extends Controller
 //        dd($this->fields);
 //        dd($productInfo);
 
+
+
+//        cookie(
+//            "product_id",
+//            implode('&', array('22')),
+//            time() + 3600 * 24 * 365, "/", null, null, true
+//        );
+//
+//        dd(cookie("product_id"));
+
         return view('front/template/productPage', [
             'siteSettings'  => GetSettingsSiteFields::getFields(null),
             'payment'       => PaymentFields::get_db_fields(),
