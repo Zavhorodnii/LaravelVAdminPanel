@@ -85,7 +85,7 @@
                                     <div class="repeater border_top padding_10"
                                          data-id="repeater-product"
                                          name="repeater-price_{{ $repeater_price_key }}_repeater-product"
-                                         name="repeater-product">
+                                         data-base_name="repeater-product">
                                         <div class="title_section">
                                             Подарки
                                         </div>

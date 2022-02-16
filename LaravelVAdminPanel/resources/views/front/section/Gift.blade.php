@@ -6,7 +6,7 @@
         <div class="gift__wrapper">
             <div class="gift-slider " data-aos="flip-down" data-aos-duration="800">
 
-                @foreach( $field['product'] as $product)
+                @foreach( $field['product'][$field['price'][0]] as $product)
                     <div class="gift-slide">
                         <div class="gift-slide__wrap">
                             <div class="gift-slide__head">
@@ -35,6 +35,7 @@
                                 </div>
                             </div>
                             <div class="gift-slide__content">
+
                                 <div class="gift-slide__img-box">
                                     <div class="gift-slide__img ibg">
                                         <picture>
@@ -42,16 +43,19 @@
                                             <img src="{{ \Illuminate\Support\Facades\URL::asset($product['image']) }}" alt="Gift">
                                         </picture>
                                     </div>
+                                    @if(isset($product['video-id']))
                                     <div class="gift-slide__video">
-                                        <div class="yt-lazyload ibg" data-id="{{ $product['video-id'] }}">
+                                        <div class="yt-lazyload ibg" data-id="{{ $product['video-id'] ?? '' }}">
                                             <picture>
-                                                <source srcset="{{ $product['youtube_thumbnail'] }}" type="image/webp">
-                                                <img src="{{ $product['youtube_thumbnail'] }}" alt="">
+                                                <source srcset="{{ $product['youtube_thumbnail'] ?? '' }}" type="image/webp">
+                                                <img src="{{ $product['youtube_thumbnail'] ?? '' }}" alt="">
                                             </picture>
                                             <div class="video-fon"></div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
+
                                 <div class="gift-slide__info">
                                     <div class="gift-slide__descr">
                                         <div class="gift-slide__sale-text">Акция!</div>

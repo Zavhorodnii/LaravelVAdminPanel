@@ -29,7 +29,7 @@ class CartController extends Controller
         return response()
             ->json([
                 'status'            => 'ok',
-                'cookie_control'    => '|' . implode('&', $cookie) . '|' . count($cookie)
+                'cookie_control'    => $cookie_control
             ])
             ->cookie("product_id",
                 implode('&', $cookie),
