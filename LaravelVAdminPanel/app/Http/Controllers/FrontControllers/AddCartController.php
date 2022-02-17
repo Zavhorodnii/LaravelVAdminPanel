@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\FrontControllers;
 
+use App\Helpers\CartProductControl;
 use App\Http\Controllers\Admin\Controller;
 
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class AddCartController extends Controller
 {
     public function cartControl(Request $request){
 
@@ -20,10 +21,12 @@ class CartController extends Controller
         if(!in_array(strval($product_id), $cookie)){
             $cookie[] = $product_id;
             $cookie_control = 'ok';
+            CartProductControl::addToCart($product_id);
         } else{
             $index = array_search($product_id, $cookie);
             unset($cookie[$index]);
             $cookie_control = 'remove';
+            CartProductControl::removeFromCart($product_id);
         }
 
         return response()
@@ -35,13 +38,5 @@ class CartController extends Controller
                 implode('&', $cookie),
                 time() + 3600 * 24 * 365
             );
-    }
-
-    public function changeQuantity(Request $request){
-
-    }
-
-    public function order(Request $request){
-
     }
 }

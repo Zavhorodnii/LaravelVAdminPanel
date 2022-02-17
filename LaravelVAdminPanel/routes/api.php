@@ -194,6 +194,6 @@ Route::prefix('front')->group(function (){
 
 Route::name('cart')->prefix('cart')->group( function (){
     Route::post('/control',
-        [\App\Http\Controllers\FrontControllers\CartController::class, 'cartControl']
+        [\App\Http\Controllers\FrontControllers\AddCartController::class, 'cartControl']
     )->name('.control');
 });

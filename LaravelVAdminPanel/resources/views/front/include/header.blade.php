@@ -45,7 +45,7 @@
                         <a href="" class="header-center__btn btn">Заказать звонок</a>
                     </div>
                     <div class="header-center__basket basket">
-                        <a href="#" class="header-center__basket-link">
+                        <a href="{{ route('cart.page') }}" class="header-center__basket-link">
                             <div class="header-center__basket-icon icon">
                                 <svg>
                                     <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">

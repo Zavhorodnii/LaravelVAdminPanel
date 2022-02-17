@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontControllers;
 
+use App\Helpers\CartProductControl;
 use App\Helpers\CreateMenuStruct;
 use App\Helpers\GetFrontPageBlocks;
 use App\Helpers\GetProductInfo;
@@ -32,18 +33,6 @@ class ProductPageController extends Controller
         }
         $productInfo['set-products'] = $setProductInfo;
 
-//        dd($this->fields);
-//        dd($productInfo);
-
-
-
-//        cookie(
-//            "product_id",
-//            implode('&', array('22')),
-//            time() + 3600 * 24 * 365, "/", null, null, true
-//        );
-//
-//        dd(cookie("product_id"));
 
         return view('front/template/productPage', [
             'siteSettings'  => GetSettingsSiteFields::getFields(null),

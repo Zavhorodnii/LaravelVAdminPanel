@@ -18,6 +18,7 @@ Route::prefix('/')->group(function (){
 
 });
 
-//Route::get('/product/{slug}',
-//
-//)->name('product-page');
+
+Route::post('/cart',
+    [\App\Http\Controllers\FrontControllers\CartPageController::class, 'get']
+)->name('cart.page');

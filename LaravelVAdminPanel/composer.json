@@ -42,7 +42,9 @@
             "app/Helpers/Admin/GetGalleryField.php",
             "app/Helpers/Front/GetFrontPageBlocks.php",
             "app/Helpers/Admin/GetProductInfo.php",
-            "app/Helpers/Admin/GetRelatedProductInfo.php"
+            "app/Helpers/Admin/GetRelatedProductInfo.php",
+            "app/Helpers/Cart/Cart.php",
+            "app/Helpers/Cart/CartProductControl.php"
         ],
         "psr-4": {
             "App\\": "app/",
