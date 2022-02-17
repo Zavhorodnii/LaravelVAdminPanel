@@ -192,8 +192,8 @@ Route::prefix('front')->group(function (){
 
 });
 
-Route::name('cart')->prefix('cart')->group( function (){
-    Route::post('/control',
-        [\App\Http\Controllers\FrontControllers\AddCartController::class, 'cartControl']
-    )->name('.control');
-});
+//Route::name('cart')->prefix('cart')->group( function (){
+//    Route::post('/control',
+//        [\App\Http\Controllers\FrontControllers\AddCartController::class, 'cartControl']
+//    )->name('.control');
+//});

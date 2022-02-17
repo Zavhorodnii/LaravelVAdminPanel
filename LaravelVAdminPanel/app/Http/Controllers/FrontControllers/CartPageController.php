@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\FrontControllers;
 
-use App\Helpers\CartProductControl;
 use App\Helpers\CreateMenuStruct;
 use App\Helpers\GetFrontPageBlocks;
 use App\Helpers\GetProductInfo;
@@ -10,8 +9,12 @@ use App\Helpers\GetRelatedProductInfo;
 use App\Helpers\PaymentFields;
 use App\Http\Controllers\Admin\Controller;
 use App\Http\Controllers\Front\GetSettingsSiteFields;
+use App\Http\Controllers\Front\ImageControl;
+use App\Models\Products;
 use App\Models\SiteMenu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class CartPageController extends Controller
 {
@@ -19,26 +22,7 @@ class CartPageController extends Controller
 //        $this->fields = GetFrontPageBlocks::get_page_blocks($slug);
         $site = SiteMenu::all();
 
-//        $productInfo = GetProductInfo::get_product_info(null, $slug);
-//        if ( array_key_exists('related-products', $productInfo)) {
-//            foreach ($productInfo['related-products'] as $product) {
-//                $productInfo['related-product-info'][$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
-//            }
-//        }
-//        $setProductInfo = null;
-//        if ( array_key_exists('set-products', $productInfo)) {
-//            foreach ($productInfo['set-products'] as $product) {
-//                $setProductInfo[$product[0]->id] = GetRelatedProductInfo::get_product_info($product[0]->id);
-//            }
-//        }
-//        $productInfo['set-products'] = $setProductInfo;
-
-
-//        CartProductControl::addToCart('13');
-//        CartProductControl::addToCart('15');
-
-        dd(CartProductControl::getCartProduct());
-
+        dd(\Cart::getContent());
 
         return view('front/template/productPage', [
             'siteSettings'  => GetSettingsSiteFields::getFields(null),

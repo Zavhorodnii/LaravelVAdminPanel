@@ -194,7 +194,7 @@ function addToCart(e) {
             // let data = JSON.parse(this.responseText);
             // console.log(this);
             if (obj.status === 'ok') {
-                console.log('cookie = ' + obj.cookie_control)
+                console.log(obj.cookie_control)
             }
 
         } else {

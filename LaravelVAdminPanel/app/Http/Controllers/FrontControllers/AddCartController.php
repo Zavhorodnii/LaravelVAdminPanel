@@ -2,41 +2,50 @@
 
 namespace App\Http\Controllers\FrontControllers;
 
-use App\Helpers\CartProductControl;
 use App\Http\Controllers\Admin\Controller;
 
+use App\Http\Controllers\Front\ImageControl;
+use App\Models\Products;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Session;
 
 class AddCartController extends Controller
 {
     public function cartControl(Request $request){
 
         $product_id = trim($request->input('product_id'));
+        $Product = Products::find($product_id);
 
 
-        $cookie = array();
-        if( $request->hasCookie('product_id'))
-            $cookie = explode('&', $request->cookie("product_id"));
-        if(!in_array(strval($product_id), $cookie)){
-            $cookie[] = $product_id;
-            $cookie_control = 'ok';
-            CartProductControl::addToCart($product_id);
-        } else{
-            $index = array_search($product_id, $cookie);
-            unset($cookie[$index]);
-            $cookie_control = 'remove';
-            CartProductControl::removeFromCart($product_id);
+        if (!\Cart::has($product_id)){
+            \Cart::add([
+                'id' => strval($Product->id),
+                'name' => $Product->title,
+                'price' => $Product->regular_price ?? $Product->price,
+                'quantity' => 1,
+                'attributes' => array(
+                    'image'     => ImageControl::get_image_url($Product->file_id),
+                    'slug'      => $Product->slug
+                ),
+                'associatedModel' => $Product
+            ]);
+
+            $cookie_control = 'add';
         }
+        else {
+            \Cart::remove($product_id);
+            $cookie_control = 'remove';
+        }
+        Session::save();
+
+
 
         return response()
             ->json([
                 'status'            => 'ok',
-                'cookie_control'    => $cookie_control
-            ])
-            ->cookie("product_id",
-                implode('&', $cookie),
-                time() + 3600 * 24 * 365
-            );
+                'cookie_control'    => $cookie_control,
+            ]);
     }
 }

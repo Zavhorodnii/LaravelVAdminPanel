@@ -19,6 +19,13 @@ Route::prefix('/')->group(function (){
 });
 
 
-Route::post('/cart',
-    [\App\Http\Controllers\FrontControllers\CartPageController::class, 'get']
-)->name('cart.page');
+
+Route::name('cart')->prefix('cart')->group( function (){
+    Route::get('/',
+        [\App\Http\Controllers\FrontControllers\CartPageController::class, 'get']
+    )->name('.page');
+
+    Route::post('/control',
+        [\App\Http\Controllers\FrontControllers\AddCartController::class, 'cartControl']
+    )->name('.control');
+});
