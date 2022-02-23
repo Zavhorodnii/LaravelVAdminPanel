@@ -43,6 +43,7 @@ class GetRelatedProductInfo
         }
 
         $field_['products'] = [
+            'post_id'       => $product->id,
             'title'         => $product->title,
             'price'         => $product->price,
             'regular_price' => $product->regular_price,

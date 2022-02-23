@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontControllers;
 
 use App\Helpers\CartProductControl;
 use App\Helpers\CreateMenuStruct;
+use App\Helpers\GetCartProduct;
 use App\Helpers\GetFrontPageBlocks;
 use App\Helpers\GetProductInfo;
 use App\Helpers\GetRelatedProductInfo;
@@ -40,7 +41,8 @@ class ProductPageController extends Controller
             'siteMenu'      => CreateMenuStruct::create_menu_struct($site, []),
             'title'         => GetFrontPageBlocks::get_page_title($slug),
             'fields'        => $this->fields,
-            'productInfo'   => $productInfo
+            'productInfo'   => $productInfo,
+            'cart_info'     => GetCartProduct::getCartProduct(),
         ]);
     }
 }

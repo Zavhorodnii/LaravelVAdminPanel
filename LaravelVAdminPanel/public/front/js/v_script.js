@@ -1,3 +1,5 @@
+
+$(document).ready(function (){
 console.log('v_ajax');
 
 if (document.querySelector('.js-send-form-review') !== null) {
@@ -195,6 +197,13 @@ function addToCart(e) {
             // console.log(this);
             if (obj.status === 'ok') {
                 console.log(obj.cookie_control)
+                let headerCartGift = $.parseHTML(obj.headerCartGift);
+                headerCartGift = $(headerCartGift);
+                headerCartGift.find('.js-remove-product').click(remove_product);
+                $('.js-paste-all-basket').html(headerCartGift)
+                js_paste_cart_count(obj.cartCount)
+
+                // document.querySelector('.js-paste-all-basket').innerHTML = headerCartGift;
             }
 
         } else {
@@ -204,5 +213,235 @@ function addToCart(e) {
     }
     request.send(data);
 }
+
+    console.log('ready')
+
+    $('.js-change-quantity').click(function (event){
+        event.preventDefault();
+        let data = new FormData;
+        let $cart_item = $(this).closest('.js-get-cart-item');
+        let $get_info = $(this).closest('.js-get-info');
+        let product_id = $cart_item.attr('data-product-id');
+        let quantity = $get_info.find('input[type=number]').val()
+
+        data.append('id',  product_id)
+        data.append('quantity', quantity)
+
+        let token = document.querySelector('meta[name="csrf-token"]')
+        data.append("_token", token.getAttribute('content'));
+        console.log('click')
+
+        // console.log(data);
+
+        // return;
+
+        $.ajax({
+            url: window.changeQuantity,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                // console.log('data' + data);
+                // console.log('data = ' + data.status);
+                if(data.status == 'ok') {
+                    console.log('ok');
+                    $cart_item.find('.js-paste-product-subTotal').text(data.productSubtotal + ' руб')
+                    $('.js-paste-cart-subTotal').text(data.cartSubTotal + ' руб')
+                    $('[data-product-id=' + product_id + ']').find('.js-paste-quantity').text(quantity)
+                }
+
+            },
+            error: function (jqXHR, status, errorThrown) {
+                console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
+                // ошибка при отправке
+            }
+        })
+    })
+
+    $(document).find('.js-remove-product').click(remove_product)
+
+    function remove_product(event){
+        event.preventDefault();
+        let data = new FormData;
+        let $remove_item = $(this).closest('.js-get-cart-item')
+        let product_id = $remove_item.attr('data-product-id');
+
+        data.append('id', product_id)
+
+        let token = document.querySelector('meta[name="csrf-token"]')
+        data.append("_token", token.getAttribute('content'));
+        console.log('click')
+
+
+        // return;
+
+        $.ajax({
+            url: window.removeProduct,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                // console.log('data' + data);
+                // console.log('data = ' + data.status);
+                if(data.status == 'ok') {
+                    console.log('ok')
+                    $('.js-paste-cart-subTotal').text(data.cartSubTotal + ' руб')
+                    $('.js-cart-elem[data-product-id=' + product_id + ']').remove();
+
+                    js_paste_cart_count(data.cartCount)
+                }
+
+            },
+            error: function (jqXHR, status, errorThrown) {
+                console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
+                // ошибка при отправке
+            }
+        })
+    }
+
+
+    function js_paste_cart_count( count ){
+        $('.js-paste-cart-count').html(count);
+    }
+
+
+
+    $('.js-click-add-gift').click(function (event){
+        event.preventDefault();
+        let data = new FormData;
+        let $remove_item = $(this).closest('.js-get-cart-item')
+
+        data.append('id',  $(this).attr('data-gift-id'))
+
+        let token = document.querySelector('meta[name="csrf-token"]')
+        data.append("_token", token.getAttribute('content'));
+        console.log('click')
+
+        // console.log(data);
+
+        // return;
+
+        $.ajax({
+            url: window.addGift,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                // console.log('data' + data);
+                // console.log('data = ' + data.status);
+                if(data.status == 'ok') {
+                    console.log('ok')
+                    let html = $.parseHTML(data.giftHtml);
+                    html = $(html);
+                    html.find('.js-remove-product').click(remove_product);
+
+                    let headerCartGift = $.parseHTML(data.headerCartGift);
+                    headerCartGift = $(headerCartGift);
+                    headerCartGift.find('.js-remove-product').click(remove_product);
+
+
+                    $('.js-remove-gift').remove();
+                    $('.js-paste-items').append(html)
+                    // $('.js-paste-header-items').insertBefore(headerCartGift)
+                    headerCartGift.insertBefore('.js-paste-header-items')
+
+                    js_paste_cart_count(data.cartCount)
+                }
+
+            },
+            error: function (jqXHR, status, errorThrown) {
+                console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
+                // ошибка при отправке
+            }
+        })
+    })
+
+    $('.js-click-cart-order').click(function (event){
+        event.preventDefault();
+        let data = new FormData;
+
+        let js_get_form_info = this.closest('.js-get-form-info')
+        let name = js_get_form_info.querySelector('.js-get-name');
+        if (name.value.length < 4) {
+            if (!name.classList.contains('_form-error')) {
+                name.classList.add('_form-error')
+            }
+            return;
+        } else {
+            name.classList.remove('_form-error')
+        }
+
+        let email = js_get_form_info.querySelector('.js-get-email');
+        if (email.value.length < 4) {
+            if (!email.classList.contains('_form-error')) {
+                email.classList.add('_form-error')
+            }
+            return;
+        } else {
+            email.classList.remove('_form-error')
+        }
+        let phone = js_get_form_info.querySelector('.js-get-phone');
+        if (phone.value.replace(/\D/g, '').length < 10) {
+            if (!phone.classList.contains('_form-error')) {
+                phone.classList.add('_form-error')
+            }
+            return;
+        } else {
+            phone.classList.remove('_form-error');
+        }
+
+        let token = document.querySelector('meta[name="csrf-token"]')
+
+        data.append('name', name.value);
+        data.append('phone', phone.value);
+        data.append('email', email.value);
+        data.append("_token", token.getAttribute('content'));
+        console.log('click')
+
+        console.log('name = ' + name.value);
+        console.log('phone = ' + phone.value);
+        console.log('email = ' + email.value);
+
+        // return;
+
+        $.ajax({
+            url: window.cartOrder,
+            type: 'POST',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (data) {
+                // console.log('data' + data);
+                // console.log('data = ' + data.status);
+                if(data.status == 'ok') {
+                    console.log('ok')
+                    name.value = '';
+                    phone.value = '';
+                    email.value = '';
+
+                    $('.js-paste-all-basket').html('<span>Корзина пуста</span>')
+                    $('.js-paste-items').html('<span>Корзина пуста</span>')
+                    $('.js-paste-cart-subTotal').text('0 руб')
+
+                    js_paste_cart_count(0)
+                }
+
+            },
+            error: function (jqXHR, status, errorThrown) {
+                console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
+                // ошибка при отправке
+            }
+        })
+    })
+})
+
+
 
 console.log('v_ajax2');

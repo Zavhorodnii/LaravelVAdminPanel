@@ -49,7 +49,7 @@
                                     <div class="complect-card__old-price">{{ $set['price'] }} руб</div>
                                     @endif
                                 </div>
-                                <div class="card__buttons buttons-buy js-get-product-info" data-product-id="{{ $product['post_id'] ?? '' }}">
+                                <div class="card__buttons buttons-buy js-get-product-info" data-product-id="{{ $set['product-id'] ?? '' }}">
                                     <button class="buttons-buy__one-click">Купить в 1 клик</button>
                                     <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                         <div class="buttons-buy__icon icon">

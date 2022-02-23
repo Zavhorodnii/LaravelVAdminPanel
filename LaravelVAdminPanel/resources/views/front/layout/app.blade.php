@@ -36,6 +36,10 @@
     window.addReview = '{{ route('front-add-review') }}';
     window.sendMail = '{{ route('front-send-mail') }}';
     window.cartControl = '{{ route('cart.control') }}';
+    window.changeQuantity = '{{ route('cart.change.quantity') }}';
+    window.removeProduct = '{{ route('cart.remove') }}';
+    window.addGift = '{{ route('cart.gift') }}';
+    window.cartOrder = '{{ route('cart.order') }}';
 </script>
 
 <script src="{{ \Illuminate\Support\Facades\URL::asset('front/js/libs/jquery-3.5.1.js') }}"></script>

@@ -52,12 +52,91 @@
                                     </use>
                                 </svg>
 
-                                <span>0</span>
+                                <span class="js-paste-cart-count">{{ $cart_info['cartCount'] ?? '0' }}</span>
                             </div>
                         </a>
                         <div class="basket__wrap">
-                            <div class="basket__content basket__content--empty">
-                                <span>Корзина пуста</span>
+                            <div class="basket__content basket__content--empty js-paste-all-basket">
+                                @if(isset($cart_info['products']) && count($cart_info['products']) > 0 )
+                                    <div class="basket__items">
+                                        <div class="basket__item ">
+                                        @foreach( $cart_info['products'] as $key => $item )
+                                            @if( $key == 'gift')
+                                                @continue
+                                            @endif
+                                                <div class="basket__top js-get-cart-item js-cart-elem " data-product-id="{{$item['id']}}">
+                                                    <div class="basket__left">
+                                                        <a href="{{ route('product-page', $item['attributes']['slug']) }}" class="basket__img ibg">
+                                                            <picture>
+                                                                <source srcset="{{ \Illuminate\Support\Facades\URL::asset( $item['attributes']['image'] ) }}" type="image/webp">
+                                                                <img src="{{ \Illuminate\Support\Facades\URL::asset( $item['attributes']['image'] ) }}" alt="Gantelya">
+                                                            </picture>
+                                                        </a>
+                                                        <a href="{{ route('product-page', $item['attributes']['slug']) }}" class="basket__name">{{ $item['name'] }}</a>
+                                                    </div>
+                                                    <div class="basket__right">
+                                                        <div class="basket__count">
+                                                            <span class="js-paste-quantity">{{ $item['quantity'] }}</span>*{{ $item['price'] }} руб
+                                                        </div>
+                                                        <div class="basket__delete">
+
+                                                            <div class="basket__icon icon js-remove-product" >
+                                                                <svg>
+                                                                    <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#delete">
+                                                                    </use>
+                                                                </svg>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        @endforeach
+                                        @if(isset($cart_info['products']['gift']))
+                                            @php
+                                                $item = $cart_info['products']['gift'];
+                                            @endphp
+                                                <div class="basket__top js-remove-gift js-cart-elem js-get-cart-item" data-product-id="{{$item['id']}}">
+                                                    <div class="basket__left">
+                                                        <a href="{{ route('product-page', $item['attributes']['slug']) }}" class="basket__img ibg">
+                                                            <picture>
+                                                                <source srcset="{{ \Illuminate\Support\Facades\URL::asset( $item['attributes']['image'] ) }}" type="image/webp">
+                                                                <img src="{{ \Illuminate\Support\Facades\URL::asset( $item['attributes']['image'] ) }}" alt="Gantelya">
+                                                            </picture>
+                                                        </a>
+                                                        <a href="{{ route('product-page', $item['attributes']['slug']) }}" class="basket__name">{{ $item['name'] }}</a>
+                                                    </div>
+                                                    <div class="basket__right">
+                                                        <div class="basket__count">
+                                                            ПОДАРОК
+                                                        </div>
+                                                        <div class="basket__delete">
+
+                                                            <div class="basket__icon icon js-remove-product">
+                                                                <svg>
+                                                                    <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#delete">
+                                                                    </use>
+                                                                </svg>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        @endif
+
+                                        <div class="basket__bottom js-paste-header-items">
+                                            <div class="basket__all">
+                                                Итого: <span class="js-paste-cart-subTotal">{{ $cart_info['subtotal'] }} руб</span>
+                                            </div>
+                                            <div class="basket__btn">
+                                                <a href="{{ route('cart.page') }}" class="btn">Оформить заказ</a>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <span>Корзина пуста</span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -84,7 +163,7 @@
                     </div>
                     <span>Каталог</span>
                 </a>
-                <div class="catalog  @yield('header_menu_active')">
+                <div class="catalog @yield('header_menu_active')">
                     <div class="catalog__body ">
                         <div class="catalog__content">
                             <ul>
