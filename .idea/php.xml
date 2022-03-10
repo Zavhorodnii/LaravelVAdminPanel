@@ -108,6 +108,7 @@
       <path value="$PROJECT_DIR$/LaravelVAdminPanel/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/LaravelVAdminPanel/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/LaravelVAdminPanel/vendor/composer" />
+      <path value="$PROJECT_DIR$/LaravelVAdminPanel/vendor/darryldecode/cart" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

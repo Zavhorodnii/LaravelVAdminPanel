@@ -18,6 +18,30 @@ Route::prefix('/')->group(function (){
 
 });
 
-//Route::get('/product/{slug}',
-//
-//)->name('product-page');
+
+
+Route::name('cart')->prefix('cart')->group( function (){
+    Route::get('/',
+        [\App\Http\Controllers\FrontControllers\CartPageController::class, 'get']
+    )->name('.page');
+
+    Route::post('/control',
+        [\App\Http\Controllers\FrontControllers\CartController::class, 'addToCart']
+    )->name('.control');
+
+    Route::post('/change-quantity',
+        [\App\Http\Controllers\FrontControllers\CartController::class, 'changeQuantity']
+    )->name('.change.quantity');
+
+    Route::post('/remove',
+        [\App\Http\Controllers\FrontControllers\CartController::class, 'removeProduct']
+    )->name('.remove');
+
+    Route::post('/gift',
+        [\App\Http\Controllers\FrontControllers\CartController::class, 'gift']
+    )->name('.gift');
+
+    Route::post('/order',
+        [\App\Http\Controllers\FrontControllers\CartController::class, 'order']
+    )->name('.order');
+});

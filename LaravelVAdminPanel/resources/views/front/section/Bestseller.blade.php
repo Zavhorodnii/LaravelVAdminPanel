@@ -45,9 +45,9 @@
                                         <div class="card__price">
                                             {!! $product['regular_price'] ?? $product['price'] !!} руб
                                         </div>
-                                        <div class="card__buttons buttons-buy">
+                                        <div class="card__buttons buttons-buy js-get-product-info" data-product-id="{{ $product['post_id'] ?? '' }}">
                                             <button class="buttons-buy__one-click">Купить в 1 клик</button>
-                                            <a class="buttons-buy__basket-btn" href="{{ route('product-page', $product['slug']) }}">
+                                            <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                                 <div class="buttons-buy__icon icon">
                                                     <svg>
                                                         <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">
@@ -178,9 +178,9 @@
                                             <div class="quick__old-price">{{ $product['price'] }} руб</div>
                                             @endif
                                         </div>
-                                        <div class="quick__btn-buy buttons-buy">
+                                        <div class="quick__btn-buy buttons-buy js-get-product-info" data-product-id="{{ $product['post_id'] ?? '' }}">
                                             <button class="buttons-buy__one-click">Купить в 1 клик</button>
-                                            <a class="buttons-buy__basket-btn" href="#">
+                                            <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                                 <div class="buttons-buy__icon icon">
                                                     <svg>
                                                         <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">
@@ -277,9 +277,9 @@
                                         <span class="card__old-price">{{ $product['price'] }} руб</span>
                                         @endif
                                     </div>
-                                    <div class="card__buttons buttons-buy">
+                                    <div class="card__buttons buttons-buy js-get-product-info" data-product-id="{{ $product['post_id'] ?? '' }}">
                                         <button class="buttons-buy__one-click">Купить в 1 клик</button>
-                                        <a class="buttons-buy__basket-btn" href="#">
+                                        <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                             <div class="buttons-buy__icon icon">
                                                 <svg>
                                                     <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">
@@ -400,9 +400,9 @@
                                                     <div class="quick__old-price">{{ $product['price'] }} руб</div>
                                                 @endif
                                             </div>
-                                            <div class="quick__btn-buy buttons-buy">
+                                            <div class="quick__btn-buy buttons-buy js-get-product-info" data-product-id="{{ $product['post_id'] ?? '' }}">
                                                 <button class="buttons-buy__one-click">Купить в 1 клик</button>
-                                                <a class="buttons-buy__basket-btn" href="#">
+                                                <a class="buttons-buy__basket-btn js-click-add-to-cart" href="#">
                                                     <div class="buttons-buy__icon icon">
                                                         <svg>
                                                             <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#cart">

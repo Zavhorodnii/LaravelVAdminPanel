@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontControllers;
 
 use App\Helpers\CreateMenuStruct;
+use App\Helpers\GetCartProduct;
 use App\Helpers\GetFrontPageBlocks;
 use App\Helpers\PaymentFields;
 use App\Http\Controllers\Admin\Controller;
@@ -22,12 +23,15 @@ class HomeController extends Controller
 
         $site = SiteMenu::all();
 
+//        dd($this->fields);
+
         return view('front/template/page', [
             'siteSettings'  => GetSettingsSiteFields::getFields(null),
             'payment'       => PaymentFields::get_db_fields(),
             'siteMenu'      => CreateMenuStruct::create_menu_struct($site, []),
             'title'         => GetFrontPageBlocks::get_page_title($front_page_slug),
             'fields'        => $this->fields,
+            'cart_info'     => GetCartProduct::getCartProduct(),
         ]);
 
     }

@@ -14,6 +14,6 @@ class AdminLoginController extends Controller
         if(!Auth::attempt($data)){
             return redirect(route('admin'));
         }
-        return redirect(route('admin-panel'));
+        return redirect(route('all-benefits'));
     }
 }

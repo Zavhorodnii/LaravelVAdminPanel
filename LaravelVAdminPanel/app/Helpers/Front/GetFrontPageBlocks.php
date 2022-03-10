@@ -11,7 +11,8 @@ class GetFrontPageBlocks
     private static function get_page_by_slug( $slug )
     {
         $pages = [
-            'product/'
+            'product/',
+            'cart/'
         ];
 
         foreach ( $pages as $page ){
