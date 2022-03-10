@@ -48,6 +48,7 @@ class CartPageController extends Controller
 //        \Cart::session($user_id);
 //
 //        dd(\Cart::getContent()->toArray());
+//        dd(CreateMenuStruct::create_menu_struct($site, []));
 
         return view('front/template/cartPage', [
             'siteSettings'  => GetSettingsSiteFields::getFields(null),

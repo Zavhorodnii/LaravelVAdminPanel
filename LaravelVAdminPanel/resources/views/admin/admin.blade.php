@@ -29,7 +29,7 @@
         </div>
         <div class="section_input border_top padding_10 js_find_elem">
             <div class="title_section">Пароль<span>*</span></div>
-            <input class="style_input_field js_paste_name" type="text" name="password" data-base_name="name1" required>
+            <input class="style_input_field js_paste_name" type="password" name="password" data-base_name="name1" required>
         </div>
 
         <div class="field_section_container_button border_top padding_10">

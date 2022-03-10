@@ -31,7 +31,7 @@
                 <div class="header-center__right">
                     <div class="header-center__info">
                         <span>{{$siteSettings['siteSettings']['work-time'] }}</span>
-                        <a href="tel:+375291270216" class="header-center__phone">
+                        <a href="tel:{{$siteSettings['siteSettings']['phone'] }}" class="header-center__phone">
                             <div class="header-center__phone-icon icon">
                                 <svg>
                                     <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#phone">
@@ -277,7 +277,7 @@
                         <li><a href="#">
                                 <div class="bottom-menu__icon icon">
                                     <svg>
-                                        <use href="img/sprite/sprite.svg#gift">
+                                        <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#gift">
                                         </use>
                                     </svg>
                                 </div>
@@ -293,623 +293,31 @@
         <div class="mobile-menu__content">
             <div data-spollers="" data-one-spoller="" class="mobile-menu__spollers">
                 <ul class="mobile-menu__first-list">
-                    <li>
-                        <a data-spoller="" href="#">Стойки под штангу</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a data-spoller="" href="#">Разборные </a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a data-spoller="" href="#">Композитные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
 
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Скамьи</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
+                    @foreach( $siteMenu as $menu_mob )
+                        <li>
+                            <a {!! $menu_mob['new'] ? 'data-spoller=""' : ''  !!} href="{{ $menu_mob['url'] }}">{{ $menu_mob['title'] }}</a>
+                            @if( $menu_mob['new'])
+                            <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
 
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Штанги в сборе</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
+                                @foreach( $menu_mob['new'] as $submenu_1 )
+                                <li>
+                                    <a {!! $submenu_1['new'] ? 'data-spoller=""' : ''  !!} href="{{ $submenu_1['url'] }}">{{ $submenu_1['title'] }}</a>
+                                    @if( $submenu_1['new'])
+                                    <ul class="mobile-menu__third-list">
 
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Грифы для штаги</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
+                                        @foreach( $submenu_1['new'] as $submenu_2 )
+                                        <li><a href="{{ $submenu_2['url'] }}">{{ $submenu_2['title'] }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+                                </li>
+                                @endforeach
 
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Гантели</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Скамьи</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Грифы для штаги</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Единоборства</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Грифы для штаги</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Тяжелая атлетика</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Товары для детей</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Стойки под штангу</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a data-spoller="" href="#">Стойки под штангу</a>
-                        <ul data-spollers="" data-one-spoller="" class="mobile-menu__two-list">
-                            <li>
-                                <a data-spoller="" href="#">Обрезиненные</a>
-                                <ul class="mobile-menu__third-list">
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Разборные </a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                    <li><a href="#">Композитные</a></li>
-                                    <li><a href="#">Разборные в кейсе</a></li>
-                                    <li><a href="#">Регулируемые</a></li>
-                                    <li><a href="#">Чугунные</a></li>
-                                    <li><a href="#">Металлические</a></li>
-                                    <li><a href="#">Хромированные</a></li>
-                                    <li><a href="#">Для фитнеса</a></li>
-                                    <li><a href="#">Разборные обрезиненные</a></li>
-                                    <li><a href="#">Обрезиненные</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Разборные </a></li>
-                            <li><a href="#">Обрезиненные</a></li>
-                            <li><a href="#">Композитные</a></li>
-                            <li><a href="#">Разборные в кейсе</a></li>
-                            <li><a href="#">Регулируемые</a></li>
-                            <li><a href="#">Чугунные</a></li>
-                            <li><a href="#">Металлические</a></li>
-                            <li><a href="#">Хромированные</a></li>
-                            <li><a href="#">Для фитнеса</a></li>
-                            <li><a href="#">Разборные обрезиненные</a></li>
-
-                        </ul>
-                    </li>
+                            </ul>
+                            @endif
+                        </li>
+                    @endforeach
 
                 </ul>
             </div>
@@ -919,7 +327,7 @@
                 <li><a href="#">
                         <div class="mobile-menu__gift-icon icon">
                             <svg>
-                                <use href="img/sprite/sprite.svg#gift">
+                                <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#gift">
                                 </use>
                             </svg>
                         </div>
@@ -927,15 +335,15 @@
                     </a></li>
             </ul>
             <div class="mobile-menu__bottom">
-                <p>С 9:00 до 20:00 ежедневно</p>
-                <a href="tel:+375291270216" class="mobile-menu__phone">
+                <p>{{$siteSettings['siteSettings']['work-time'] }}</p>
+                <a href="tel:{{$siteSettings['siteSettings']['phone'] }}" class="mobile-menu__phone">
                     <div class="mobile-menu__phone-icon icon">
                         <svg>
-                            <use href="img/sprite/sprite.svg#phone">
+                            <use href="{{ \Illuminate\Support\Facades\URL::asset('front') }}/img/sprite/sprite.svg#phone">
                             </use>
                         </svg>
                     </div>
-                    <span>+375 29 127 02 16</span>
+                    <span>{{$siteSettings['siteSettings']['phone'] }}</span>
                 </a>
             </div>
         </div>
